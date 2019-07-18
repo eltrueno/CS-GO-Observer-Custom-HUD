@@ -1,0 +1,260 @@
+html
+  head
+    script(src="/socket.io/socket.io.js")
+    script(src="http://code.jquery.com/jquery-2.1.4.min.js")
+    script.
+      var ip = "#{ip}",
+      port = "#{port}",
+      disp_avatars = #{avatars},
+      delay = #{delay};
+    script(src="/js/main.js")
+    script(src=hud)
+    link(rel='stylesheet', href=css)
+  body
+    section
+      //- #bomb_timer
+      #header
+        #match_teams
+          #round_info(style='height: 100%;')
+            #team_1.team_info(style='height: 100%;')
+              #team_name Team 1
+              #team_logo
+                img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 25px; width:auto; filter: invert(100%); margin-right:10px;')
+                //- #team_flag
+                //- img#team_1_logo
+            #team_2.team_info(style='height: 100%;')
+              #team_name Team 2
+              #team_logo
+                img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 25px; width:auto; filter: invert(100%); margin-right:10px;')
+                //- #team_flag
+                //- img#team_2_logo
+            #time_counter 1:55
+            #round_counter Round 0 / 30
+      //- #defuser
+      //-   #defuser_title
+      //-     | DEFUSE TIME
+      //-   #defuse_bar
+      //-   #defuse_time
+      //-     | 10:00
+      #who_won
+        #winning_team
+        div win the round!
+      //- #stats-container
+        //- #left_stats
+        //-   #stats_player1.stats_player.st_left
+        //-     #stat_money.st_left
+        //-       | -$1000
+        //-   #stats_player2.stats_player.st_left
+        //-     #stat_money.st_left
+        //-       | -$1000
+        //-   #stats_player3.stats_player.st_left
+        //-     #stat_money.st_left
+        //-       | -$1000
+        //-   #stats_player4.stats_player.st_left
+        //-     #stat_money.st_left
+        //-       | -$1000
+        //-   #stats_player5.stats_player.st_left
+        //-     #stat_money.st_left
+        //-       | -$1000
+        //- #right_stats
+        //-   #stats_player6.stats_player.st_right
+        //-     #stat_money.st_right
+        //-       | -$1000
+        //-   #stats_player7.stats_player.st_right
+        //-     #stat_money.st_right
+        //-       | -$1000
+        //-   #stats_player8.stats_player.st_right
+        //-     #stat_money.st_right
+        //-       | -$1000
+        //-   #stats_player9.stats_player.st_right
+        //-     #stat_money.st_right
+        //-       | -$1000
+        //-   #stats_player0.stats_player.st_right
+        //-     #stat_money.st_right
+        //-       | -$1000
+      #player-container
+        #avatar_container(style="width:181px; height:182px; float:left; background-color: red; margin: 11px 9px;")
+        #container2(style="width:695px; margin-left:199px;")
+          #first_row
+            #stats
+                #kills_count.inlining K: 13
+                #assist_count.inlining A: 13
+                #death_count.inlining D: 13
+          #second_row
+            #current_nick
+              | NICKNAME
+            #health_armor
+              #health-text 100
+              #armor-text 100
+            #ammo
+              #clip-text.clip 100/
+              #reserve-text.reserve 100
+          #third_row
+            #nick_also.inlining
+              | NICK
+            #nades.inlining
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 25px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 25px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 25px; width:auto; filter: invert(100%); margin-right:10px;')
+      #left.team
+        #player1.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.ct
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              .bomb_defuse.ct
+                img.invert_brightness(src='/files/img/elements/defuse.png')
+              #weapon_icon.bar_weapon.ct
+        #player2.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.ct
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              .bomb_defuse.ct
+                img.invert_brightness(src='/files/img/elements/defuse.png')
+              #weapon_icon.bar_weapon.ct
+        #player3.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.ct
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              .bomb_defuse.ct
+                img.invert_brightness(src='/files/img/elements/defuse.png')
+              #weapon_icon.bar_weapon.ct
+        #player4.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.ct
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              .bomb_defuse.ct
+                img.invert_brightness(src='/files/img/elements/defuse.png')
+              #weapon_icon.bar_weapon.ct
+        #player5.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.ct
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); margin-right:10px;')
+              .bomb_defuse.ct
+                img.invert_brightness(src='/files/img/elements/defuse.png')
+              #weapon_icon.bar_weapon.ct
+      #right.team
+        #player1.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.t
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              .bomb_defuse.t
+                img.invert_brightness(src='/files/img/elements/bomb.png')
+              #weapon_icon.bar_weapon.t
+        #player2.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.t
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              .bomb_defuse.t
+                img.invert_brightness(src='/files/img/elements/bomb.png')
+              #weapon_icon.bar_weapon.t
+        #player3.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.t
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              .bomb_defuse.t
+                img.invert_brightness(src='/files/img/elements/bomb.png')
+              #weapon_icon.bar_weapon.t
+        #player4.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.t
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              .bomb_defuse.t
+                img.invert_brightness(src='/files/img/elements/bomb.png')
+              #weapon_icon.bar_weapon.t
+        #player5.player
+          .bar1
+            .hp_bar
+              #hp_p.hp_el 100
+              #bar_username.bar_username undefined
+              #weapon_icon.bar_weapon.t
+          .bottom_bar
+            .equip_bar
+              .hp_el
+              #nades
+              img(src='/files/img/grenades/weapon_flashbang.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_smokegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              img(src='/files/img/grenades/weapon_hegrenade.png', style='max-height: 15px; width:auto; filter: invert(100%); float:right; margin-right:10px;')
+              .bomb_defuse.t
+                img.invert_brightness(src='/files/img/elements/bomb.png')
+              #weapon_icon.bar_weapon.t
