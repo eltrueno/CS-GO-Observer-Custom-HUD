@@ -129,7 +129,6 @@ function fillPlayer(player,nr, side, max){
             "text-shadow":"0 0 10px black",
             "float": side
         };
-        $bottom.find("#weapon_icon").prepend($("<img />").attr("src", "/files/img/death.png").addClass("death").css("float", side)).prepend($("<div></div>").text(statistics.round_kills).css(img_css));
     }
 
     for(let key in weapons){
