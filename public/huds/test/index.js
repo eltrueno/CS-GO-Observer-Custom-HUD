@@ -17,15 +17,10 @@ function fillObserved(player) {
         ? (teams.left.flag || "")
         : (teams.right.flag || ""));
     
-    if(flag){
-        $("#current_nick").css("background-image", "url(/files/img/flags/" + flag + ".png)").removeClass("no-flag");
-    } else {
-        $("#current_nick").css("background-image", "").addClass("no-flag");
-    }
 
-    $("#kills_count").html(statistics.kills + " K /");
-    $("#assist_count").html(statistics.assists + " A /");
-    $("#death_count").html(statistics.deaths + " D");
+    $("#kills_count").html(" K: " + statistics.kills);
+    $("#assist_count").html(" A: " + statistics.assists);
+    $("#death_count").html(" D:" + statistics.deaths);
 
     $("#player-container")
         .removeClass("t ct")
@@ -154,7 +149,7 @@ function fillPlayer(player,nr, side, max){
             }
         }
         if(type == "C4"){
-            $bottom.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness"));
+            $top.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness"));
         }
     }
     

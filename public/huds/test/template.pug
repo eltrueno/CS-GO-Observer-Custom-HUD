@@ -22,24 +22,24 @@ html
               //- Team 1
               #team_logo(src='/files/img/redslogo.png')
                 //- #team_flag
-                img#team_1_logo(src='/files/img/redslogo.png')
+                img#team_1_logo
             #team_2.team_info(style='height: 100%;')
               #team_score
               #team_name
               //- Team 2
               #team_logo(src='/files/img/encelogo.png')
                 //- #team_flag
-                img#team_2_logo(src='/files/img/redslogo.png')
+                img#team_2_logo
             #time_counter
             //-1:55
             #round_counter
             //-Round 0 / 30
-      //- #defuser
-      //-   #defuser_title
-      //-     | DEFUSE TIME
-      //-   #defuse_bar
-      //-   #defuse_time
-      //-     | 10:00
+      #defuser
+        #defuser_title
+          | DEFUSE TIME
+        #defuse_bar
+        #defuse_time
+          | 10:00
       #who_won
         #winning_team
         div win the round!
@@ -101,7 +101,7 @@ html
               #reserve-text.reserve
               //-100
           #third_row
-            #nick_also.inlining
+            #team_name.inlining
               //-| NICK
             #nades.inlining
       #left.team
