@@ -181,7 +181,6 @@ body {
 		width: 20%;
 		height: 100%;
 		color: #ef562d;
-		text-shadow: 0 0 8px black;
 		font-size: 25px;
 		font-weight: 600;
 		margin-top: 12px;
@@ -351,12 +350,11 @@ body {
 		height: 25%;
 		width: 100%;
 		padding-left: 15px;
-		text-shadow: 2px 2px 8px black;
 		display: flex;
 	}
 
 	#third_row {
-		padding-right: 12px;
+		padding-right: 25px;
 	}
 
 	#current_nick {
@@ -418,7 +416,6 @@ body {
 		width: 20%;
 		height: 100%;
 		color: #ef562d;
-		text-shadow: 0 0 8px black;
 		font-size: 25px;
 		font-weight: 600;
 		margin-top: 12px;
@@ -482,13 +479,13 @@ body {
 	}
 	#nades {
 		height: 80%;
-		width: 60%;
-		right: 40%;
+		float: right;
 	}
 	#nades img {
 		max-height: 20px;
 		max-width: 27px;
 		margin-right: 5px;
+		filter: invert(100%);
 	}
 
 	.team#left>.player>.bottom_bar>.equip_bar>#nades {
@@ -572,7 +569,6 @@ body {
 		/* background: #0094c3; */
 		height: 19%;
 		float: left;
-		text-shadow: 0px 0px 10px black;
 		transform: scale(0.99,0.9);
 	}
 
@@ -581,7 +577,6 @@ body {
 		/* background: #c19511; */
 		height: 19%;
 		float: right;
-		text-shadow: 0px 0px 10px black;
 		transform: scale(0.99,0.9);
 	}
 
@@ -756,7 +751,7 @@ body {
 	}
 
 	.bar_weapon>.invert {
-		filter: invert(70%);
+		filter: invert(100%);
 	}
 
 	.bomb_defuse>.invert_brightness {
@@ -776,7 +771,6 @@ body {
 	}
 	.equip_bar>.moneys {
 		color: #00b400;
-		text-shadow: 0px 0px 10px black;
 		font-weight: bold;
 	}
 	.equip_bar>.moneys.low{
@@ -805,7 +799,7 @@ body {
 	}
 
 	.hp_bar>.bar_weapon>img.invert {
-		filter: drop-shadow(0.5px 0.5px 1px white) drop-shadow(-0.5px -0.5px 1px white) invert(70%);
+		filter: drop-shadow(0.5px 0.5px 1px white) drop-shadow(-0.5px -0.5px 1px white) invert(100%);
 	}
 
 	.hp_bar>.bar_weapon>img.checked.invert {
@@ -844,9 +838,6 @@ body {
 	#round_info {
 		padding: 0em 5em;
 	}
-	#team_name{
-		text-shadow: 0 0 10px black;
-	}
 
 	#time_counter {
 		font-size: 25px;
@@ -868,9 +859,9 @@ body {
 	}
 
 	.team_info {
-		width: 35%;
+		width: 40%;
 		padding-top: 9px;
-		font-size:30px;
+		font-size:23px;
 		text-transform: uppercase;
 		font-weight: bold;
 	}
@@ -888,9 +879,9 @@ body {
 		margin-top:5px;
 	}
 	#team_1 > #team_name{
-		margin-top:5px;
+		margin-top:10px;
 		float:right;
-		width: 75%;
+		width: 72%;
 		text-align: center;
 	}
 	#avatar_container img {
@@ -901,25 +892,28 @@ body {
 	}
 
 	#team_2 > #team_name{
-		margin-top:5px;
+		margin-top:10px;
 		float:left;
-		width: 75%;
+		width: 72%;
 		text-align: center;
 	}
 	#team_1 > #team_score{
-		margin-right:10px;
+		margin-right:35px;
 		float:right;
+		font-size: 1.3em;
 	}
 	#team_2 > #team_score{
-		margin-left:10px;
+		margin-left:35px;
 		float:left;
+		font-size: 1.3em;
 	}
 	#team_logo{
 		position: relative;
-		width:10%;
-		height:100%;
-		margin-right:20px;
-		margin-left:20px;
+		width: 10%;
+		height: 93%;
+		margin-right: 0px;
+		margin-left: 0px;
+		margin-top: -10px;
 	}
 	#team_logo.empty{
 		width:0%;
@@ -934,7 +928,6 @@ body {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		filter: drop-shadow(3px 3px 4px black);
 		
 	}
 	#team_1>#team_logo{
