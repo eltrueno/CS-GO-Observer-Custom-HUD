@@ -111,7 +111,7 @@ function fillPlayer(player,nr, side, max){
     $bottom.find(".deaths").text(statistics.deaths);
 
     $bottom.find(".hp_el").html(statistics.helmet ? $("<img />").attr("src", "/files/img/helmet.png") : statistics.armor > 0 ? $("<img />").attr("src", "/files/img/armor.png") : "");
-    $bottom.find(".bomb_defuse").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");0
+    $bottom.find(".bomb_defuse").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");
 
     $bottom.find(".moneys").text("$"+statistics.money);
     $bottom.find(".moneys").removeClass("low").addClass(statistics.money < 1000? "low":"");
@@ -124,6 +124,55 @@ function fillPlayer(player,nr, side, max){
             "text-shadow":"0 0 10px black",
             "float": side
         };
+
+        if($player.find(".round_kills_count").text() != statistics.round_kills) {
+            if($player.find(".round_kills_count").text() > statistics.round_kills) {
+                $player.find(".round_kills_count").text();
+                $player.find(".round_kills_container").html();
+            } else if($player.find(".round_kills_count").text() < statistics.round_kills) {
+                if($player.find(".round_kills_count").text() == 0 || $player.find(".round_kills_count").text() == "" || $player.find(".round_kills_count").text() == null) {
+                    $player.find(".round_kills_container").animate({
+                        width: 21
+                    },150);
+                }
+                var rrmax = statistics.round_kills - $player.find(".round_kills_count").text();
+                var rri = 0;
+                $player.find(".round_kills_count").text(statistics.round_kills);
+                while(rri < rrmax) {
+                    console.log(rri + " " + rrmax);
+                    $player.find(".round_kills_container").append("<div class='akill'></div>");
+                    rri++;
+                }
+            }
+        }
+
+        // if($player.find(".round_kills_count").text() != "") {
+        //     var rrmax = $player.find(".round_kills_count").text();
+        //     var rri = 0;
+        //     $player.find(".round_kills_container").html();
+        //     while(rri < rrmax) {
+        //         $player.find(".round_kills_container").append("<div class='akill'></div>");
+        //         rri++;
+        //     }
+
+        //     if(statistics.round_kills > $player.find(".round_kills_count").text()) {
+        //         $player.find(".round_kills_count").text(statistics.round_kills);
+        //         var rrrmax = statistics.round_kills - $player.find(".round_kills_count").text();
+        //         var rrri = 0;
+        //         while(rrri < rrrmax) {
+        //             $player.find(".round_kills_container").append("<div class='akill'></div>");
+        //             rrri++;
+        //         }
+        //     }
+        // } else {
+        //     $player.find(".round_kills_count").text(statistics.round_kills);
+        //     var rrmax = statistics.round_kills;
+        //     var rri = 0;
+        //     while(rri < rrmax) {
+        //         $player.find(".round_kills_container").append("<div class='akill'></div>");
+        //         rri++;
+        //     }
+        // }
     }
 
     for(let key in weapons){
@@ -149,7 +198,7 @@ function fillPlayer(player,nr, side, max){
             }
         }
         if(type == "C4"){
-            $top.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness"));
+            $bottom.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness"));
         }
     }
     
@@ -235,6 +284,12 @@ function updatePage(data) {
         : 1);
     if ((round.phase == "freezetime" && !freezetime) || round_now != last_round) {
         start_money = {};
+        console.log("new round");
+        $(".round_kills_count").text(0);
+        $(".round_kills_container .akill").remove();
+        $(".round_kills_container").css({
+            width: 0
+        });
     }
 
     var longd = 10;
@@ -267,9 +322,11 @@ function updatePage(data) {
             if(left.score > teams.left.score){
                 $("#winning_team").text(teams.left.name).removeClass("t-color ct-color").addClass(teams.left.side.toLowerCase() + "-color");
                 $("#who_won").fadeTo(1000, 1).delay(2000).fadeTo(1000, 0);
+                console.log("round end");
             } else if(right.score > teams.right.score){
                 $("#winning_team").text(teams.right.name).removeClass("t-color ct-color").addClass(teams.right.side.toLowerCase() + "-color");
                 $("#who_won").fadeTo(1000, 1).delay(2000).fadeTo(1000, 0);
+                console.log("round end");
             }
         }
 

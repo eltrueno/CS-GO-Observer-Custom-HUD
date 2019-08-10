@@ -492,7 +492,8 @@ body {
 	#nades img {
 		max-height: 20px;
 		max-width: 50px;
-		margin-right: 5px;
+		margin-right: 2.5px;
+		margin-left: 2.5px;
 	}
 	#nades.inlining {
 		filter: invert(100%);
@@ -511,12 +512,115 @@ body {
 	}
 	.team#left>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
 		float: left;
-		margin-left: 10px;
+		margin-left: 37px;
 	}
 	.team#right>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
 		float: right;
-		margin-right: 20px;
+		margin-right: 37px;
 	}
+
+	.team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
+		position: absolute;
+		left: 17.5px;
+		top: 38px;
+		width: 45px;
+		height: 20px;
+	}
+	.team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		display: flex;
+	}
+	.team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
+		position: absolute;
+		right: 17.5px;
+		top: 38px;
+		width: 45px;
+		height: 20px;
+	}
+	.team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		display: flex;
+	}
+
+	.hpbombset img {
+		margin: 0 !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		max-width: 20px !important;
+	}
+
+	.hpbombset .bomb_defuse {
+		margin-top: 2px;
+	}
+
+	.hpbombset .wrapper div {
+		margin-left: 2px;
+		margin-right: 2px;
+	}
+
+	.team#left>.player>.round_kills_container {
+		height: 62px;
+  		width: 0px;
+    	background-color: rgba(0,0,0,0.6);
+    	position: absolute;
+    	top: 50%;
+    	transform: translateY(-50%) skewX(-15deg);
+		left: 369px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		padding: 2px 0px;
+		
+	}
+
+	.team#left>.player>.round_kills_container>.akill {
+		width: 12px;
+		height: 12px;
+		background-image:url('/files/img/x.png');
+		background-position: center center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		transform: translateX(-50%) skewX(15deg);
+		position: relative;
+		left: 50%;
+	}
+
+	.round_kills_count {
+		display: none;
+	}
+
+	.team#right>.player>.round_kills_container {
+		height: 62px;
+  		width: 0px;
+    	background-color: rgba(0,0,0,0.6);
+    	position: absolute;
+    	top: 50%;
+    	transform: translateY(-50%) skewX(15deg);
+    	right: 369px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		padding: 2px 0px;
+	}
+
+	.team#right>.player>.round_kills_container>.akill {
+		width: 12px;
+		height: 12px;
+		background-image:url('/files/img/x.png');
+		background-position: center center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		transform: translateX(-50%) skewX(-15deg);
+		position: relative;
+		left: 50%;
+	}
+
 	.block{
 		width:14px;
 		height:14px;
@@ -559,6 +663,7 @@ body {
 	.player {
 		width: 380px;
 		height: 70px;
+		position: relative;
 		margin-bottom: 10px;
 	}
 
@@ -728,10 +833,9 @@ body {
 	}
 
 	.bomb_defuse {
-		margin: auto;
-		width: 30px;
 		height: 100%;
 	}
+
 	.bomb_timer{
 		background-image:url('/files/img/elements/c4_timer.png');
 		background-repeat: no-repeat;
@@ -745,7 +849,7 @@ body {
 
 	.bomb_defuse.t {
 		float: right;
-		margin-right: -15px;
+		/* margin-right: -15px;*/
 	}
 
 	.moneys.ct {
@@ -983,15 +1087,18 @@ body {
 	#who_won{
 		display:none;
 		position:absolute;
-		height:60px;
-		margin-left:-500px;
+		height:100px;
+		margin-left:-350px;
 		left:50%;
 		top:180px;
-		width:1000px;
+		width:700px;
 		text-align: center;
     	font-size: 40px;
 		background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))
 	}
 	#who_won div {
 		display:inline-block;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
 	}
