@@ -46,1059 +46,1161 @@ body {
   font-size:30px;
 }
 
-	#bomb_timer{
+#bomb_timer{
   width:100%;
   height:10px;
   margin:auto;
   background-color:red;
 }
-	#team_1 > #team_logo > #team_flag {
-		position: absolute;
-		z-index: -1;
-		display: block;
-		left: -6px;
-		background-repeat: no-repeat;
-		background-position: 0% 50%;
-		width: 90px;
-		height: 55px;
-		-webkit-filter: blur(2px);
-		-moz-filter: blur(2px);
-		-o-filter: blur(2px);
-		-ms-filter: blur(2px);
-		filter: blur(2px);
-	}
-	#team_2 > #team_logo > #team_flag {
-		position: absolute;
-		z-index: -1;
-		display: block;
-		left: -8px;
-		background-repeat: no-repeat;
-		background-position: left center;
-		width: 90px;
-		height: 55px;
-		-webkit-filter: blur(2px);
-		-moz-filter: blur(2px);
-		-o-filter: blur(2px);
-		-ms-filter: blur(2px);
-		filter: blur(2px);
-	}
-
-	::-webkit-scrollbar {
-		display: none;
-	}
-
-	.color {
-		position: fixed;
-		width: 100%;
-		height: 100%;
-		transition: color .25s ease-in-out;
-	}
-
-	#timer {
-		position: relative;
-		margin: auto;
-		margin-top: 20px;
-		text-align: center;
-	}
-
-	.time {
-		font-size: 7em;
-		transition: .25s ease-in-out;
-	}
-	.first_title_tm {
-		height: 35px;
-		display: table-cell;
-		vertical-align: bottom;
-	}
-	.invert {
-		filter: invert(100%);
-	}
-	.first_tm {
-		height: 60%;
-		font-size: 30px;
-		margin-top: -10px;
-	}
-
-	#player-container {
-		position: fixed;
-		bottom: 30px;
-		font-family:'Saira SemiCondensed Light';
-		left: 50%;
-		margin-left: -460px;
-		height: 201px;
-		width: 100%;
-		background-image:url("/files/img/player_bg.png");
-		background-repeat: no-repeat;
-	}
-	#player-container.no-avatar {
-		margin-left: -390.5px;
-		width: 781px;
-	}
-
-	#player-container.t #container2 #first_row #current_nick{
-		color: #ffa000;
-	}
-
-	#team_money_2.low, #team_money_1.low{
-		color: #ff0000;
-	}
-	#player-container.ct #container2 #first_row #current_nick{
-		color: #00a0ff;
-	}
-	.no-avatar #avatar_container{
-		display:none;
-
-	}
-	.no-avatar #container2{
-		margin-left:0 !important;
-
-	}
-
-	.st_left {
-		float: left;
-		text-align: left;
-	}
-
-	.st_right {
-		float: right;
-		text-align: right;
-	}
-
-	.stats_player {
-		height: 63px;
-		width: 100%;
-		/*background-color:black;*/
-		margin-bottom: 4px;
-		display: inline-block;
-	}
-
-	#kills_count, #assist_count, #death_count {
-		font-size: 25px;
-		padding-right: 20px;
-	}
-
-	#stat_money {
-		width: 20%;
-		height: 100%;
-		color: #ef562d;
-		font-size: 25px;
-		font-weight: 600;
-		margin-top: 12px;
-	}
-
-	#left_stats {
-		width: 50%;
-		height: 100%;
-		float: left;
-		margin-top:85px;
-	}
-
-
-	.skull, .bomb{
-		filter: brightness(140%);
-	}
-	.defuse{
-		filter: brightness(200%);
-	}
-
-	#right_stats {
-		width: 50%;
-		height: 100%;
-		float: right;
-		margin-top:85px;
-	}
-
-
-	#player-container i {
-		font-size: 30px;
-		left: 3px;
-	}
-
-	#health {
-		color: #2ecc71;
-	}
-
-	#health-text {
-		background-image: url("/files/img/hp.png");
-		background-repeat: no-repeat;
-		background-size: 25%;
-		background-position: left center;
-		padding-left: 30px;
-		display: inline-block;
-		font-size: 40px;
-		width: 55px;
-	}
-
-	#health-bar {
-		display: inline-block;
-		width: calc(100% - 118px);
-		height: 20px;
-		transform: skewX(40deg);
-		background-color: rgba(0, 0, 0, 0.65);
-		overflow: hidden;
-		position: relative;
-	}
-	#stats_1st > .first_t > .round_team_1_name, #stats_1st > .sec_t > .round_team_2_name{
-		position:absolute; height:100%; width:45%; text-align: right;
-	}
-	#stats_2nd > .first_t > .round_team_1_name, #stats_2nd > .sec_t > .round_team_2_name{
-		position:absolute; height:100%; width:65%; text-align: right;
-	}
-
-	#armor,
-	#health {
-		height: 30px;
-	}
-
-	#armor {
-		margin-left: -5px;
-		color: #3498db;
-	}
-
-	#armor .fa-stack {
-		width: 35px;
-	}
-
-	#armor .fa-plus {
-		color: white;
-		font-size: 15px;
-		top: -5px;
-	}
-
-	#armor-text {
-		background-image: url("/files/img/armor.png");
-		background-repeat: no-repeat;
-		background-size: 25%;
-		background-position: left center;
-		padding-left: 30px;
-		display: inline-block;
-		font-size: 30px;
-		margin-left: 20px;
-		width: 55px;
-	}
-	#bar_username{
-		color:white;
-	}
-	#bar_username.dead{
-		color:rgba(255, 255, 255, 0.3)
-	}
-	#armor-text.armor{
-		background-image: url("/files/img/armor.png");
-	}
-	#armor-text.helmet{
-		background-image: url("/files/img/helmet.png");
-	}
-	#armor-bar {
-		display: inline-block;
-		width: calc(100% - 98px);
-		height: 20px;
-		transform: skewX(40deg);
-		background-color: rgba(0, 0, 0, 0.65);
-		overflow: hidden;
-		position: relative;
-	}
-
-	/*ammo + reserve*/
-
-	#ammo {
-		background-image: url("/files/img/ammo.png");
-		background-repeat: no-repeat;
-		background-size: 12%;
-		background-position: left center;
-		padding-left: 30px;
-		display: inline-block;
-		font-size: 30px;
-	}
-
-	#ammo-container {
-		position: fixed;
-		bottom: 0px;
-		right: -26px;
-		background-color: #2c3e50;
-		height: 63px;
-		width: 300px;
-		transform: skewX(-40deg);
-	}
-
-	#ammo-container #container2 {
-		margin-right: 60px;
-		transform: skewX(40deg);
-		float: right;
-	}
-
-	#ammo-container span {
-		font-size: 50px;
-	}
-
-	#ammo-container .clip {
-		font-size: 50px;
-	}
-
-	#ammo-container .reserve {
-		font-size: 30px;
-	}
-
-	#first_row {
-		height: 23%;
-		padding-left: 8px;
-		margin-top: 67px;
-		width: 100%;
-	}
-
-	.ct_color {
-		background-color: #5788a8 !important;
-	}
-
-	.t_color {
-		background-color: #c19511 !important;
-	}
-
-	#second_row {
-		height: 20%;
-		width: 100%;
-		padding-left: 15px;
-		display: flex;
-		padding-top: 5px;
-	}
-
-	#third_row {
-		padding-right: 25px;
-	}
-
-	#current_nick {
-		width: 50%;
-		font-family:'Lovelo Black';
-		font-weight: 600;
-		font-size: 30px;
-		display: inline-block;
-		white-space: nowrap;
-		background-repeat: no-repeat;
-		background-position: 0 65%;
-		background-size: 27px;
-		overflow:hidden;
-	}
-	#current_nick.no-flag{
-		padding-left:0px;
-	}
-
-
-	#current_nick::before {
-		width: 27px;
-		height: 20px;
-		margin-right: 10px;
-	}
-
-	#nick_also {
-		padding-left: 15px;
-	}
-
-	#health_armor {
-		font-family:'Saira SemiCondensed Light';
-		height: 100%;
-		width: 33%;
-	}
-	#round_stats {
-		height: 85px;
-		width: 100%;
-	}
-
-	.st_left {
-		float: left;
-		text-align: left;
-	}
-
-	.st_right {
-		float: right;
-		text-align: right;
-	}
-
-	.stats_player {
-		height: 63px;
-		width: 100%;
-		/*background-color:black;*/
-		margin-bottom: 4px;
-		display: inline-block;
-	}
-
-	#stat_money {
-		width: 20%;
-		height: 100%;
-		color: #ef562d;
-		font-size: 25px;
-		font-weight: 600;
-		margin-top: 12px;
-	}
-
-	#left_stats {
-		width: 50%;
-		height: 100%;
-		float: left;
-	}
-
-	#right_stats {
-		width: 50%;
-		height: 100%;
-		float: right;
-	}
-	#stats-container {
-		position: fixed;
-		bottom: 0px;
-		background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 100px, rgba(0, 0, 0, 0) 1000px, rgba(0, 0, 0, 0.3));
-		font-family:'Saira SemiCondensed Light';
-		left: 50%;
-		margin-left: -550px;
-		height: 420px;
-		width: 1100px;
-		/*opacity: 0;*/
-		/*transform: skewX(40deg);*/
-	}
-
-	#ammo {
-		font-family:'Saira SemiCondensed Light';
-		height: 100%;
-		width: 18%;
-	}
-
-	.inlining {
-		display: inline;
-	}
-
-	#stats {
-		width: 30%;
-	}
-
-	#health-text {
-		display: inline-block;
-		font-size: 30px;
-		width: 55px;
-	}
-
-	#clip-text {
-		display: inline-block;
-		font-size: 30px;
-		width: 40px;
-		text-align: right;
-	}
-
-	#reserve-text {
-		display: inline-block;
-		font-size: 30px;
-		width: 60px;
-	}
-	#nades {
-		height: 18%;
-		float: right;
-	}
-	#nades img {
-		max-height: 20px;
-		max-width: 50px;
-		margin-right: 2.5px;
-		margin-left: 2.5px;
-	}
-	#nades.inlining {
-		filter: invert(100%);
-	}
-	#nades.inlining img {
-		max-height: 27px;
-		max-width: 27px;
-		margin-right: 10px;
-	}
-
-	.team#left>.player>.bottom_bar>.equip_bar>#nades {
-		float: left;
-	}
-	.team#right>.player>.bottom_bar>.equip_bar>#nades {
-		float: right;
-	}
-	.team#left>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
-		float: left;
-		margin-left: 37px;
-	}
-	.team#right>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
-		float: right;
-		margin-right: 37px;
-	}
-
-	.team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
-		position: absolute;
-		left: 17.5px;
-		top: 38px;
-		width: 45px;
-		height: 20px;
-	}
-	.team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-		display: flex;
-	}
-	.team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
-		position: absolute;
-		right: 17.5px;
-		top: 38px;
-		width: 45px;
-		height: 20px;
-	}
-	.team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-		display: flex;
-	}
-
-	.hpbombset img {
-		margin: 0 !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-		max-width: 20px !important;
-	}
-
-	.hpbombset .bomb_defuse {
-		margin-top: 2px;
-	}
-
-	.hpbombset .wrapper div {
-		margin-left: 2px;
-		margin-right: 2px;
-	}
-
-	.team#left>.player>.round_kills_container {
-		height: 62px;
-  		width: 0px;
-    	background-color: rgba(0,0,0,0.6);
-    	position: absolute;
-    	top: 50%;
-    	transform: translateY(-50%) skewX(-15deg);
-		left: 369px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		padding: 2px 0px;
-		
-	}
-
-	.team#left>.player>.round_kills_container>.akill {
-		width: 12px;
-		height: 12px;
-		background-image:url('/files/img/x.png');
-		background-position: center center;
-		background-size: contain;
-		background-repeat: no-repeat;
-		transform: translateX(-50%) skewX(15deg);
-		position: relative;
-		left: 50%;
-	}
-
-	.round_kills_count {
-		display: none;
-	}
-
-	.team#right>.player>.round_kills_container {
-		height: 62px;
-  		width: 0px;
-    	background-color: rgba(0,0,0,0.6);
-    	position: absolute;
-    	top: 50%;
-    	transform: translateY(-50%) skewX(15deg);
-    	right: 369px;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		padding: 2px 0px;
-	}
-
-	.team#right>.player>.round_kills_container>.akill {
-		width: 12px;
-		height: 12px;
-		background-image:url('/files/img/x.png');
-		background-position: center center;
-		background-size: contain;
-		background-repeat: no-repeat;
-		transform: translateX(-50%) skewX(-15deg);
-		position: relative;
-		left: 50%;
-	}
-
-	.block{
-		width:14px;
-		height:14px;
-		margin: 8px;
-		background-color: rgba(211,211,211,0.4);
-	}
-	.ct .block.win{
-		background-color:rgba(111,179,224,0.6);
-	}
-	.t .block.win{
-		background-color:rgba(255,211,78,0.6);
-	}
-	#match_one_info .block{
-		float:right;
-	}
-	#match_two_info .block{
-		float:left;
-	}
-
-	.team {
-		width: 410px;
-		height: 420px;
-	}
-
-	#left {
-		position: fixed;
-		left: 0;
-		bottom: 0;
-	}
-	.equip_bar>.bar_weapon{
-		width:165px !important;
-	}
-
-	#right {
-		position: fixed;
-		right: 0;
-		bottom: 0;
-	}
-
-	.player {
-		width: 380px;
-		height: 70px;
-		position: relative;
-		margin-bottom: 10px;
-	}
-
-	.bar1 {
-		width: 100%;
-		height: 36px;
-		font-size: 25px;
-		font-weight: bold;
-	}
-
-	/* #left>.player>.bar1>.hp_bar>.hp_el {
-		transform: skew(-16deg);
-	}
-
-	#right>.player>.bar1>.hp_bar>.hp_el {
-		transform: skew(16deg);
-	} */
-	.bottom_bar {
-		width: 100%;
-		height: 30px;
-	}
-
-	#left>.player>.bar1>.hp_bar {
-		width: 382px;
-		margin-left: -2px;	
-		/* background: #0094c3; */
-		height: 19%;
-		float: left;
-		transform: scale(0.99,0.9);
-	}
-
-	#right>.player>.bar1>.hp_bar {
-		width: 382px;
-		margin-right: -2px;
-		/* background: #c19511; */
-		height: 19%;
-		float: right;
-		transform: scale(0.99,0.9);
-	}
-
-	.money {
-		height: 85px;
-		background: rgba(0, 0, 0, 0.65);
-	}
-	#left > .money{
-		 background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.3) 410px, rgba(0, 0, 0, 0.0) 410px);
-	}
-	#right > .money{
-		 background: linear-gradient(to left, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.3) 410px, rgba(0, 0, 0, 0.0) 410px);
-	}
-
-	.stat_t {
-		background: rgba(0, 0, 0, 0.65);
-		float: right;
-		height: 100%;
-		width: 115px;
-	}
-	#left > .player > .bar1 >.stat_t, #left > .player > .bottom_bar >.stat_t{
-		background-image:url('/files/img/left_nick.png');
-		background-size: cover;
-		background-position: right;
-	}
-	#right > .player > .bar1 >.stat_t, #right > .player > .bottom_bar >.stat_t{
-		background-image:url('/files/img/right_nick.png');
-		background-size: cover;
-		background-position: left;
-	}
-	#left > .player{
-		background-image:url('/files/img/left_nick.png');
-		background-size: cover;
-		background-position: right;
-	}
-	#right > .player{
-		background-image:url('/files/img/right_nick.png');
-		background-size: cover;
-		background-position: left;
-	}
-
-	.bar1>.stat_t {
-		color: rgba(255, 255, 255, 0.3)
-	}
-
-	.stat_t>.kills,
-	.stat_t>.assists,
-	.stat_t>.deaths {
-		float: left;
-		width: 33%;
-		text-align: center;
-		font-weight: 400;
-	}
-	.death {
-		height: 70% !important;
-        margin-top: 5px
-	}
-	.hp_el {
-		font-family:'Saira SemiCondensed Light';
-	}
-	#left>.player>.bar1>.hp_bar>.hp_el,
-	#left>.player>.bottom_bar>.equip_bar>.hp_el {
-		float: left;
-		width: 40px;
-		height: 30%;
-		padding-left: 20px;
-		margin-top: 6px;
-		text-align: center;
-	}
-
-	#right>.player>.bar1>.hp_bar>.hp_el,
-	#right>.player>.bottom_bar>.equip_bar>.hp_el {
-		float: right;
-		width: 40px;
-		height: 30%;
-		padding-right: 20px;
-		margin-top: 6px;
-		text-align: center;
-	}
-
-	#left>.player>.bar1>.hp_bar>.bar_username {
-		padding-left: 70px;
-		padding-top: 11px;
-		width: 81%;
-		white-space: nowrap;
-		font-size:20px;
-		text-shadow:none;
-	}
-
-	#right>.player>.bar1>.hp_bar>.bar_username {
-		text-align: right;
-		padding-right: 20px;
-		padding-top: 11px;
-		width: 81%;
-		white-space: nowrap;
-		font-size: 20px;
-		text-shadow: none;
-	}
-
-	#left>.player>.bar1>.hp_bar>.bar_weapon,
-	#left>.player>.bottom_bar>.equip_bar>.bar_weapon {
-		float: right;
-		width: 420px;
-		height: 100%;
-	}
-
-	#right>.player>.bar1>.hp_bar>.bar_weapon,
-	#right>.player>.bottom_bar>.equip_bar>.bar_weapon {
-		float: left;
-		width: 420px;
-		height: 100%;
-	}
-
-	#left>.player>.bottom_bar>.equip_bar {
-		width: 330px;
-		height: 100%;
-		float: left;
-		margin-left: 33px;
-	}
-
-	#right>.player>.bottom_bar>.equip_bar {
-		width: 330px;
-		height: 100%;
-		float: right;
-		margin-right: 33px;
-	}
-
-	.bottom_bar>.stat_t {
-		font-weight: bolder !important;
-	}
-
-	.bomb_defuse {
-		height: 100%;
-	}
-
-	.bomb_timer{
-		background-image:url('/files/img/elements/c4_timer.png');
-		background-repeat: no-repeat;
-		background-size: contain;
-		background-position: center;
-	}
-
-	.bomb_defuse.ct {
-		float: left;
-	}
-
-	.bomb_defuse.t {
-		float: right;
-		/* margin-right: -15px;*/
-	}
-
-	.moneys.ct {
-		height: 100%;
-		width: 60px;
-		float: left;
-	}
-
-	.moneys.t {
-		height: 100%;
-		width: 60px;
-		float: right;
-	}
-
-	.bar_weapon.ct>img {
-		float: right;
-		padding-right: 3px;
-	}
-
-	.bar_weapon.t>img {
-		float: left;
-		padding-right: 3px;
-	}
-
-	.bar_weapon>.invert {
-		filter: invert(100%);
-	}
-
-	.bomb_defuse>.invert_brightness {
-		filter: brightness(5%) invert(100%);
-	}
-
-	.bar_weapon>.invert.checked {
-		filter: invert(100%);
-	}
-	.hp_bar #weapon_icon{
-		max-width: 100%;
-		max-height: 100%;
-	}
-	.hp_bar #weapon_icon img{
-		/* max-width: 90%;
-		max-height: 100%; */
-	}
-	.equip_bar>.moneys {
-		color: #00b400;
-		font-weight: bold;
-	}
-	.equip_bar>.moneys.low{
-		color:#ff0000;
-	}
-
-	.img-hor {
-		-moz-transform: scaleX(-1);
-		-o-transform: scaleX(-1);
-		-webkit-transform: scaleX(-1);
-		transform: scaleX(-1);
-		filter: FlipH;
-		-ms-filter: "FlipH";
-	}
-
-	.equip_bar>.bomb_defuse>img,
-	.equip_bar>.bar_weapon>img,
-	.hp_bar>.bar_weapon>img,
-	.equip_bar>.hp_el>img {
-		height: auto;
-		max-width: 80px;
-		max-height: 30px;
-		margin: auto;
-		margin-top: -9px;
-		margin-left: 21px;
-		margin-right: 21px;
-	}
-
-	#right>.player {
-		float: right;
-	}
-	#header {
-		width: 1050px;
-		height: 100px;
-		position: fixed;
-		top: 0;
-
-		left: 50%;
-		margin-left: -525px;
-	}
-
-	#match_tournament {
-		width: 70%;
-		margin: auto;
-		margin-top: 5px;
-		height: 30px;
-		background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
-	}
-
-	#match_teams {
-		width: 100%;
-		height: 69px;
-		width: 100%;
-		background-image:url("/files/img/header_bg.png");
-		background-size: cover;
-	}
-
-	#round_info {
-		padding: 0em 5em;
-	}
-
-	#time_counter {
-		font-size: 25px;
-		font-weight: bold;
-		width: 10%;
-		height: 40%;
-		padding-top: 7px;
-		margin: auto;
-		text-align: center;
-	}
-
-	#round_counter {
-		width: 15%;
-		height: 50%;
-		margin: auto;
-		text-transform: uppercase;
-		text-align: center;
-		font-family:'Saira SemiCondensed Light';
-	}
-
-	.team_info {
-		width: 40%;
-		padding-top: 9px;
-		font-size:23px;
-		text-transform: uppercase;
-		font-weight: bold;
-	}
-
-	#team_1 {
-		text-align:right;
-		float: left;
-	}
-
-	#team_2 {
-		text-align: left;
-		float: right;
-	}
-	#team_score{
-		margin-top:-5px;
-	}
-	#team_1 > #team_name{
-		margin-top:10px;
-		float:right;
-		width: 65%;
-		text-align: center;
-	}
-	#avatar_container img {
-		width:139px;
-		height:139px;
-		margin-top:1px;
-		margin-left:1px;
-	}
-
-	#team_2 > #team_name{
-		margin-top:10px;
-		float:left;
-		width: 65%;
-		text-align: center;
-	}
-	#team_1 > #team_score{
-		margin-right:35px;
-		float:right;
-		font-size: 2em;
-	}
-	#team_2 > #team_score{
-		margin-left:35px;
-		float:left;
-		font-size: 2em;
-	}
-	#team_logo{
-		position: relative;
-		width: 10%;
-		height: 93%;
-		margin-right: 0px;
-		margin-left: 0px;
-		margin-top: -10px;
-	}
-	#team_logo.empty{
-		width:0%;
-	}
-	#team_logo > img{
-		position: absolute;
-		margin-top:8px;
-		max-height: 80%;
-		max-width: 100%;
-		margin: auto;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		
-	}
-	#team_1>#team_logo{
-		float:left;
-	}
-	#team_2>#team_logo{
-		float:right;
-	}
-	#flash-container {
-		position: fixed;
-		bottom: 0px;
-		font-family:'Saira SemiCondensed Light';
-		left: 50%;
-		margin-left: -550px;
-		height: 420px;
-		width: 1100px;
-		/*transform: skewX(40deg);*/
-	}
-	#match_tournament > div{
-		line-height: 30px;
-	}
-	#match_one_info{
-		float:left;
-		width:35%;
-		text-align:right;
-		font-weight:600;
-	}
-	#match_two_info{
-		float:right;
-		width:35%;
-		text-align:left;
-		font-weight:600;
-	}
-	#match_info{
-		margin:auto;
-		width:30%;
-		text-align:center;
-		font-weight:500;
-	}
-	#who_won{
-		display:none;
-		position:absolute;
-		height:100px;
-		margin-left:-350px;
-		left:50%;
-		top:180px;
-		width:700px;
-		text-align: center;
-    	font-size: 40px;
-		background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))
-	}
-	#who_won div {
-		display:inline-block;
-		position: relative;
-		top: 50%;
-		transform: translateY(-50%);
-	}
+#team_1 > #team_logo > #team_flag {
+	position: absolute;
+	z-index: -1;
+	display: block;
+	left: -6px;
+	background-repeat: no-repeat;
+	background-position: 0% 50%;
+	width: 90px;
+	height: 55px;
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px);
+	filter: blur(2px);
+}
+#team_2 > #team_logo > #team_flag {
+	position: absolute;
+	z-index: -1;
+	display: block;
+	left: -8px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	width: 90px;
+	height: 55px;
+	-webkit-filter: blur(2px);
+	-moz-filter: blur(2px);
+	-o-filter: blur(2px);
+	-ms-filter: blur(2px);
+	filter: blur(2px);
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.color {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	transition: color .25s ease-in-out;
+}
+
+#timer {
+	position: relative;
+	margin: auto;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.time {
+	font-size: 7em;
+	transition: .25s ease-in-out;
+}
+.first_title_tm {
+	height: 35px;
+	display: table-cell;
+	vertical-align: bottom;
+}
+.invert {
+	filter: invert(100%);
+}
+.first_tm {
+	height: 60%;
+	font-size: 30px;
+	margin-top: -10px;
+}
+
+#player-container {
+	position: fixed;
+	bottom: 30px;
+	font-family:'Saira SemiCondensed Light';
+	left: 50%;
+	margin-left: -460px;
+	height: 201px;
+	width: 100%;
+	background-image:url("/files/img/player_bg.png");
+	background-repeat: no-repeat;
+}
+#player-container.no-avatar {
+	margin-left: -390.5px;
+	width: 781px;
+}
+
+#player-container.t #container2 #first_row #current_nick{
+	color: #ffa000;
+}
+
+#team_money_2.low, #team_money_1.low{
+	color: #ff0000;
+}
+#player-container.ct #container2 #first_row #current_nick{
+	color: #00a0ff;
+}
+.no-avatar #avatar_container{
+	display:none;
+
+}
+.no-avatar #container2{
+	margin-left:0 !important;
+
+}
+
+.st_left {
+	float: left;
+	text-align: left;
+}
+
+.st_right {
+	float: right;
+	text-align: right;
+}
+
+.stats_player {
+	height: 63px;
+	width: 100%;
+	/*background-color:black;*/
+	margin-bottom: 4px;
+	display: inline-block;
+}
+
+#kills_count, #assist_count, #death_count {
+	font-size: 25px;
+	padding-right: 10px;
+}
+
+#stat_money {
+	width: 20%;
+	height: 100%;
+	color: #ef562d;
+	font-size: 25px;
+	font-weight: 600;
+	margin-top: 12px;
+}
+
+#left_stats {
+	width: 50%;
+	height: 100%;
+	float: left;
+	margin-top:85px;
+}
+
+
+.skull, .bomb{
+	filter: brightness(140%);
+}
+.defuse{
+	filter: brightness(200%);
+}
+
+#right_stats {
+	width: 50%;
+	height: 100%;
+	float: right;
+	margin-top:85px;
+}
+
+
+#player-container i {
+	font-size: 30px;
+	left: 3px;
+}
+
+#health {
+	color: #2ecc71;
+}
+
+#health-text {
+	background-image: url("/files/img/hp.png");
+	background-repeat: no-repeat;
+	background-size: 25%;
+	background-position: left center;
+	padding-left: 30px;
+	display: inline-block;
+	font-size: 40px;
+	width: 55px;
+}
+
+#health-bar {
+	display: inline-block;
+	width: calc(100% - 118px);
+	height: 20px;
+	transform: skewX(40deg);
+	background-color: rgba(0, 0, 0, 0.65);
+	overflow: hidden;
+	position: relative;
+}
+#stats_1st > .first_t > .round_team_1_name, #stats_1st > .sec_t > .round_team_2_name{
+	position:absolute; height:100%; width:45%; text-align: right;
+}
+#stats_2nd > .first_t > .round_team_1_name, #stats_2nd > .sec_t > .round_team_2_name{
+	position:absolute; height:100%; width:65%; text-align: right;
+}
+
+#armor,
+#health {
+	height: 30px;
+}
+
+#armor {
+	margin-left: -5px;
+	color: #3498db;
+}
+
+#armor .fa-stack {
+	width: 35px;
+}
+
+#armor .fa-plus {
+	color: white;
+	font-size: 15px;
+	top: -5px;
+}
+
+#armor-text {
+	background-image: url("/files/img/armor.png");
+	background-repeat: no-repeat;
+	background-size: 25%;
+	background-position: left center;
+	padding-left: 30px;
+	display: inline-block;
+	font-size: 30px;
+	margin-left: 20px;
+	width: 55px;
+}
+#bar_username{
+	color:white;
+}
+#bar_username.dead{
+	color:rgba(255, 255, 255, 0.3)
+}
+#armor-text.armor{
+	background-image: url("/files/img/armor.png");
+}
+#armor-text.helmet{
+	background-image: url("/files/img/helmet.png");
+}
+#armor-bar {
+	display: inline-block;
+	width: calc(100% - 98px);
+	height: 20px;
+	transform: skewX(40deg);
+	background-color: rgba(0, 0, 0, 0.65);
+	overflow: hidden;
+	position: relative;
+}
+
+/*ammo + reserve*/
+
+.clip {
+	background-image: url("/files/img/ammo.png");
+	background-repeat: no-repeat;
+	background-size: 27%;
+	background-position: left center;
+	padding-left: 23px;
+	display: inline-block;
+	font-size: 30px;
+}
+
+#ammo-container {
+	position: fixed;
+	bottom: 0px;
+	right: -26px;
+	background-color: #2c3e50;
+	height: 63px;
+	width: 300px;
+	transform: skewX(-40deg);
+}
+
+#ammo-container #container2 {
+	margin-right: 60px;
+	transform: skewX(40deg);
+	float: right;
+}
+
+#ammo-container span {
+	font-size: 50px;
+}
+
+#ammo-container .clip {
+	font-size: 50px;
+}
+
+#ammo-container .reserve {
+	font-size: 30px;
+}
+
+#first_row {
+	height: 23%;
+	padding-left: 8px;
+	margin-top: 67px;
+	width: 100%;
+}
+
+.ct_color {
+	background-color: #5788a8 !important;
+}
+
+.t_color {
+	background-color: #c19511 !important;
+}
+
+#second_row {
+	height: 20%;
+	width: 100%;
+	padding-left: 15px;
+	display: flex;
+	padding-top: 5px;
+}
+
+#third_row {
+	padding-right: 30px;
+}
+
+#current_nick {
+	width: 50%;
+	font-family:'Lovelo Black';
+	font-weight: 600;
+	font-size: 30px;
+	display: inline-block;
+	white-space: nowrap;
+	background-repeat: no-repeat;
+	background-position: 0 65%;
+	background-size: 27px;
+	overflow:hidden;
+}
+#current_nick.no-flag{
+	padding-left:0px;
+}
+
+
+#current_nick::before {
+	width: 27px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+#nick_also {
+	padding-left: 15px;
+}
+
+#health_armor {
+	font-family:'Saira SemiCondensed Light';
+	height: 100%;
+	width: 33%;
+}
+#round_stats {
+	height: 85px;
+	width: 100%;
+}
+
+.st_left {
+	float: left;
+	text-align: left;
+}
+
+.st_right {
+	float: right;
+	text-align: right;
+}
+
+.stats_player {
+	height: 63px;
+	width: 100%;
+	/*background-color:black;*/
+	margin-bottom: 4px;
+	display: inline-block;
+}
+
+#stat_money {
+	width: 20%;
+	height: 100%;
+	color: #ef562d;
+	font-size: 25px;
+	font-weight: 600;
+	margin-top: 12px;
+}
+
+#left_stats {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+#right_stats {
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+#stats-container {
+	position: fixed;
+	bottom: 0px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 100px, rgba(0, 0, 0, 0) 1000px, rgba(0, 0, 0, 0.3));
+	font-family:'Saira SemiCondensed Light';
+	left: 50%;
+	margin-left: -550px;
+	height: 420px;
+	width: 1100px;
+	/*opacity: 0;*/
+	/*transform: skewX(40deg);*/
+}
+
+#ammo {
+	font-family:'Saira SemiCondensed Light';
+	height: 100%;
+	width: 25%;
+}
+
+.inlining {
+	display: inline;
+}
+
+#stats {
+	width: 27%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#health-text {
+	display: inline-block;
+	font-size: 30px;
+	width: 55px;
+}
+
+#clip-text {
+	display: inline-block;
+	font-size: 30px;
+	width: 50px;
+	text-align: right;
+}
+
+#reserve-text {
+	display: inline-block;
+	font-size: 30px;
+	width: 60px;
+}
+#nades {
+	height: 18%;
+	float: right;
+}
+#nades img {
+	max-height: 20px;
+	max-width: 50px;
+	margin-right: 2.5px;
+	margin-left: 2.5px;
+}
+#nades.inlining {
+	filter: invert(100%);
+}
+#nades.inlining img {
+	max-height: 27px;
+	max-width: 27px;
+	margin-right: 10px;
+}
+
+.team#left>.player>.bottom_bar>.equip_bar>#nades {
+	float: left;
+}
+.team#right>.player>.bottom_bar>.equip_bar>#nades {
+	float: right;
+}
+.team#left>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
+	float: left;
+	margin-left: 37px;
+}
+.team#right>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
+	float: right;
+	margin-right: 37px;
+}
+
+.team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
+	position: absolute;
+	left: 17.5px;
+	top: 38px;
+	width: 45px;
+	height: 20px;
+}
+.team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+}
+.team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
+	position: absolute;
+	right: 17.5px;
+	top: 38px;
+	width: 45px;
+	height: 20px;
+}
+.team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+}
+
+.hpbombset img {
+	margin: 0 !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	max-width: 20px !important;
+}
+
+.hpbombset .bomb_defuse {
+	margin-top: 2px;
+}
+
+.bomb_t {
+	width: 15px;
+	margin-bottom: 5px;
+}
+
+.hpbombset .wrapper div {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.team#left>.player>.round_kills_container {
+	height: 62px;
+	width: 0px;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%) skewX(-15deg);
+	left: 369px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 2px 0px;
+	z-index: -1;
+}
+
+.team#left>.player>.round_kills_container>.akill {
+	width: 12px;
+	height: 12px;
+	background-image:url('/files/img/snowflake.png');
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: translateX(-50%) skewX(15deg);
+	position: relative;
+	left: 50%;
+}
+
+.round_kills_count {
+	display: none;
+}
+
+.team#right>.player>.round_kills_container {
+	height: 62px;
+	width: 0px;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%) skewX(15deg);
+	right: 369px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 2px 0px;
+	z-index: -1;
+}
+
+.team#right>.player>.round_kills_container>.akill {
+	width: 12px;
+	height: 12px;
+	background-image:url('/files/img/snowflake.png');
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: translateX(-50%) skewX(-15deg);
+	position: relative;
+	left: 50%;
+}
+
+.team#left>.player>.player_money_count {
+	height: 62px;
+	width: 0px;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%) skewX(-15deg);
+	left: 369px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2px 0px;
+	overflow: hidden;
+	white-space:pre-wrap;
+	z-index: -1;
+	border-radius: 0px 2px 2px 0px;
+}
+
+.team#left>.player>.player_money_count>.money_wrapper {
+	transform: translateX(-50%) skewX(15deg);
+	text-align: center;
+	min-width: 55px;
+}
+
+.team#left>.player>.player_money_count>.stats_wrapper {
+	transform: translateX(-50%) skewX(15deg);
+	text-align: center;
+	margin-left: 60px;
+	width: 65px;
+}
+
+.stats_wrapper table {
+	margin: 0 auto;
+	border-spacing: 5px 0px;
+}
+
+.team#right>.player>.player_money_count {
+	height: 62px;
+	width: 0px;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%) skewX(15deg);
+	right: 369px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2px 0px;
+	overflow: hidden;
+	white-space:pre-wrap;
+	z-index: -1;
+	border-radius: 2px 0px 0px 2px;
+}
+
+.team#right>.player>.player_money_count>.money_wrapper {
+	transform: translateX(-50%) skewX(-15deg);
+	text-align: center;
+	margin-left: 80px;
+    margin-right: 10px;
+    min-width: 55px
+}
+
+.team#right>.player>.player_money_count>.stats_wrapper	 {
+	transform: translateX(-50%) skewX(-15deg);
+	text-align: center;
+	width: 80px;
+	margin-right: 5px;
+}
+
+.block{
+	width:14px;
+	height:14px;
+	margin: 8px;
+	background-color: rgba(211,211,211,0.4);
+}
+.ct .block.win{
+	background-color:rgba(111,179,224,0.6);
+}
+.t .block.win{
+	background-color:rgba(255,211,78,0.6);
+}
+#match_one_info .block{
+	float:right;
+}
+#match_two_info .block{
+	float:left;
+}
+
+.team {
+	width: 410px;
+	height: 420px;
+}
+
+#left {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+}
+.equip_bar>.bar_weapon{
+	width:165px !important;
+}
+
+#right {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
+
+.player {
+	width: 380px;
+	height: 70px;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.bar1 {
+	width: 100%;
+	height: 36px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.bottom_bar {
+	width: 100%;
+	height: 30px;
+}
+
+#left>.player>.bar1>.hp_bar {
+	width: 380px;
+	margin-left: -2px;	
+	height: 19%;
+	float: left;
+	transform: scale(0.99,0.9);
+	transform: skew(-18deg,0deg);
+}
+
+#right>.player>.bar1>.hp_bar {
+	width: 380px;
+	margin-right: -2px;
+	height: 19%;
+	float: right;
+	transform: scale(0.99,0.9);
+	transform: skew(18deg,0deg);
+}
+
+.money {
+	height: 85px;
+	background: rgba(0, 0, 0, 0.65);
+}
+#left > .money{
+		background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.3) 410px, rgba(0, 0, 0, 0.0) 410px);
+}
+#right > .money{
+		background: linear-gradient(to left, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.65) 295px, rgba(0, 0, 0, 0.3) 410px, rgba(0, 0, 0, 0.0) 410px);
+}
+
+.stat_t {
+	background: rgba(0, 0, 0, 0.65);
+	float: right;
+	height: 100%;
+	width: 115px;
+}
+#left > .player > .bar1 >.stat_t, #left > .player > .bottom_bar >.stat_t{
+	background-image:url('/files/img/left_nick.png');
+	background-size: cover;
+	background-position: right;
+}
+#right > .player > .bar1 >.stat_t, #right > .player > .bottom_bar >.stat_t{
+	background-image:url('/files/img/right_nick.png');
+	background-size: cover;
+	background-position: left;
+}
+#left > .player{
+	background-image:url('/files/img/left_nick.png');
+	background-size: cover;
+	background-position: right;
+}
+#right > .player{
+	background-image:url('/files/img/right_nick.png');
+	background-size: cover;
+	background-position: left;
+}
+
+.bar1>.stat_t {
+	color: rgba(255, 255, 255, 0.3)
+}
+
+#kills_assists {
+	font-size: 20px;
+}
+
+#kills_assists.ct {
+	margin-left: 33px;
+}
+
+#kills_assists.t {
+	margin-right: 33px;
+	text-align: right;
+}
+
+.stat_t>.kills,
+.stat_t>.assists,
+.stat_t>.deaths {
+	float: left;
+	width: 33%;
+	text-align: center;
+	font-weight: 400;
+}
+.death {
+	height: 70% !important;
+	margin-top: 5px
+}
+.hp_el {
+	font-family:'Saira SemiCondensed Light';
+}
+#left>.player>.bar1>.hp_bar>.hp_el,
+#left>.player>.bottom_bar>.equip_bar>.hp_el {
+	float: left;
+	width: 40px;
+	height: 30%;
+	padding-left: 20px;
+	margin-top: 6px;
+	text-align: center;
+	transform: skew(18deg,0deg);
+}
+
+#right>.player>.bar1>.hp_bar>.hp_el,
+#right>.player>.bottom_bar>.equip_bar>.hp_el {
+	float: right;
+	width: 40px;
+	height: 30%;
+	padding-right: 20px;
+	margin-top: 6px;
+	text-align: center;
+	transform: skew(-18deg,0deg);
+}
+
+#left>.player>.bar1>.hp_bar>.bar_username {
+	padding-left: 70px;
+	padding-top: 11px;
+	width: 81%;
+	white-space: nowrap;
+	font-size:20px;
+	text-shadow:none;
+	transform: skew(18deg,0deg);
+}
+
+#right>.player>.bar1>.hp_bar>.bar_username {
+	text-align: right;
+	padding-right: 20px;
+	padding-top: 11px;
+	width: 81%;
+	white-space: nowrap;
+	font-size: 20px;
+	text-shadow: none;
+	transform: skew(-18deg,0deg);
+}
+
+#left>.player>.bar1>.hp_bar>.bar_weapon,
+#left>.player>.bottom_bar>.equip_bar>.bar_weapon {
+	float: right;
+	width: 420px;
+	height: 100%;
+	transform: skew(18deg,0deg);
+}
+
+#right>.player>.bar1>.hp_bar>.bar_weapon,
+#right>.player>.bottom_bar>.equip_bar>.bar_weapon {
+	float: left;
+	width: 420px;
+	height: 100%;
+	transform: skew(-18deg,0deg);
+}
+
+#left>.player>.bottom_bar>.equip_bar {
+	width: 330px;
+	height: 100%;
+	float: left;
+	margin-left: 33px;
+}
+
+#right>.player>.bottom_bar>.equip_bar {
+	width: 330px;
+	height: 100%;
+	float: right;
+	margin-right: 33px;
+}
+
+.bottom_bar>.stat_t {
+	font-weight: bolder !important;
+}
+
+.bomb_defuse {
+	height: 100%;
+}
+
+.bomb_timer{
+	background-image:url('/files/img/elements/c4_timer.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
+
+.bomb_defuse.ct {
+	float: left;
+}
+
+.bomb_defuse.t {
+	float: right;
+	/* margin-right: -15px;*/
+}
+
+.moneys.ct {
+	height: 100%;
+	width: 60px;
+	float: left;
+}
+
+.moneys.t {
+	height: 100%;
+	width: 60px;
+	float: right;
+}
+
+.bar_weapon.ct>img {
+	float: right;
+	padding-right: 3px;
+}
+
+.bar_weapon.t>img {
+	float: left;
+	padding-right: 3px;
+}
+
+.bar_weapon>.invert {
+	filter: invert(100%);
+}
+
+.bomb_defuse>.invert_brightness {
+	filter: brightness(5%) invert(100%);
+}
+
+.bar_weapon>.invert.checked {
+	filter: invert(100%);
+}
+.hp_bar #weapon_icon{
+	max-width: 100%;
+	max-height: 100%;
+}
+.hp_bar #weapon_icon img{
+	/* max-width: 90%;
+	max-height: 100%; */
+}
+.equip_bar>.moneys {
+	color: #00b400;
+	font-weight: bold;
+}
+.equip_bar>.moneys.low{
+	color:#ff0000;
+}
+
+.img-hor {
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+.equip_bar>.bomb_defuse>img,
+.equip_bar>.bar_weapon>img,
+.hp_bar>.bar_weapon>img,
+.equip_bar>.hp_el>img {
+	height: auto;
+	max-width: 80px;
+	max-height: 30px;
+	margin: auto;
+	margin-top: -9px;
+	margin-left: 21px;
+	margin-right: 21px;
+}
+
+#right>.player {
+	float: right;
+}
+#header {
+	width: 1050px;
+	height: 100px;
+	position: fixed;
+	top: 0;
+
+	left: 50%;
+	margin-left: -525px;
+}
+
+#match_tournament {
+	width: 70%;
+	margin: auto;
+	margin-top: 5px;
+	height: 30px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
+}
+
+#match_teams {
+	width: 100%;
+	height: 69px;
+	width: 100%;
+	background-image:url("/files/img/header_bg.png");
+	background-size: cover;
+}
+
+#round_info {
+	padding: 0em 5em;
+}
+
+#time_counter {
+	font-size: 25px;
+	font-weight: bold;
+	width: 10%;
+	height: 40%;
+	padding-top: 7px;
+	margin: auto;
+	text-align: center;
+}
+
+#round_counter {
+	width: 15%;
+	height: 50%;
+	margin: auto;
+	text-transform: uppercase;
+	text-align: center;
+	font-family:'Saira SemiCondensed Light';
+}
+
+#matchup {
+	background-color: rgba(0,0,0,0.5);
+	max-width: 200px;
+	text-align: center;
+	padding: 0.3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: -5px;
+	z-index: -1;
+}
+
+.team_info {
+	width: 40%;
+	padding-top: 9px;
+	font-size:23px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#team_1 {
+	text-align:right;
+	float: left;
+}
+
+#team_2 {
+	text-align: left;
+	float: right;
+}
+#team_score{
+	margin-top:-5px;
+}
+#team_1 > #team_name{
+	margin-top:10px;
+	float:right;
+	width: 65%;
+	text-align: center;
+}
+#avatar_container img {
+	width:139px;
+	height:139px;
+	margin-top:1px;
+	margin-left:1px;
+}
+
+#team_2 > #team_name{
+	margin-top:10px;
+	float:left;
+	width: 65%;
+	text-align: center;
+}
+#team_1 > #team_score{
+	margin-right:35px;
+	float:right;
+	font-size: 2em;
+}
+#team_2 > #team_score{
+	margin-left:35px;
+	float:left;
+	font-size: 2em;
+}
+#team_logo{
+	position: relative;
+	width: 10%;
+	height: 93%;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-top: -10px;
+}
+#team_logo.empty{
+	width:0%;
+}
+#team_logo > img{
+	position: absolute;
+	margin-top:8px;
+	max-height: 80%;
+	max-width: 100%;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	
+}
+#team_1>#team_logo{
+	float:left;
+}
+#team_2>#team_logo{
+	float:right;
+}
+#flash-container {
+	position: fixed;
+	bottom: 0px;
+	font-family:'Saira SemiCondensed Light';
+	left: 50%;
+	margin-left: -550px;
+	height: 420px;
+	width: 1100px;
+	/*transform: skewX(40deg);*/
+}
+#match_tournament > div{
+	line-height: 30px;
+}
+#match_one_info{
+	float:left;
+	width:35%;
+	text-align:right;
+	font-weight:600;
+}
+#match_two_info{
+	float:right;
+	width:35%;
+	text-align:left;
+	font-weight:600;
+}
+#match_info{
+	margin:auto;
+	width:30%;
+	text-align:center;
+	font-weight:500;
+}
+#who_won{
+	display:none;
+	position:absolute;
+	height:100px;
+	margin-left:-350px;
+	left:50%;
+	top:180px;
+	width:700px;
+	text-align: center;
+	font-size: 40px;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))
+}
+#who_won div {
+	display:inline-block;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}

@@ -20,7 +20,7 @@ function fillObserved(player) {
 
     $("#kills_count").html(" K: " + statistics.kills);
     $("#assist_count").html(" A: " + statistics.assists);
-    $("#death_count").html(" D:" + statistics.deaths);
+    $("#death_count").html(" D: " + statistics.deaths);
 
     $("#player-container")
         .removeClass("t ct")
@@ -30,7 +30,6 @@ function fillObserved(player) {
     $("#nick_also").html(player.real_name + " ");
 
     $("#nades").html("");
-
 
     for (let key in weapons) {
         let weapon = weapons[key];
@@ -113,8 +112,10 @@ function fillPlayer(player,nr, side, max){
     $bottom.find(".hp_el").html(statistics.helmet ? $("<img />").attr("src", "/files/img/helmet.png") : statistics.armor > 0 ? $("<img />").attr("src", "/files/img/armor.png") : "");
     $bottom.find(".bomb_defuse").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");
 
-    $bottom.find(".moneys").text("$"+statistics.money);
-    $bottom.find(".moneys").removeClass("low").addClass(statistics.money < 1000? "low":"");
+    $player.find(".money_wrapper").html("$"+statistics.money);
+    $player.find(".stats_wrapper").html("<table><tr><td>K</td><td>A</td><td>D</td></tr><tr><td>"+statistics.kills+"</td><td>"+statistics.assists+"</td><td>"+statistics.deaths+"</td></tr></table>");
+
+    $player.find(".money_wrapper").removeClass("low").addClass(statistics.money < 1000? "low":"");
     
     $top.find("#weapon_icon").html("");
     $bottom.find("#weapon_icon").html("");
@@ -139,40 +140,11 @@ function fillPlayer(player,nr, side, max){
                 var rri = 0;
                 $player.find(".round_kills_count").text(statistics.round_kills);
                 while(rri < rrmax) {
-                    console.log(rri + " " + rrmax);
                     $player.find(".round_kills_container").append("<div class='akill'></div>");
                     rri++;
                 }
             }
         }
-
-        // if($player.find(".round_kills_count").text() != "") {
-        //     var rrmax = $player.find(".round_kills_count").text();
-        //     var rri = 0;
-        //     $player.find(".round_kills_container").html();
-        //     while(rri < rrmax) {
-        //         $player.find(".round_kills_container").append("<div class='akill'></div>");
-        //         rri++;
-        //     }
-
-        //     if(statistics.round_kills > $player.find(".round_kills_count").text()) {
-        //         $player.find(".round_kills_count").text(statistics.round_kills);
-        //         var rrrmax = statistics.round_kills - $player.find(".round_kills_count").text();
-        //         var rrri = 0;
-        //         while(rrri < rrrmax) {
-        //             $player.find(".round_kills_container").append("<div class='akill'></div>");
-        //             rrri++;
-        //         }
-        //     }
-        // } else {
-        //     $player.find(".round_kills_count").text(statistics.round_kills);
-        //     var rrmax = statistics.round_kills;
-        //     var rri = 0;
-        //     while(rri < rrmax) {
-        //         $player.find(".round_kills_container").append("<div class='akill'></div>");
-        //         rri++;
-        //     }
-        // }
     }
 
     for(let key in weapons){
@@ -181,6 +153,10 @@ function fillPlayer(player,nr, side, max){
         let state = weapon.state;
         let view = "";
         let type = weapon.type;
+
+        if(type == "Knife"){ 
+            
+        }
 
         if(type != "C4" && type != "Knife"){
             view += weapon.state == "active" ? "checked" : "";
@@ -198,7 +174,7 @@ function fillPlayer(player,nr, side, max){
             }
         }
         if(type == "C4"){
-            $bottom.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness"));
+            $bottom.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness bomb_t"));
         }
     }
     
@@ -250,6 +226,7 @@ function updatePage(data) {
     
     var matchup = data.getMatchType();
     var match = data.getMatch();
+    
     if(matchup && matchup.toLowerCase() != "none"){
         var block = $("<div class='block'></div>");
         var left_bl = $("<div></div>");
@@ -278,6 +255,7 @@ function updatePage(data) {
     var players = data.getPlayers();
     var round = data.round();
     var map = data.map();
+    var matchup = data.getMatchType();
 
     var round_now = map.round + (round.phase == "over" || round.phase == "intermission"
         ? 0
@@ -290,6 +268,9 @@ function updatePage(data) {
         $(".round_kills_container").css({
             width: 0
         });
+        $(".player_money_count").animate({
+            width: 150
+        },150);
     }
 
     var longd = 10;
@@ -380,6 +361,7 @@ function updatePage(data) {
     }
 
     $("#round_counter").html("Round " + round_now + " / 30");
+    $("#matchup").html(matchup);
     //TEAMS
 
     $("#team_2 #team_name").html(teams.right.name);
@@ -499,6 +481,13 @@ function updatePage(data) {
                 $("#time_counter").text("").addClass("bomb_timer");
             } else {
                 $("#time_counter").text(count_minute + ":" + count_seconds).removeClass("bomb_timer");
+            }
+
+            console.log(countdown + " " + phase.phase);
+            if(countdown < 112 && (phase.phase == "live" || phase.phase == "bomb" || phase.phase == "over")) {
+                $(".player_money_count").animate({
+                    width: 0
+                },150);
             }
         }
     }
