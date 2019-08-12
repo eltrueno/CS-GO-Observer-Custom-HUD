@@ -60,6 +60,7 @@ function fillObserved(player) {
         $("#avatar_container").html($("<img />").attr("src", "/av/"+player.steamid));
     });
 }
+
 function fillPlayers(teams){
     if(teams.left.players){
         for(var i = 0; i < 5; i++){
@@ -102,6 +103,8 @@ function fillPlayer(player,nr, side, max){
     $top.find("#bar_username").text(player.name.split(" ").join(""));
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
 
+    $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
+
     $top.find("#hp_p").text(statistics.health);
     $top.find(".hp_bar").css("background", gradient);
 
@@ -133,7 +136,7 @@ function fillPlayer(player,nr, side, max){
             } else if($player.find(".round_kills_count").text() < statistics.round_kills) {
                 if($player.find(".round_kills_count").text() == 0 || $player.find(".round_kills_count").text() == "" || $player.find(".round_kills_count").text() == null) {
                     $player.find(".round_kills_container").animate({
-                        width: 21
+                        width: 24
                     },150);
                 }
                 var rrmax = statistics.round_kills - $player.find(".round_kills_count").text();

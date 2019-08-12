@@ -130,6 +130,7 @@ body {
 	background-image:url("/files/img/player_bg.png");
 	background-repeat: no-repeat;
 }
+
 #player-container.no-avatar {
 	margin-left: -390.5px;
 	width: 781px;
@@ -279,8 +280,16 @@ body {
 #bar_username{
 	color:white;
 }
-#bar_username.dead{
-	color:rgba(255, 255, 255, 0.3)
+#left>.player>.bar1>.hp_bar>.bar_username.dead{
+	margin-top: 10px;
+	font-size: 25px!important;
+	text-shadow: 3px 3px 2px #264c64!important;
+}
+
+#right>.player>.bar1>.hp_bar>.bar_username.dead {
+	margin-top: 10px;
+	font-size: 25px!important;
+	text-shadow: -3px 3px 2px #264c64!important;
 }
 #armor-text.armor{
 	background-image: url("/files/img/armor.png");
@@ -303,7 +312,7 @@ body {
 .clip {
 	background-image: url("/files/img/ammo.png");
 	background-repeat: no-repeat;
-	background-size: 27%;
+	background-size: 24%;
 	background-position: left center;
 	padding-left: 23px;
 	display: inline-block;
@@ -590,7 +599,7 @@ body {
 .team#left>.player>.round_kills_container>.akill {
 	width: 12px;
 	height: 12px;
-	background-image:url('/files/img/snowflake.png');
+	background-image:url('/files/img/skull.png');
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -621,7 +630,7 @@ body {
 .team#right>.player>.round_kills_container>.akill {
 	width: 12px;
 	height: 12px;
-	background-image:url('/files/img/snowflake.png');
+	background-image:url('/files/img/skull.png');
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -633,7 +642,7 @@ body {
 .team#left>.player>.player_money_count {
 	height: 62px;
 	width: 0px;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0,0.9);
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(-15deg);
@@ -657,7 +666,7 @@ body {
 .team#left>.player>.player_money_count>.stats_wrapper {
 	transform: translateX(-50%) skewX(15deg);
 	text-align: center;
-	margin-left: 60px;
+	margin-left: 65px;
 	width: 65px;
 }
 
@@ -669,7 +678,7 @@ body {
 .team#right>.player>.player_money_count {
 	height: 62px;
 	width: 0px;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0,0.9);
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(15deg);
@@ -696,7 +705,7 @@ body {
 	transform: translateX(-50%) skewX(-15deg);
 	text-align: center;
 	width: 80px;
-	margin-right: 5px;
+	margin-right: 35px;
 }
 
 .block{
@@ -797,6 +806,7 @@ body {
 	background-size: cover;
 	background-position: right;
 }
+
 #right > .player > .bar1 >.stat_t, #right > .player > .bottom_bar >.stat_t{
 	background-image:url('/files/img/right_nick.png');
 	background-size: cover;
@@ -807,8 +817,25 @@ body {
 	background-size: cover;
 	background-position: right;
 }
+
+#left > .player.dead_bg{
+	background-image:url('/files/img/dead_player_left_bg.png');
+	background-size: cover;
+	background-position: right;
+}
+
+.dead_bg > .bar1 > .hp_bar > .hp_el {
+	display: none;
+}
+
 #right > .player{
 	background-image:url('/files/img/right_nick.png');
+	background-size: cover;
+	background-position: left;
+}
+
+#right > .player.dead_bg{
+	background-image:url('/files/img/dead_player_right_bg.png');
 	background-size: cover;
 	background-position: left;
 }
@@ -1066,7 +1093,7 @@ body {
 }
 
 #matchup {
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.9);
 	max-width: 200px;
 	text-align: center;
 	padding: 0.3em;
@@ -1192,11 +1219,14 @@ body {
 	height:100px;
 	margin-left:-350px;
 	left:50%;
-	top:180px;
+	top:290px;
 	width:700px;
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
 	text-align: center;
-	font-size: 40px;
-	background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))
+	font-size: 35px;
+	background-image:url("/files/img/whowin.png");
 }
 #who_won div {
 	display:inline-block;
