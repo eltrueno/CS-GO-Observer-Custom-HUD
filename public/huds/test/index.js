@@ -1,4 +1,3 @@
-
 var teams = {
     left: {},
     right: {}
@@ -30,6 +29,14 @@ function fillObserved(player) {
     $("#nick_also").html(player.real_name + " ");
 
     $("#nades").html("");
+
+    $("#player-container").find("#bomb_ct").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");
+
+    if (statistics.health <= 20) {
+        $("#player-container").find("#health-text").removeClass("low_health").addClass("low_health");
+    } else {
+        $("#player-container").find("#health-text").removeClass("low_health");
+    }
 
     for (let key in weapons) {
         let weapon = weapons[key];
@@ -99,11 +106,15 @@ function fillPlayer(player,nr, side, max){
     let $top = $player.find(".bar1");
 
     let gradient = "linear-gradient(to " + side +", rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
+    let observed_gradient = "linear-gradient(to " + side +", rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
 
     $top.find("#bar_username").text(player.name.split(" ").join(""));
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
 
+    $("#player-container").find(".hp_bar").css("background", observed_gradient);
+
     $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
+    $player.find("#hp_p").removeClass("low_health").addClass(statistics.health <= 20 ? "low_health" : "");
 
     $top.find("#hp_p").text(statistics.health);
     $top.find(".hp_bar").css("background", gradient);
@@ -157,10 +168,6 @@ function fillPlayer(player,nr, side, max){
         let view = "";
         let type = weapon.type;
 
-        if(type == "Knife"){ 
-            
-        }
-
         if(type != "C4" && type != "Knife"){
             view += weapon.state == "active" ? "checked" : "";
             if(type == "Grenade"){
@@ -178,6 +185,7 @@ function fillPlayer(player,nr, side, max){
         }
         if(type == "C4"){
             $bottom.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness bomb_t"));
+            // $("#player-container").find("#bomb_t").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness bomb_t"));
         }
     }
     
@@ -220,6 +228,7 @@ function resetBomb() {
 var menu = false;
 var freezetime = false;
 let last_round = 0;
+var longd = 10;
 
 function updatePage(data) {
     var observed = data.getObserved();
@@ -229,7 +238,8 @@ function updatePage(data) {
     
     var matchup = data.getMatchType();
     var match = data.getMatch();
-    
+
+
     if(matchup && matchup.toLowerCase() != "none"){
         var block = $("<div class='block'></div>");
         var left_bl = $("<div></div>");
@@ -253,6 +263,7 @@ function updatePage(data) {
         menu = (data.info.player.activity == "menu");
         $("#player-container").css("opacity", !menu ? "1" : "0");
     }
+
     let left,
         right;
     var players = data.getPlayers();
@@ -265,7 +276,6 @@ function updatePage(data) {
         : 1);
     if ((round.phase == "freezetime" && !freezetime) || round_now != last_round) {
         start_money = {};
-        console.log("new round");
         $(".round_kills_count").text(0);
         $(".round_kills_container .akill").remove();
         $(".round_kills_container").css({
@@ -276,7 +286,6 @@ function updatePage(data) {
         },150);
     }
 
-    var longd = 10;
     var team_ct = data.getCT();
     var team_t = data.getT();
     var test_player2 = data.getPlayer(1);
@@ -305,12 +314,16 @@ function updatePage(data) {
         if(teams.left.score !== undefined && teams.right.score !== undefined){
             if(left.score > teams.left.score){
                 $("#winning_team").text(teams.left.name).removeClass("t-color ct-color").addClass(teams.left.side.toLowerCase() + "-color");
+                $("#winning_team_logo").css({
+                    backgroundImage: "url(/teams/"+teams.left.logo + ")"
+                });
                 $("#who_won").fadeTo(1000, 1).delay(2000).fadeTo(1000, 0);
-                console.log("round end");
             } else if(right.score > teams.right.score){
                 $("#winning_team").text(teams.right.name).removeClass("t-color ct-color").addClass(teams.right.side.toLowerCase() + "-color");
+                $("#winning_team_logo").css({
+                    backgroundImage: "url(/teams/"+teams.right.logo + ")"
+                });
                 $("#who_won").fadeTo(1000, 1).delay(2000).fadeTo(1000, 0);
-                console.log("round end");
             }
         }
 
@@ -364,7 +377,18 @@ function updatePage(data) {
     }
 
     $("#round_counter").html("Round " + round_now + " / 30");
-    $("#matchup").html(matchup);
+    $("#matchup .content").html(matchup);
+    if(matchup == "bo3") {
+        $('#matchup .leftscore, #matchup .rightscore').html('<div class="matchupscore"></div><div class="matchupscore"></div>');
+    }
+
+    if(match.team_1.map_score > 0) {
+        $('#matchup .leftscore .matchupscore:nth-child(' + match.team_1.map_score + ')').addClass("active");
+    }
+    
+    if(match.team_2.map_score > 0) {
+        $('#matchup .rightscore .matchupscore:nth-child(' + match.team_2.map_score + ')').addClass("active");
+    }
     //TEAMS
 
     $("#team_2 #team_name").html(teams.right.name);
@@ -432,17 +456,31 @@ function updatePage(data) {
             if (phase.phase == "defuse") {
                 if (!isDefusing) {
                     longd = 5;
+                    console.log("CHECHE" + longd);
                     if (parseFloat(phase.phase_ends_in) > 5) {
                         longd = 10;
+                        console.log("DAAA");
                     }
                     isDefusing = true;
                 }
+
+                console.log(parseFloat(phase.phase_ends_in) + " " + longd);
+
+                defuseTimerStart();
+                defuseTimerRotate(phase.phase_ends_in,longd);
+
+                //ASDASDASDAS
+
+                
+
                 var seconds = Math.round(parseFloat(phase.phase_ends_in).toFixed(1));
-                $("#defuse_bar").css("width", 350 * (parseFloat(phase.phase_ends_in) / longd) + "px");
-                $("#defuse_time").text("00:" + (seconds < 10 ? "0" + seconds : seconds));
+                $("#bombtimer div").text("00:" + (seconds < 10 ? "0" + seconds : seconds));
             }
         } else {
+            isDefusing = false;
+            longd = 10;
             resetBomb();
+            defuseTimerReset();
         }
 
         if (phase.phase == "freezetime" || phase.phase.substring(0,7) == "timeout") {
@@ -486,7 +524,6 @@ function updatePage(data) {
                 $("#time_counter").text(count_minute + ":" + count_seconds).removeClass("bomb_timer");
             }
 
-            console.log(countdown + " " + phase.phase);
             if(countdown < 112 && (phase.phase == "live" || phase.phase == "bomb" || phase.phase == "over")) {
                 $(".player_money_count").animate({
                     width: 0
@@ -496,4 +533,47 @@ function updatePage(data) {
     }
     freezetime = round.phase == "freezetime";
     last_round = round_now;
+}
+
+function defuseTimerRotate(timeleft, deftim) {
+                
+    var m = 100 - (timeleft / deftim) * 100;
+    
+    var deg = m * 3.6;
+    
+    if(m >= 0 && m <= 50) {
+        
+        $('#bomb-round-green-wrapper').css({
+            transform: "translate(-50%,-50%) rotate(-" + deg + "deg)"
+        });
+    } else {
+        $('#bomb-round-bottom').css({
+            borderColor: "#4FC978"
+        });
+        $('#bomb-round-green-wrapper').css({
+            zIndex: 4,
+            transform: "translate(-50%,-50%) rotate(-" + deg + "deg)"
+        });
+    }
+    
+    if(m >= 100) {
+        setTimeout(function() {
+            $('#bomb-defusing-container').removeClass("activebomb");
+        },500);
+    }
+}
+
+function defuseTimerReset() {
+    $('#bomb-round-green-wrapper').css({
+        zIndex: 2,
+        transform: "translate(-50%,-50%) rotate(0deg)"
+    });
+    $('#bomb-round-bottom').css({
+        borderColor: "white"
+    });
+    $('#bomb-defusing-container').removeClass("activebomb");
+}
+
+function defuseTimerStart() {
+    $('#bomb-defusing-container').addClass("activebomb");
 }

@@ -515,7 +515,6 @@ body {
 	max-width: 27px;
 	margin-right: 10px;
 }
-
 .team#left>.player>.bottom_bar>.equip_bar>#nades {
 	float: left;
 }
@@ -533,7 +532,7 @@ body {
 
 .team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
 	position: absolute;
-	left: 17.5px;
+	left: 12.5px;
 	top: 38px;
 	width: 45px;
 	height: 20px;
@@ -567,6 +566,23 @@ body {
 	max-width: 20px !important;
 }
 
+#bomb_t {
+	float:	right;
+	filter: brightness(5%) invert(100%);
+}
+
+#bomb_ct {
+	float:	right;
+	filter: brightness(5%) invert(100%);
+	margin-top: 6px;
+	margin-right: 10px;
+}
+
+#bomb_ct img {
+	width: 20px;
+	height: auto;
+}
+
 .hpbombset .bomb_defuse {
 	margin-top: 2px;
 }
@@ -584,7 +600,7 @@ body {
 .team#left>.player>.round_kills_container {
 	height: 62px;
 	width: 0px;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0,0.9);
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(-15deg);
@@ -599,7 +615,7 @@ body {
 .team#left>.player>.round_kills_container>.akill {
 	width: 12px;
 	height: 12px;
-	background-image:url('/files/img/skull.png');
+	background-image:url('/files/img/snowflake.png');
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -615,7 +631,7 @@ body {
 .team#right>.player>.round_kills_container {
 	height: 62px;
 	width: 0px;
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0,0.9);
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(15deg);
@@ -630,7 +646,7 @@ body {
 .team#right>.player>.round_kills_container>.akill {
 	width: 12px;
 	height: 12px;
-	background-image:url('/files/img/skull.png');
+	background-image:url('/files/img/snowflake.png');
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -766,6 +782,15 @@ body {
 	height: 30px;
 }
 
+#player-container>#container2>.hp_bar {
+	width: 700px;
+    margin-left: -7px;
+    height: 7px;
+    margin-top: -4px;
+    float: right;
+    transform: scale(0.99,0.9);
+}
+
 #left>.player>.bar1>.hp_bar {
 	width: 380px;
 	margin-left: -2px;	
@@ -826,6 +851,12 @@ body {
 
 .dead_bg > .bar1 > .hp_bar > .hp_el {
 	display: none;
+}
+
+.low_health {
+	color: red;
+	font-weight: 900;
+	filter: brightness(0.5) sepia(1) saturate(10000%);
 }
 
 #right > .player{
@@ -956,8 +987,21 @@ body {
 .bomb_timer{
 	background-image:url('/files/img/elements/c4_timer.png');
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
+	background-size: 32px auto;
+    background-position: center;
+    top: 2px;
+	position: relative;
+	animation-name: bombuuu;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes bombuuu {
+	0% { opacity: 1; }
+	10% { opacity: 1; }
+	70% { opacity: 0.3; }
+	100% { opacity: 1; }
 }
 
 .bomb_defuse.ct {
@@ -1005,10 +1049,6 @@ body {
 .hp_bar #weapon_icon{
 	max-width: 100%;
 	max-height: 100%;
-}
-.hp_bar #weapon_icon img{
-	/* max-width: 90%;
-	max-height: 100%; */
 }
 .equip_bar>.moneys {
 	color: #00b400;
@@ -1093,7 +1133,6 @@ body {
 }
 
 #matchup {
-	background-color: rgba(0,0,0,0.9);
 	max-width: 200px;
 	text-align: center;
 	padding: 0.3em;
@@ -1102,6 +1141,68 @@ body {
 	align-items: center;
 	margin-top: -5px;
 	z-index: -1;
+	position: relative;
+	height: 30px;
+}
+
+#matchup .leftscore {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 37px;
+	width: 65px;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: rotateY(180deg);
+}
+
+#matchup .rightscore {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 37px;
+	width: 65px;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#matchup .matchupscore {
+	width: 7px;
+	position: relative;
+	height: 7px;
+	border: 2px solid white;
+	border-radius: 50% 50%;
+	margin: 0px 3px;
+}
+
+#matchup .matchupscore.active {
+	background-color: white;
+}
+
+#matchup .bg {
+	width: 100%;
+    height: 100%;
+    top: 0px;
+    border-top: 35px solid rgba(0,0,0,0.9);
+    border-left: 30px solid transparent;
+    position: absolute;
+	border-right: 30px solid transparent;
+	z-index: 1;
+}
+
+#matchup .content {
+	z-index: 2;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 37px;
+	line-height: 37px;
+	vertical-align: middle;
 }
 
 .team_info {
@@ -1216,16 +1317,16 @@ body {
 #who_won{
 	display:none;
 	position:absolute;
-	height:100px;
+	height:80px;
 	margin-left:-350px;
 	left:50%;
-	top:290px;
+	top:400px;
 	width:700px;
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
 	text-align: center;
-	font-size: 35px;
+	font-size: 24px;
 	background-image:url("/files/img/whowin.png");
 }
 #who_won div {
@@ -1233,4 +1334,155 @@ body {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+}
+
+#winning_team_logo {
+	position: absolute !important;
+    top: -200px !important;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    width: 180px;
+	height: 180px;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+
+
+#bomb-defusing-container {
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	top: 500px;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 50px;
+	opacity: 0;
+	transition: all 1s ease-in-out;
+}
+
+#bomb-defusing-container.activebomb {
+	margin-top: 0px !important;
+	opacity: 1 !important;
+	transition: all 1s ease-in-out;
+}
+
+#bomb-round-bottom {
+	width: 200px;
+	height: 200px;
+	border-radius: 50% 50%;
+	border: 8px solid white;
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	box-shadow: 0px 5px 45px -5px rgba(0,0,0,0.75);
+}
+
+#bomb-round-right {
+	width: 200px;
+	height: 200px;
+	border-radius: 50% 50%;
+	border: 8px solid white;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#bomb-round-right-crop {
+	height: 216px;
+	width: 108px;
+	overflow: hidden;
+	position: absolute;
+	left: 108px;
+}
+
+#bomb-round-right-wrapper {
+	height: 216px;
+	width: 216px;
+	overflow: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 3;
+	transform: translate(-50%,-50%);
+}
+
+#bomb-round-green {
+	width: 200px;
+	height: 200px;
+	border-radius: 50% 50%;
+	border: 8px solid #4FC978;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#bomb-round-green-crop {
+	height: 216px;
+	width: 108px;
+	overflow: hidden;
+	position: absolute;
+	left: 108px;
+}
+
+#bomb-round-green-wrapper {
+	height: 216px;
+	width: 216px;
+	overflow: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	transform: translate(-50%,-50%) rotate(0deg);
+}
+
+#bombcontent {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 150px;
+	height: 150px;
+}
+
+#bombtimer {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 50px;
+	font-family: "Lovelo Black";
+	color: white;
+	text-align: center;
+	width: 100%;
+	text-shadow: 0px 5px 30px rgba(0,0,0,0.75);
+}
+
+#bomb {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	background-image: url('/files/img/elements/bomb.png');
+	filter: brightness(5%) invert(100%);
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 5px;
+	animation-name: bomb;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes bomb {
+	0% { transform: translateX(-50%) rotateY(0deg); }
+	25% { transform: translateX(-50%) rotateY(90deg); }
+	50% { transform: translateX(-50%) rotateY(180deg); }
+	75% { transform: translateX(-50%) rotateY(270deg); }
+	100% { transform: translateX(-50%) rotateY(360deg); }
 }

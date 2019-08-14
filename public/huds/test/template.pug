@@ -35,50 +35,28 @@ html
             #round_counter
             //-Round 0 / 30
             #matchup
-      #defuser
-        #defuser_title
-          | DEFUSE TIME
-        #defuse_bar
-        #defuse_time
-          | 10:00
+              .leftscore
+              .rightscore
+              .content
+              .bg
+      #bomb-defusing-container
+        #bombcontent
+          #bomb
+          #bombtimer
+            div 00:00
+        #bomb-round-green-wrapper
+          #bomb-round-green-crop
+            #bomb-round-green
+        #bomb-round-right-wrapper
+          #bomb-round-right-crop
+            #bomb-round-right
+        #bomb-round-bottom
       #who_won
+        #winning_team_logo
         #winning_team
-        div win the round!
-      //- #stats-container
-        //- #left_stats
-        //-   #stats_player1.stats_player.st_left
-        //-     #stat_money.st_left
-        //-       | -$1000
-        //-   #stats_player2.stats_player.st_left
-        //-     #stat_money.st_left
-        //-       | -$1000
-        //-   #stats_player3.stats_player.st_left
-        //-     #stat_money.st_left
-        //-       | -$1000
-        //-   #stats_player4.stats_player.st_left
-        //-     #stat_money.st_left
-        //-       | -$1000
-        //-   #stats_player5.stats_player.st_left
-        //-     #stat_money.st_left
-        //-       | -$1000
-        //- #right_stats
-        //-   #stats_player6.stats_player.st_right
-        //-     #stat_money.st_right
-        //-       | -$1000
-        //-   #stats_player7.stats_player.st_right
-        //-     #stat_money.st_right
-        //-       | -$1000
-        //-   #stats_player8.stats_player.st_right
-        //-     #stat_money.st_right
-        //-       | -$1000
-        //-   #stats_player9.stats_player.st_right
-        //-     #stat_money.st_right
-        //-       | -$1000
-        //-   #stats_player0.stats_player.st_right
-        //-     #stat_money.st_right
-        //-       | -$1000
+        div wins the round!
       #player-container
-        #avatar_container(style="width:181px; height:182px; float:left; background-color: red; margin: 11px 9px;")
+        #avatar_container(style="width:181px; height:182px; float:left; margin: 11px 9px;")
         #container2(style="width:695px; margin-left:199px;")
           #first_row
             #stats
@@ -88,6 +66,8 @@ html
                 //-A: 13
                 #death_count.inlining
                 //-D: 13
+          .hp_bar
+              #hp_p.hp_el
           #second_row
             #current_nick
               //-| NICKNAME
@@ -105,6 +85,8 @@ html
             #team_name.inlining
               //-| NICK
             #nades.inlining
+            #bomb_t
+            #bomb_ct
       #left.team
         #player1.player
           .bar1
