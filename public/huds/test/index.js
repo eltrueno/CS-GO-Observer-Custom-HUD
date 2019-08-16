@@ -441,6 +441,9 @@ function updatePage(data) {
     }
 
     //PHASESc
+    if (phase.phase == "pause") {
+        $("#header").find("#time_counter").addclass("test");
+    }
     if (phase) {
         $("#time_counter").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10))
             ? "white"
