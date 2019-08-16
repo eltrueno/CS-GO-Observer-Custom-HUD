@@ -20,16 +20,13 @@ function fillObserved(player) {
     $("#kills_count").html(" K: " + statistics.kills);
     $("#assist_count").html(" A: " + statistics.assists);
     $("#death_count").html(" D: " + statistics.deaths);
-
     $("#player-container")
         .removeClass("t ct")
         .addClass(player.team.toLowerCase());
 
     $("#current_nick").html(player.name);
     $("#nick_also").html(player.real_name + " ");
-
     $("#nades").html("");
-
     $("#player-container").find("#bomb_ct").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");
 
     if (statistics.health <= 20) {
@@ -110,7 +107,6 @@ function fillPlayer(player,nr, side, max){
     $top.find("#bar_username").text(player.name.split(" ").join(""));
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
 
-    // $("#player-container").find(".hp_bar").css("background", gradient);
     $("#hp_p").find(".hp_bar").css("background", gradient);
 
     $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
@@ -185,7 +181,6 @@ function fillPlayer(player,nr, side, max){
         }
         if(type == "C4"){
             $bottom.find(".bomb_defuse").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness bomb_t"));
-            // $("#player-container").find("#bomb_t").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness bomb_t"));
         }
     }
     
@@ -224,7 +219,6 @@ function resetBomb() {
     $("#bomb_timer").css("display", "none");
 }
 
-//SOME other weird vars
 var menu = false;
 var freezetime = false;
 let last_round = 0;
@@ -389,7 +383,6 @@ function updatePage(data) {
     if(match.team_2.map_score > 0) {
         $('#matchup .rightscore .matchupscore:nth-child(' + match.team_2.map_score + ')').addClass("active");
     }
-    //TEAMS
 
     $("#team_2 #team_name").html(teams.right.name);
     $("#team_2 #team_score").html(teams.right.score);
@@ -459,31 +452,16 @@ function updatePage(data) {
             if (phase.phase == "defuse") {
                 if (!isDefusing) {
                     longd = 5;
-                    console.log("CHECHE" + longd);
                     if (parseFloat(phase.phase_ends_in) > 5) {
                         longd = 10;
-                        console.log("DAAA");
                     }
                     isDefusing = true;
                 }
 
-                console.log(parseFloat(phase.phase_ends_in) + " " + longd);
-
                 defuseTimerStart();
                 defuseTimerRotate(phase.phase_ends_in,longd);
 
-                //ASDASDASDAS
-
-                
-
                 var seconds = Math.round(parseFloat(phase.phase_ends_in).toFixed(1));
-                var secondse = parseFloat(phase.phase_ends_in).toFixed(2);
-
-                var secondsleee = (phase.phase_ends_in - secondse);
-                console.log(secondsleee);
-                console.log(phase.phase_ends_in);
-                console.log(secondse);
-                // var secondslee = secondsleee.toString().replace("0.","");
 
                 $("#bombtimer div").text((seconds < 10 ? seconds : seconds));
             }

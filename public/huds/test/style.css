@@ -552,7 +552,7 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(-15deg);
-	left: 369px;
+	left: 345px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -580,7 +580,7 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(15deg);
-	right: 369px;
+	right: 345px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -624,8 +624,8 @@ body {
 .team#left>.player>.player_money_count>.stats_wrapper {
 	transform: translateX(-50%) skewX(15deg);
 	text-align: center;
-	margin-left: 88px;
-    width: 55px;
+	margin-left: 70px;
+    width: 70px;
 }
 .stats_wrapper table {
 	margin: 0 auto;
@@ -661,7 +661,6 @@ body {
 	text-align: center;
 	width: 80px;
 	font-size: 0.9em;
-	margin-right: 35px;
 }
 .block{
 	width:14px;
@@ -699,7 +698,7 @@ body {
 	bottom: 0;
 }
 .player {
-	width: 380px;
+	width: 355px;
 	height: 70px;
 	position: relative;
 	margin-bottom: 10px;
@@ -723,7 +722,7 @@ body {
     transform: scale(0.99,0.9);
 }
 #left>.player>.bar1>.hp_bar {
-	width: 380px;
+	width: 355px;
 	margin-left: -2px;	
 	height: 19%;
 	float: left;
@@ -731,7 +730,7 @@ body {
 	transform: skew(-18deg,0deg);
 }
 #right>.player>.bar1>.hp_bar {
-	width: 380px;
+	width: 355px;
 	margin-right: -2px;
 	height: 19%;
 	float: right;
@@ -841,9 +840,9 @@ body {
 	transform: skew(-18deg,0deg);
 }
 #left>.player>.bar1>.hp_bar>.bar_username {
-	padding-left: 70px;
+	padding-left: 80px;
 	padding-top: 11px;
-	width: 81%;
+	width: 77%;
 	white-space: nowrap;
 	font-size:20px;
 	text-shadow:none;
@@ -854,7 +853,7 @@ body {
 	text-align: right;
 	padding-right: 20px;
 	padding-top: 11px;
-	width: 81%;
+	width: 77%;
 	white-space: nowrap;
 	font-size: 20px;
 	text-shadow: none;
