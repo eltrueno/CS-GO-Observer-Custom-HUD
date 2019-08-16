@@ -106,12 +106,12 @@ function fillPlayer(player,nr, side, max){
     let $top = $player.find(".bar1");
 
     let gradient = "linear-gradient(to " + side +", rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
-    let observed_gradient = "linear-gradient(to " + side +", rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
 
     $top.find("#bar_username").text(player.name.split(" ").join(""));
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
 
-    $("#player-container").find(".hp_bar").css("background", observed_gradient);
+    // $("#player-container").find(".hp_bar").css("background", gradient);
+    $("#hp_p").find(".hp_bar").css("background", gradient);
 
     $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
     $player.find("#hp_p").removeClass("low_health").addClass(statistics.health <= 20 ? "low_health" : "");
@@ -239,11 +239,11 @@ function updatePage(data) {
     var matchup = data.getMatchType();
     var match = data.getMatch();
 
-
     if(matchup && matchup.toLowerCase() != "none"){
         var block = $("<div class='block'></div>");
         var left_bl = $("<div></div>");
         var right_bl = $("<div></div>");
+
         for(var x = 0; x < (matchup == "bo5" ? 3 : 2); x ++){
             block.clone().appendTo($(left_bl)).addClass(match.team_1.map_score > x ? "win" : "");
             block.clone().appendTo(right_bl).addClass(match.team_2.map_score > x ? "win" : "");
@@ -474,7 +474,15 @@ function updatePage(data) {
                 
 
                 var seconds = Math.round(parseFloat(phase.phase_ends_in).toFixed(1));
-                $("#bombtimer div").text("00:" + (seconds < 10 ? "0" + seconds : seconds));
+                var secondse = parseFloat(phase.phase_ends_in).toFixed(2);
+
+                var secondsleee = (phase.phase_ends_in - secondse);
+                console.log(secondsleee);
+                console.log(phase.phase_ends_in);
+                console.log(secondse);
+                // var secondslee = secondsleee.toString().replace("0.","");
+
+                $("#bombtimer div").text((seconds < 10 ? seconds : seconds));
             }
         } else {
             isDefusing = false;

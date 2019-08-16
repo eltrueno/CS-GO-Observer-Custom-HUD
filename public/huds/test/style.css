@@ -146,6 +146,10 @@ body {
 #player-container.ct #container2 #first_row #current_nick{
 	color: #00a0ff;
 }
+#player-container > #container2 > #third_row > #bomb_t > img {
+	width: 18px!important;
+    margin: 5px 10px 0px 5px;
+}
 .no-avatar #avatar_container{
 	display:none;
 
@@ -372,6 +376,7 @@ body {
 
 #third_row {
 	padding-right: 30px;
+	padding-left: 20px;
 }
 
 #current_nick {
@@ -534,7 +539,7 @@ body {
 	position: absolute;
 	left: 12.5px;
 	top: 38px;
-	width: 45px;
+	width: 48px;
 	height: 20px;
 }
 .team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
@@ -546,9 +551,9 @@ body {
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
 	position: absolute;
-	right: 17.5px;
+	right: 12.5px;
 	top: 38px;
-	width: 45px;
+	width: 48px;
 	height: 20px;
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
@@ -855,7 +860,7 @@ body {
 
 .low_health {
 	color: red;
-	font-weight: 900;
+	font-weight: bold;
 	filter: brightness(0.5) sepia(1) saturate(10000%);
 }
 
@@ -1228,7 +1233,7 @@ body {
 #team_1 > #team_name{
 	margin-top:10px;
 	float:right;
-	width: 65%;
+	width: 70%;
 	text-align: center;
 }
 #avatar_container img {
@@ -1241,18 +1246,18 @@ body {
 #team_2 > #team_name{
 	margin-top:10px;
 	float:left;
-	width: 65%;
+	width: 70%;
 	text-align: center;
 }
 #team_1 > #team_score{
-	margin-right:35px;
 	float:right;
 	font-size: 2em;
+	margin-right: 20px;
 }
 #team_2 > #team_score{
-	margin-left:35px;
 	float:left;
 	font-size: 2em;
+	margin-left: 20px;
 }
 #team_logo{
 	position: relative;
@@ -1320,7 +1325,7 @@ body {
 	height:80px;
 	margin-left:-350px;
 	left:50%;
-	top:400px;
+	top:500px;
 	width:700px;
 	background-position: center center;
 	background-size: contain;
@@ -1453,7 +1458,7 @@ body {
 	left: 0;
 	top: 50%;
 	transform: translateY(-50%);
-	font-size: 50px;
+	font-size: 70px;
 	font-family: "Lovelo Black";
 	color: white;
 	text-align: center;
@@ -1472,7 +1477,7 @@ body {
 	background-repeat: no-repeat;
 	left: 50%;
 	transform: translateX(-50%);
-	top: 5px;
+	top: -5px;
 	animation-name: bomb;
 	animation-duration: 5s;
 	animation-iteration-count: infinite;
