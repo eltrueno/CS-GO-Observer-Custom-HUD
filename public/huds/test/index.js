@@ -92,7 +92,7 @@ function fillPlayer(player,nr, side, max){
     let statistics = player.getStats();
     let weapons = player.getWeapons();
     let steamid = player.steamid;
-
+    var money = player.getStats().money;
     let team = player.team.toLowerCase();
 
     let health_color = statistics.health <= 20 ? "#ff0000" : team == "ct" ? "#00a0ff":"#ffa000";
@@ -106,6 +106,9 @@ function fillPlayer(player,nr, side, max){
 
     $top.find("#bar_username").text(player.name.split(" ").join(""));
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
+    $top.find("#weapon_icon").removeClass("money_left").addClass(statistics.health == 0 ? "money_left" : "");
+
+    $top.find(".hp_bar").find(".money_left").html("$"+statistics.money);
 
     $("#hp_p").find(".hp_bar").css("background", gradient);
 
@@ -127,7 +130,10 @@ function fillPlayer(player,nr, side, max){
 
     $player.find(".money_wrapper").removeClass("low").addClass(statistics.money < 1000? "low":"");
     
-    $top.find("#weapon_icon").html("");
+    if(statistics.health != 0) {
+        $top.find("#weapon_icon").html("");
+    }
+
     $bottom.find("#weapon_icon").html("");
 
     if(statistics.round_kills > 0){
@@ -229,6 +235,16 @@ function updatePage(data) {
     var phase = data.phase();
     var team_one = data.getTeamOne();
     var team_two = data.getTeamTwo();
+
+    // console.log(observed.real_name);
+    // console.log(observed.teamData.short_name);
+
+    if(observed.teamData) {
+        $("#player-container").find("#team_name").html(observed.teamData.short_name + "<span style='margin: 0px 10px;'>|</span>" + observed.real_name);
+        $('#player-container').find("#teambg-container").css({
+            backgroundImage: "url(/teams/"+observed.teamData.logo + ")"
+        });
+    }
     
     var matchup = data.getMatchType();
     var match = data.getMatch();
@@ -434,9 +450,7 @@ function updatePage(data) {
     }
 
     //PHASESc
-    if (phase.phase == "pause") {
-        $("#header").find("#time_counter").addclass("test");
-    }
+
     if (phase) {
         $("#time_counter").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10))
             ? "white"
@@ -444,6 +458,41 @@ function updatePage(data) {
         $("#defuser").css("display", phase.phase == "defuse"
             ? "block"
             : "none");
+
+        if (phase.phase == "pause") {
+            $("#time_counter").css({
+                display: "none"
+            });
+
+            $('#time_info').css({
+                display: "block"
+            });
+            $("#time_info").html('<span style="letter-spacing: -3.4; transform: scale(1.7,1); display: block; position: relative;">I I</span>');
+        }
+    
+        if (phase.phase == "warmup") {
+            $("#time_counter").css({
+                display: "none"
+            });
+
+            $('#time_info').css({
+                display: "block"
+            });
+            
+            $("#time_info").text('WARMUP');
+        }
+
+        if(phase.phase != "pause" && phase.phase != "warmup") {
+            $("#time_counter").css({
+                display: "block"
+            });
+
+            $('#time_info').css({
+                display: "none"
+            });('#time_info').css({
+                display: "none"
+            });
+        }
 
         if (phase.phase == "bomb" || phase.phase == "defuse") {
             if (phase.phase == "bomb") {
