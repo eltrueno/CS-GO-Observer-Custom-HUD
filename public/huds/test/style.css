@@ -383,7 +383,7 @@ body {
 	width: 50%;
 	font-family:'Lovelo Black';
 	font-weight: 600;
-	font-size: 30px;
+	font-size: 35px;
 	display: inline-block;
 	white-space: nowrap;
 	background-repeat: no-repeat;
@@ -667,7 +667,7 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(-15deg);
-	left: 369px;
+	left: 342px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -687,8 +687,8 @@ body {
 .team#left>.player>.player_money_count>.stats_wrapper {
 	transform: translateX(-50%) skewX(15deg);
 	text-align: center;
-	margin-left: 65px;
-	width: 65px;
+	margin-left: 88px;
+    width: 55px;
 }
 
 .stats_wrapper table {
@@ -698,28 +698,27 @@ body {
 
 .team#right>.player>.player_money_count {
 	height: 62px;
-	width: 0px;
-	background-color: rgba(0,0,0,0.9);
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%) skewX(15deg);
-	right: 369px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 2px 0px;
-	overflow: hidden;
-	white-space:pre-wrap;
-	z-index: -1;
-	border-radius: 2px 0px 0px 2px;
+    width: 0px;
+    background-color: rgba(0,0,0,0.9);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) skewX(15deg);
+    right: 342px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    z-index: -1;
+    border-radius: 2px 0px 0px 2px;
 }
 
 .team#right>.player>.player_money_count>.money_wrapper {
 	transform: translateX(-50%) skewX(-15deg);
-	text-align: center;
-	margin-left: 80px;
-    margin-right: 10px;
-    min-width: 55px
+    text-align: center;
+    margin-left: 65px;
+    min-width: 55px;
 }
 
 .team#right>.player>.player_money_count>.stats_wrapper	 {
