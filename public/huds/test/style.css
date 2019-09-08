@@ -184,7 +184,7 @@ body {
 	display: inline-block;
 }
 #kills_count, #assist_count, #death_count {
-	font-size: 25px;
+	font-size: 19px;
 	padding-right: 10px;
 }
 #stat_money {
@@ -333,7 +333,7 @@ body {
 }
 #first_row {
 	height: 23%;
-	margin-top: 53px;
+	margin-top: 58px;
 	width: 100%;
 }
 .ct_color {
@@ -740,11 +740,12 @@ body {
 	height: 30px;
 }
 #player-container>#container2>.hp_bar {
-	width: 600px;
-    margin-left: -6px;
-    height: 7px;
-    margin-top: -4px;
-    transform: scale(0.99,0.9);
+	width: 588px;
+    margin-left: 0px;
+	height: 4px;
+	margin-bottom: 5px;
+    margin-top: -7px;
+    transform: skew(33deg);
 }
 #left>.player>.bar1>.hp_bar {
 	width: 290px;
@@ -1233,7 +1234,7 @@ body {
 	height:80px;
 	margin-left:-350px;
 	left:50%;
-	top:500px;
+	top:325px;
 	width:700px;
 	background-position: center center;
 	background-size: contain;
@@ -1325,7 +1326,7 @@ body {
 	width: 200px;
 	height: 200px;
 	border-radius: 50% 50%;
-	border: 8px solid #4FC978;
+	border: 8px solid #004261;
 	position: absolute;
 	top: 0;
 	right: 0;

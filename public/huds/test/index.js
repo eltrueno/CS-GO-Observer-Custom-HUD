@@ -15,6 +15,12 @@ function fillObserved(player) {
     let flag = player.country_code || (right
         ? (teams.left.flag || "")
         : (teams.right.flag || ""));
+
+    let team = player.team.toLowerCase();
+    let health_color = statistics.health <= 20 ? "#ff0000" : team == "ct" ? "#00a0ff":"#ffa000";
+    let gradient = "linear-gradient(to left, rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
+
+    $("#container2").find(".hp_bar").css("background", gradient);
     
 
     $("#kills_count").html(" K: " + statistics.kills);
@@ -96,21 +102,18 @@ function fillPlayer(player,nr, side, max){
     let team = player.team.toLowerCase();
 
     let health_color = statistics.health <= 20 ? "#ff0000" : team == "ct" ? "#00a0ff":"#ffa000";
+    let gradient = "linear-gradient(to " + side +", rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
 
     let $player = $("#"+side).find("#player"+(nr+1));
 
     let $bottom = $player.find(".bottom_bar");
     let $top = $player.find(".bar1");
 
-    let gradient = "linear-gradient(to " + side +", rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
-
     $top.find("#bar_username").text(player.name.split(" ").join(""));
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
     $top.find("#weapon_icon").removeClass("money_left").addClass(statistics.health == 0 ? "money_left" : "");
 
     $top.find(".hp_bar").find(".money_left").html("$"+statistics.money);
-
-    $("#hp_p").find(".hp_bar").css("background", gradient);
 
     $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
     $player.find("#hp_p").removeClass("low_health").addClass(statistics.health <= 20 ? "low_health" : "");
@@ -174,7 +177,11 @@ function fillPlayer(player,nr, side, max){
             view += weapon.state == "active" ? "checked" : "";
             if(type == "Grenade"){
                 for(let x = 0; x < weapon.ammo_reserve; x++){
-                    $bottom.find("#weapon_icon").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
+                    if(side == "left") {
+                        $bottom.find("#weapon_icon").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
+                    } else {
+                        $bottom.find("#weapon_icon").prepend($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
+                    }
                 }
             } else if(type) {
                 view += side == "right" ? " img-hor" : "";
@@ -288,9 +295,12 @@ function updatePage(data) {
         $(".round_kills_container").css({
             width: 0
         });
+        console.log("ASDASDASDASDASDASDASDA");
         $(".player_money_count").animate({
-            width: 150
+            width: 150,
+            opacity: 1
         },150);
+        console.log("GJISFGHJDUIFGHI");
     }
 
     var team_ct = data.getCT();
@@ -456,7 +466,8 @@ function updatePage(data) {
             ? "block"
             : "none");
 
-        if (phase.phase == "paused") {
+
+        if (phase.phase == "paused" || phase.phase == "timeout_t" || phase.phase == "timeout_ct") {
             $("#time_counter").css({
                 display: "none"
             });
@@ -479,13 +490,9 @@ function updatePage(data) {
             $("#time_info").text('WARMUP');
         }
 
-        if(phase.phase != "paused" && phase.phase != "warmup") {
+        if(phase.phase != "paused" && phase.phase != "timeout_t" && phase.phase != "timeout_ct" && phase.phase != "warmup") {
             $("#time_counter").css({
                 display: "block"
-            });
-
-            $('#time_info').css({
-                display: "none"
             });
 
             $('#time_info').css({
@@ -563,8 +570,9 @@ function updatePage(data) {
 
             if(countdown < 112 && (phase.phase == "live" || phase.phase == "bomb" || phase.phase == "over")) {
                 $(".player_money_count").animate({
-                    width: 0
-                },150);
+                    width: 0,
+                    opacity: 0
+                },400);
             }
         }
     }
