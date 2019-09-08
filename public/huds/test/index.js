@@ -113,7 +113,7 @@ function fillPlayer(player,nr, side, max){
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
     $top.find("#weapon_icon").removeClass("money_left").addClass(statistics.health == 0 ? "money_left" : "");
 
-    $top.find(".hp_bar").find(".money_left").html("$"+statistics.money);
+    $top.find(".hp_bar").find(".money_left").html("<span class=stats_money>$"+statistics.money + "</span><span class=stats_kda_container><span class=stats_kda>K: " + statistics.kills + "</span><span class=stats_kda>A: " + statistics.assists + "</span><span class=stats_kda>D: " + statistics.deaths + "</span></span>");
 
     $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
     $player.find("#hp_p").removeClass("low_health").addClass(statistics.health <= 20 ? "low_health" : "");
@@ -295,12 +295,10 @@ function updatePage(data) {
         $(".round_kills_container").css({
             width: 0
         });
-        console.log("ASDASDASDASDASDASDASDA");
         $(".player_money_count").animate({
             width: 150,
             opacity: 1
         },150);
-        console.log("GJISFGHJDUIFGHI");
     }
 
     var team_ct = data.getCT();
@@ -356,7 +354,6 @@ function updatePage(data) {
         teams.left.map_score = team_one.map_score || 0;
         teams.right.map_score = team_two.map_score || 0;
 
-
         teams.left.players = left.players || null;
         teams.right.players = right.players || null;
 
@@ -406,6 +403,9 @@ function updatePage(data) {
     if(match.team_2.map_score > 0) {
         $('#matchup .rightscore .matchupscore:nth-child(' + match.team_2.map_score + ')').addClass("active");
     }
+
+    $(".t-color").find("#teambg-container").css("background-image", "url('/files/img/t.png')");
+    $(".ct-color").find("#teambg-container").css("background-image", "url('/files/img/ct.png')");
 
     $("#team_2 #team_name").html(teams.right.name);
     $("#team_2 #team_score").html(teams.right.score);
