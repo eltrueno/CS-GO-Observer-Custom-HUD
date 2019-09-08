@@ -234,10 +234,7 @@ function updatePage(data) {
     var observed = data.getObserved();
     var phase = data.phase();
     var team_one = data.getTeamOne();
-    var team_two = data.getTeamTwo();
-
-    // console.log(observed.real_name);
-    // console.log(observed.teamData.short_name);
+    var team_two = data.getTeamTwo()
 
     if(observed.teamData) {
         $("#player-container").find("#team_name").html(observed.teamData.short_name + "<span style='margin: 0px 10px;'>|</span>" + observed.real_name);
@@ -245,7 +242,7 @@ function updatePage(data) {
             backgroundImage: "url(/teams/"+observed.teamData.logo + ")"
         });
     }
-    
+
     var matchup = data.getMatchType();
     var match = data.getMatch();
 
@@ -459,7 +456,7 @@ function updatePage(data) {
             ? "block"
             : "none");
 
-        if (phase.phase == "pause") {
+        if (phase.phase == "paused") {
             $("#time_counter").css({
                 display: "none"
             });
@@ -482,14 +479,16 @@ function updatePage(data) {
             $("#time_info").text('WARMUP');
         }
 
-        if(phase.phase != "pause" && phase.phase != "warmup") {
+        if(phase.phase != "paused" && phase.phase != "warmup") {
             $("#time_counter").css({
                 display: "block"
             });
 
             $('#time_info').css({
                 display: "none"
-            });('#time_info').css({
+            });
+
+            $('#time_info').css({
                 display: "none"
             });
         }
