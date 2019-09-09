@@ -374,22 +374,23 @@ body {
 	padding-right: 65px;
 	padding-left: 5px;
 }
-#player-container>#teambg-container {
+#container2>#teambg-container {
 	opacity: 0.25;
 	width: 244px;
 	height: 73px;
 	position: absolute;
-	top: 100px;
-	left: 690px;
+	top: 96px;
+	left: -60px;
+	z-index: -2;
 	background-size: 100% auto;
 	background-repeat: no-repeat;
 	background-position: center center;
 }
 .team_info#team_1>#teambg-container {
-    opacity: 0.15;
+    opacity: 0.25;
     width: 210px;
     height: 64px;
-    left: 142px;
+    left: 14%;
 	top: 0px;
     position: absolute;
 	background-size: 100% auto;
@@ -397,10 +398,10 @@ body {
 	background-position: center center;
 }
 .team_info#team_2>#teambg-container {
-	opacity: 0.15;
+	opacity: 0.25;
     width: 210px;
 	height: 64px;
-	right: 142px;
+	right: 14%;
 	top: 0px;
     position: absolute;
 	background-size: 100% auto;
@@ -1212,8 +1213,11 @@ body {
 #team_1 > #team_name{
 	margin-top:10px;
 	float:right;
-	width: 70%;
+	position: absolute;
+	width: 35%;
+    margin-left: -10px;
 	text-align: center;
+	z-index: 2;
 }
 #avatar_container img {
 	width:139px;
@@ -1221,12 +1225,13 @@ body {
 	margin-top:1px;
 	margin-left:1px;
 }
-
 #team_2 > #team_name{
 	margin-top:10px;
 	float:left;
-	width: 70%;
+	position: absolute;
+    width: 35%;
 	text-align: center;
+	z-index: 2;
 }
 #team_1 > #team_score{
 	float:right;
