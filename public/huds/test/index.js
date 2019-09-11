@@ -12,6 +12,15 @@ function fillObserved(player) {
     if (player.observer_slot >= 1 && player.observer_slot <= 5) {
         right = true;
     }
+
+    $(".player").removeClass("highlighted");
+
+    if(player.observer_slot > 5) {
+        $("#right").find("#player" + (player.observer_slot - 5)).addClass("highlighted");
+    } else {
+        $("#left").find("#player" + (player.observer_slot)).addClass("highlighted");
+    }
+
     let flag = player.country_code || (right
         ? (teams.left.flag || "")
         : (teams.right.flag || ""));
@@ -22,7 +31,6 @@ function fillObserved(player) {
 
     $("#container2").find(".hp_bar").css("background", gradient);
     
-
     $("#kills_count").html(" K: " + statistics.kills);
     $("#assist_count").html(" A: " + statistics.assists);
     $("#death_count").html(" D: " + statistics.deaths);
@@ -33,6 +41,28 @@ function fillObserved(player) {
     $("#current_nick").html(player.name);
     $("#nick_also").html(player.real_name + " ");
     $("#nades").html("");
+
+    var weapois = 0;
+    var weapfos = false;
+    var bombuddd = 0;
+
+    while(weapfos === false) {
+        if(weapons["weapon_" + weapois] === undefined) {
+            weapfos = true;
+            if(bombuddd == 1) {
+                $("#player-container").find("#bomb_t").html($("<img />").attr("src", "/files/img/elements/bomb.png").addClass("invert_brightness bomb_t"));
+            } else {
+                $("#player-container").find("#bomb_t").html("");
+            }
+        } else {
+            if(weapons["weapon_" + weapois].name == "weapon_c4") {
+                // BOMB GOTTEN
+                bombuddd = 1;
+            }
+        }
+        weapois++;
+    }
+
     $("#player-container").find("#bomb_ct").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");
 
     if (statistics.health <= 20) {
@@ -290,15 +320,16 @@ function updatePage(data) {
         : 1);
     if ((round.phase == "freezetime" && !freezetime) || round_now != last_round) {
         start_money = {};
+        
+    }
+
+    if(round.phase == "freezetime") {
         $(".round_kills_count").text(0);
         $(".round_kills_container .akill").remove();
         $(".round_kills_container").css({
             width: 0
         });
-        $(".player_money_count").animate({
-            width: 150,
-            opacity: 1
-        },150);
+        $(".player_money_count").addClass("activated");
     }
 
     var team_ct = data.getCT();
@@ -326,7 +357,7 @@ function updatePage(data) {
         teams.left.name = team_one.team_name || left.name;
         teams.right.name = team_two.team_name || right.name;
 
-        if(teams.left.score !== undefined && teams.right.score !== undefined){
+        if(teams.left.score !== undefined && teams.right.score !== undefined && round.phase != "freezetime"){
             if(left.score > teams.left.score){
                 $("#winning_team").text(teams.left.name).removeClass("t-color ct-color").addClass(teams.left.side.toLowerCase() + "-color");
                 $("#winning_team_logo").css({
@@ -390,7 +421,76 @@ function updatePage(data) {
             .text("$" + right.equip_value);
     }
 
-    $("#round_counter").html("Round " + round_now + " / 30");
+    if(round_now > 30) {
+        var actuallyroundot = round_now - 30;
+
+        $("#round_counter").html("OT I (" + actuallyroundot + "/6)");
+
+        if(actuallyroundot > 6) {
+            var actuallyroundot2 = actuallyroundot - 6;
+
+            $("#round_counter").html("OT II (" + actuallyroundot2 + "/6)");
+
+            if(actuallyroundot2 > 6) {
+                var actuallyroundot3 = actuallyroundot2 - 6;
+    
+                $("#round_counter").html("OT III (" + actuallyroundot3 + "/6)");
+
+                if(actuallyroundot3 > 6) {
+                    var actuallyroundot4 = actuallyroundot3 - 6;
+        
+                    $("#round_counter").html("OT IV (" + actuallyroundot4 + "/6)");
+
+                    if(actuallyroundot4 > 6) {
+                        var actuallyroundot5 = actuallyroundot4 - 6;
+            
+                        $("#round_counter").html("OT V (" + actuallyroundot5 + "/6)");
+
+                        if(actuallyroundot5 > 6) {
+                            var actuallyroundot6 = actuallyroundot5 - 6;
+                
+                            $("#round_counter").html("OT VI (" + actuallyroundot6 + "/6)");
+
+                            if(actuallyroundot6 > 6) {
+                                var actuallyroundot7 = actuallyroundot6 - 6;
+                    
+                                $("#round_counter").html("OT VII (" + actuallyroundot7 + "/6)");
+
+                                if(actuallyroundot7 > 6) {
+                                    var actuallyroundot8 = actuallyroundot7 - 6;
+                        
+                                    $("#round_counter").html("OT VIII (" + actuallyroundot8 + "/6)");
+
+                                    if(actuallyroundot8 > 6) {
+                                        var actuallyroundot9 = actuallyroundot8 - 6;
+                            
+                                        $("#round_counter").html("OT IX (" + actuallyroundot9 + "/6)");
+
+                                        if(actuallyroundot9 > 6) {
+                                            var actuallyroundot10 = actuallyroundot9 - 6;
+                                
+                                            $("#round_counter").html("OT X (" + actuallyroundot10 + "/6)");
+
+                                            if(actuallyroundot10 > 6) {
+                                                var actuallyroundot11 = actuallyroundot10 - 6;
+                                    
+                                                $("#round_counter").html("OT ∞ (" + actuallyroundot11 + "/∞)");
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    if(round_now <= 30) {
+        $("#round_counter").html("Round " + round_now + " / 30");
+    }
+
     $("#matchup .content").html(matchup);
     if(matchup == "bo3") {
         $('#matchup .leftscore, #matchup .rightscore').html('<div class="matchupscore"></div><div class="matchupscore"></div>');
@@ -568,11 +668,8 @@ function updatePage(data) {
                 $("#time_counter").text(count_minute + ":" + count_seconds).removeClass("bomb_timer");
             }
 
-            if(countdown < 112 && (phase.phase == "live" || phase.phase == "bomb" || phase.phase == "over")) {
-                $(".player_money_count").animate({
-                    width: 0,
-                    opacity: 0
-                },400);
+            if(countdown < 112 && phase.phase != "freezetime" && phase.phase != "over") {
+                $(".player_money_count").removeClass("activated");
             }
         }
     }
@@ -614,7 +711,7 @@ function defuseTimerReset() {
         transform: "translate(-50%,-50%) rotate(0deg)"
     });
     $('#bomb-round-bottom').css({
-        borderColor: "white"
+        borderColor: "#004261"
     });
     $('#bomb-defusing-container').removeClass("activebomb");
 }

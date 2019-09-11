@@ -126,7 +126,7 @@ body {
 }
 #player-container {
     position: fixed;
-    bottom: 100px;
+    bottom: 20px;
     font-family: 'Saira SemiCondensed Light';
     height: 180px;
     width: 100%;
@@ -158,8 +158,9 @@ body {
 	color: #00a0ff;
 }
 #player-container > #container2 > #third_row > #bomb_t > img {
-	width: 18px!important;
-	margin: 5px 10px 0px 5px;
+	width: 16px;
+    margin-top: -2px;
+    height: auto;
 }
 .no-avatar #avatar_container{
 	display:none;
@@ -286,7 +287,7 @@ body {
 }
 .player>.bar1>.hp_bar>.bar_weapon>.stats_money {
 	position: absolute;
-    margin-left: 7px;
+    margin-left: 2px;
 }
 #right>.player>.bar1>.hp_bar>.bar_weapon>.stats_money {
 	margin-left: -35px;
@@ -294,16 +295,16 @@ body {
 #left>.player>.bar1>.hp_bar>.bar_weapon>.stats_kda_container {
 	margin-left: 75px;
     position: absolute;
-    margin-top: -10px;
+	margin-top: -10px;
 }
 #right>.player>.bar1>.hp_bar>.bar_weapon>.stats_kda_container {
 	margin-left: 20px;
     position: absolute;
-    margin-top: -10px;
-    display: flex;
+	margin-top: -10px;
+	display: flex;
 }
-.player>.bar1>.hp_bar>.bar_weapon>.stats_kda_container>.stats_kda{
-	font-size: 1.5em;
+.player>.bar1>.hp_bar>.bar_weapon>.stats_kda_container>.stats_kda {
+	font-size: 1.3em;
 	padding: 0em 0.2em;
 }
 #armor-text.armor{
@@ -539,14 +540,14 @@ body {
 .team#left>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
 	float: left;
     display: flex;
-    margin-left: 37px;
+    margin-left: 30px;
     align-items: center;
     justify-content: center;
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
 	float: right;
     display: flex;
-    margin-right: 27px;
+    margin-right: 25px;
     align-items: center;
     justify-content: center;
 }
@@ -597,6 +598,7 @@ body {
 #bomb_t {
 	float:	right;
 	filter: brightness(5%) invert(100%);
+	margin-right: 10px;
 }
 #bomb_ct {
 	float:	right;
@@ -610,10 +612,7 @@ body {
 .hpbombset .bomb_defuse {
 	margin-top: 2px;
 }
-.bomb_t {
-	width: 15px;
-	margin-bottom: 5px;
-}
+
 .hpbombset .wrapper div {
 	margin-left: 2px;
 	margin-right: 2px;
@@ -686,8 +685,17 @@ body {
 	overflow: hidden;
 	white-space:pre-wrap;
 	z-index: -1;
+	opacity: 0;
 	border-radius: 0px 2px 2px 0px;
+	transition: all 0.4s ease-in-out;
 }
+
+.team#left>.player>.player_money_count.activated {
+	width: 150;
+	opacity: 1;
+	transition: all 0.4s ease-in-out;
+}
+
 .team#left>.player>.player_money_count>.money_wrapper {
 	transform: translateX(-50%) skewX(15deg);
 	text-align: center;
@@ -719,8 +727,16 @@ body {
     padding: 2px 0px;
     overflow: hidden;
     white-space: pre-wrap;
-    z-index: -1;
+	z-index: -1;
+	opacity: 0;
     border-radius: 2px 0px 0px 2px;
+	transition: all 0.4s ease-in-out;
+}
+
+.team#right>.player>.player_money_count.activated {
+	width: 150;
+	opacity: 1;
+	transition: all 0.4s ease-in-out;
 }
 .team#right>.player>.player_money_count>.money_wrapper {
 	transform: translateX(-50%) skewX(-15deg);
@@ -755,7 +771,7 @@ body {
 }
 .team {
 	width: 410px;
-	height: 420px;
+	height: 340px;
 }
 #left {
 	position: fixed;
@@ -1219,6 +1235,14 @@ body {
 	text-align: center;
 	z-index: 2;
 }
+
+#avatar_container {
+	background-image: url("/files/img/Arctic_White.png");
+	background-size: 70% auto;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
 #avatar_container img {
 	width:139px;
 	height:139px;
@@ -1475,6 +1499,32 @@ body {
 	animation-duration: 5s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
+}
+
+#left>.player>.player_highlight {
+	position: absolute;
+    top: 0;
+    left: -8px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.35) 31%, rgba(255,255,255,0) 100%);
+	transform: skewX(-15deg);
+	display: none;
+}
+
+#right>.player>.player_highlight {
+	position: absolute;
+    top: 0;
+    right: -8px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.35) 31%, rgba(255,255,255,0) 100%);
+	transform: skewX(15deg);
+	display: none;
+}
+
+.player.highlighted .player_highlight {
+	display: block !important;
 }
 
 @keyframes bomb {
