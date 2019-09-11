@@ -224,7 +224,7 @@ body {
 #health-text {
 	background-image: url("/files/img/hp.png");
 	background-repeat: no-repeat;
-	background-size: 25%;
+	background-size: 30%;
 	background-position: left center;
 	padding-left: 30px;
 	display: inline-block;
@@ -269,7 +269,7 @@ body {
 	background-position: left center;
 	padding-left: 30px;
 	display: inline-block;
-	font-size: 30px;
+	font-size: 23px;
 	margin-left: 20px;
 	width: 55px;
 }
@@ -325,9 +325,8 @@ body {
 .clip {
 	background-image: url("/files/img/ammo.png");
 	background-repeat: no-repeat;
-	background-size: 24%;
+	background-size: 25%;
 	background-position: left center;
-	padding-left: 23px;
 	display: inline-block;
 	font-size: 30px;
 }
@@ -355,8 +354,8 @@ body {
 	font-size: 30px;
 }
 #first_row {
-	height: 23%;
-	margin-top: 56px;
+	height: 22%;
+	margin-top: 59px;
 	width: 100%;
 }
 .ct_color {
@@ -366,20 +365,21 @@ body {
 	background-color: #c19511 !important;
 }
 #second_row {
-	height: 20%;
+	height: 15%;
 	width: 100%;
 	padding-left: 5px;
+	padding-top: 7px;
 	display: flex;
 }
 #third_row {
 	padding-right: 65px;
 	padding-left: 5px;
-	margin-top: 2px;
+	margin-top: 5px;
 }
 #container2>#teambg-container {
 	opacity: 0.25;
 	width: 244px;
-	height: 73px;
+	height: 70px;
 	position: absolute;
 	top: 96px;
 	left: -60px;
@@ -415,7 +415,7 @@ body {
 	width: 37%;
 	font-family:'Lovelo Black';
 	font-weight: 600;
-	font-size: 35px;
+	font-size: 28px;
 	display: inline-block;
 	white-space: nowrap;
 	background-repeat: no-repeat;
@@ -437,7 +437,8 @@ body {
 #health_armor {
 	font-family:'Saira SemiCondensed Light';
 	height: 100%;
-	width: 33%;
+	width: 27%;
+	padding-left: 65px;
 }
 #round_stats {
 	height: 85px;
@@ -489,7 +490,7 @@ body {
 #ammo {
 	font-family:'Saira SemiCondensed Light';
 	height: 100%;
-	width: 25%;
+	width: 20%;
 }
 .inlining {
 	display: inline;
@@ -502,18 +503,18 @@ body {
 }
 #health-text {
 	display: inline-block;
-	font-size: 30px;
-	width: 55px;
+	font-size: 23px;
+	width: 30px;
 }
 #clip-text {
 	display: inline-block;
-	font-size: 30px;
-	width: 50px;
+	font-size: 23px;
+	width: 52px;
 	text-align: right;
 }
 #reserve-text {
 	display: inline-block;
-	font-size: 30px;
+	font-size: 23px;
 	width: 60px;
 }
 #nades {
@@ -1425,7 +1426,7 @@ body {
 	width: 200px;
 	height: 200px;
 	border-radius: 50% 50%;
-	border: 8px solid #004261;
+	border: 8px solid rgb(0, 45, 75);
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1484,10 +1485,10 @@ body {
 }
 
 #bomb {
-	width: 30px;
-	height: 30px;
+	width: 45px;
+	height: 45px;
 	position: absolute;
-	background-image: url('/files/img/elements/bomb.png');
+	background-image: url('/files/img/elements/defuse.png');
 	filter: brightness(5%) invert(100%);
 	background-position: center center;
 	background-size: contain;

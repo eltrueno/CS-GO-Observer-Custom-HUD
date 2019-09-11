@@ -690,7 +690,7 @@ function defuseTimerRotate(timeleft, deftim) {
         });
     } else {
         $('#bomb-round-bottom').css({
-            borderColor: "#4FC978"
+            borderColor: "rgb(0, 45, 75)"
         });
         $('#bomb-round-green-wrapper').css({
             zIndex: 4,
@@ -711,7 +711,7 @@ function defuseTimerReset() {
         transform: "translate(-50%,-50%) rotate(0deg)"
     });
     $('#bomb-round-bottom').css({
-        borderColor: "#004261"
+        borderColor: "rgb(0, 45, 75)"
     });
     $('#bomb-defusing-container').removeClass("activebomb");
 }
