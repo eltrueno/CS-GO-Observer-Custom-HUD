@@ -14,7 +14,6 @@ body {
 	padding: 0;
 	font-family:'Lovelo Black';
 	color: white;
-
 }
 
 #defuser {
@@ -126,7 +125,7 @@ body {
 }
 #player-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 110px;
     font-family: 'Saira SemiCondensed Light';
     height: 180px;
     width: 100%;
@@ -222,7 +221,7 @@ body {
 	color: #2ecc71;
 }
 #health-text {
-	background-image: url("/files/img/hp.png");
+	background-image: url("/files/img/plus.png");
 	background-repeat: no-repeat;
 	background-size: 30%;
 	background-position: left center;
@@ -293,19 +292,20 @@ body {
 	margin-left: -35px;
 }
 #left>.player>.bar1>.hp_bar>.bar_weapon>.stats_kda_container {
-	margin-left: 75px;
+	margin-left: 105px;
     position: absolute;
-	margin-top: -10px;
+    margin-top: 0px;
+    white-space: nowrap;
 }
 #right>.player>.bar1>.hp_bar>.bar_weapon>.stats_kda_container {
-	margin-left: 20px;
+	margin-left: 14px;
     position: absolute;
-	margin-top: -10px;
-	display: flex;
+    margin-top: 0px;
+    display: flex;
 }
 .player>.bar1>.hp_bar>.bar_weapon>.stats_kda_container>.stats_kda {
-	font-size: 1.3em;
-	padding: 0em 0.2em;
+	font-size: 1em;
+    padding: 0em 0.4em;
 }
 #armor-text.armor{
 	background-image: url("/files/img/armor.png");
@@ -379,10 +379,9 @@ body {
 #container2>#teambg-container {
 	opacity: 0.25;
 	width: 244px;
-	height: 70px;
+	height: 75px;
 	position: absolute;
-	top: 96px;
-	left: -60px;
+	top: 93px;
 	z-index: -2;
 	background-size: 100% auto;
 	background-repeat: no-repeat;
@@ -672,20 +671,19 @@ body {
 	left: 50%;
 }
 .team#left>.player>.player_money_count {
-	height: 47px;
+	height: 43px;
 	width: 0px;
 	background-color: rgba(0,0,0,0.9);
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%) skewX(-15deg);
-	left: 280px;
+	left: 282px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 2px 0px;
 	overflow: hidden;
 	white-space:pre-wrap;
-	z-index: -1;
 	opacity: 0;
 	border-radius: 0px 2px 2px 0px;
 	transition: all 0.4s ease-in-out;
@@ -695,6 +693,7 @@ body {
 	width: 150;
 	opacity: 1;
 	transition: all 0.4s ease-in-out;
+	z-index: 1;
 }
 
 .team#left>.player>.player_money_count>.money_wrapper {
@@ -715,13 +714,13 @@ body {
 	font-size: 0.9em;
 }
 .team#right>.player>.player_money_count {
-	height: 47px;
+	height: 43px;
     width: 0px;
     background-color: rgba(0,0,0,0.9);
     position: absolute;
     top: 50%;
     transform: translateY(-50%) skewX(15deg);
-    right: 280px;
+    right: 282px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -738,6 +737,7 @@ body {
 	width: 150;
 	opacity: 1;
 	transition: all 0.4s ease-in-out;
+	z-index: 1;
 }
 .team#right>.player>.player_money_count>.money_wrapper {
 	transform: translateX(-50%) skewX(-15deg);
@@ -862,13 +862,8 @@ body {
 	background-image:url('/files/img/dead_player_left_bg.png');
 	background-size: cover;
 	background-position: right;
+	opacity: 0.2;
 }
-.player.dead_bg {
-	animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-	transform: translate3d(0, 0, 0);
-	backface-visibility: hidden;
-	perspective: 1000px;
-  }
   
   @keyframes shake {
 	10%, 90% {
@@ -1380,7 +1375,7 @@ body {
 	transition: all 1s ease-in-out;
 }
 
-#bomb-round-bottom {
+/* #bomb-round-bottom {
 	width: 200px;
 	height: 200px;
 	border-radius: 50% 50%;
@@ -1391,13 +1386,13 @@ body {
 	left: 50%;
 	transform: translate(-50%,-50%);
 	box-shadow: 0px 5px 45px -5px rgba(0,0,0,0.75);
-}
+} */
 
 #bomb-round-right {
 	width: 200px;
 	height: 200px;
 	border-radius: 50% 50%;
-	border: 8px solid white;
+	border: 8px solid rgb(0, 160, 255);
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1419,14 +1414,14 @@ body {
 	top: 50%;
 	left: 50%;
 	z-index: 3;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%) rotate(180deg);
 }
 
 #bomb-round-green {
 	width: 200px;
 	height: 200px;
 	border-radius: 50% 50%;
-	border: 8px solid rgb(0, 45, 75);
+	border: 8px solid rgb(0, 160, 255);
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -1465,7 +1460,7 @@ body {
 	left: 0;
 	top: 50%;
 	transform: translateY(-50%);
-	font-size: 70px;
+	font-size: 46px;
 	font-family: "Lovelo Black";
 	color: white;
 	text-align: center;
@@ -1488,7 +1483,7 @@ body {
 	width: 45px;
 	height: 45px;
 	position: absolute;
-	background-image: url('/files/img/elements/defuse.png');
+	background-image: url('/files/img/elements/bomb.png');
 	filter: brightness(5%) invert(100%);
 	background-position: center center;
 	background-size: contain;
@@ -1500,6 +1495,34 @@ body {
 	animation-duration: 5s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
+}
+
+#left>.player>.player_highlight:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-left: 320px;
+    margin-top: 20px;
+	background-image: url('/files/img/elements/eye.png');
+	filter: brightness(5%) invert(100%);
+    background-size: contain;
+    transform: skewX(15deg);
+    background-repeat: no-repeat;
+}
+
+#right>.player>.player_highlight:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+	margin-left: -60px;
+    margin-top: 20px;
+	background-image: url('/files/img/elements/eye.png');
+	filter: brightness(5%) invert(100%);
+    background-size: contain;
+    transform: skewX(-15deg);
+    background-repeat: no-repeat;
 }
 
 #left>.player>.player_highlight {
@@ -1526,6 +1549,12 @@ body {
 
 .player.highlighted .player_highlight {
 	display: block !important;
+}
+
+.player.spectated {
+	background-image: url('/files/img/elements/defuse.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 @keyframes bomb {

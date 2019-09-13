@@ -13,12 +13,12 @@ function fillObserved(player) {
         right = true;
     }
 
-    $(".player").removeClass("highlighted");
+    $(".player").removeClass("highlighted spectated");
 
     if(player.observer_slot > 5) {
-        $("#right").find("#player" + (player.observer_slot - 5)).addClass("highlighted");
+        $("#right").find("#player" + (player.observer_slot - 5)).addClass("highlighted spectated");
     } else {
-        $("#left").find("#player" + (player.observer_slot)).addClass("highlighted");
+        $("#left").find("#player" + (player.observer_slot)).addClass("highlighted spectated");
     }
 
     let flag = player.country_code || (right
@@ -615,10 +615,17 @@ function updatePage(data) {
 
                 defuseTimerStart();
                 defuseTimerRotate(phase.phase_ends_in,longd);
+                // console.log(phase.phase_ends_in);
 
                 var seconds = Math.round(parseFloat(phase.phase_ends_in).toFixed(1));
 
-                $("#bombtimer div").text((seconds < 10 ? seconds : seconds));
+                // $("#bombtimer div").text((seconds < 10 ? seconds : seconds));
+
+                if(seconds <= 5) {
+                    $("#bombtimer div").text("00:0" + seconds);
+                } else {
+                    $("#bombtimer div").text("00:" + seconds);
+                }
             }
         } else {
             isDefusing = false;
@@ -686,15 +693,47 @@ function defuseTimerRotate(timeleft, deftim) {
     if(m >= 0 && m <= 50) {
         
         $('#bomb-round-green-wrapper').css({
-            transform: "translate(-50%,-50%) rotate(-" + deg + "deg)"
+            transform: "translate(-50%,-50%) rotate(-" + deg + "deg)",
+            left: "50%"
         });
+        $('#bomb-round-right-wrapper').css({
+            display: "block"
+        });
+
+        $("#bomb-round-ultimate-wrapper").css({
+            width: "0",
+            height: "0",
+            overflow: "visible",
+            position: "unset"
+        });
+
     } else {
         $('#bomb-round-bottom').css({
             borderColor: "rgb(0, 45, 75)"
         });
         $('#bomb-round-green-wrapper').css({
             zIndex: 4,
-            transform: "translate(-50%,-50%) rotate(-" + deg + "deg)"
+            transform: "translateY(-50%) rotate(-" + deg + "deg)",
+            left: "92px"
+        });
+        $('#bomb-round-right-wrapper').css({
+            display: "none"
+        });
+
+        $("#bomb-round-ultimate-wrapper").css({
+            width: "50%",
+            height: "100%",
+            overflow: "hidden",
+            position: "absolute"
+        });
+    }
+
+    console.log(m);
+
+    if(m >= 95) {
+        console.log("tsädäm");
+        $('#bomb-round-ultimate-wrapper').css({
+            opacity: 0
         });
     }
     
@@ -710,12 +749,30 @@ function defuseTimerReset() {
         zIndex: 2,
         transform: "translate(-50%,-50%) rotate(0deg)"
     });
-    $('#bomb-round-bottom').css({
-        borderColor: "rgb(0, 45, 75)"
+    $('#bomb-round-ultimate-wrapper').css({
+        opacity: 0
     });
     $('#bomb-defusing-container').removeClass("activebomb");
 }
 
 function defuseTimerStart() {
     $('#bomb-defusing-container').addClass("activebomb");
+    $('#bomb-round-ultimate-wrapper').css({
+        display: "block"
+    });
+    $('#bomb-round-green-wrapper').css({
+        transform: "translate(-50%,-50%) rotate(0deg)",
+        left: "50%"
+    });
+    $('#bomb-round-right-wrapper').css({
+        display: "block"
+    });
+
+    $("#bomb-round-ultimate-wrapper").css({
+        width: "0",
+        height: "0",
+        overflow: "visible",
+        position: "unset",
+        opacity: 1
+    });
 }
