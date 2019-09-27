@@ -143,7 +143,7 @@ function fillPlayer(player,nr, side, max){
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
     $top.find("#weapon_icon").removeClass("money_left").addClass(statistics.health == 0 ? "money_left" : "");
 
-    $top.find(".hp_bar").find(".money_left").html("<span class=stats_money>$"+statistics.money + "</span><span class=stats_kda_container><span class=stats_kda>K: " + statistics.kills + "</span><span class=stats_kda>A: " + statistics.assists + "</span><span class=stats_kda>D: " + statistics.deaths + "</span></span>");
+    // $top.find(".hp_bar").find(".money_left").html("<span class=stats_money>$"+statistics.money + "</span><span class=stats_kda_container><span class=stats_kda>K: " + statistics.kills + "</span><span class=stats_kda>A: " + statistics.assists + "</span><span class=stats_kda>D: " + statistics.deaths + "</span></span>");
 
     $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
     $player.find("#hp_p").removeClass("low_health").addClass(statistics.health <= 20 ? "low_health" : "");
@@ -157,11 +157,10 @@ function fillPlayer(player,nr, side, max){
 
     $bottom.find(".hp_el").html(statistics.helmet ? $("<img />").attr("src", "/files/img/helmet.png") : statistics.armor > 0 ? $("<img />").attr("src", "/files/img/armor.png") : "");
     $bottom.find(".bomb_defuse").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");
-
-    $player.find(".money_wrapper").html("$"+statistics.money);
+    $bottom.find(".money_stats").html("$"+money);
+    
     $player.find(".stats_wrapper").html("<table><tr><td>K</td><td>A</td><td>D</td></tr><tr><td>"+statistics.kills+"</td><td>"+statistics.assists+"</td><td>"+statistics.deaths+"</td></tr></table>");
 
-    $player.find(".money_wrapper").removeClass("low").addClass(statistics.money < 1000? "low":"");
     
     if(statistics.health != 0) {
         $top.find("#weapon_icon").html("");
@@ -208,9 +207,9 @@ function fillPlayer(player,nr, side, max){
             if(type == "Grenade"){
                 for(let x = 0; x < weapon.ammo_reserve; x++){
                     if(side == "left") {
-                        $bottom.find("#weapon_icon").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
-                    } else {
                         $bottom.find("#weapon_icon").prepend($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
+                    } else {
+                        $bottom.find("#weapon_icon").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
                     }
                 }
             } else if(type) {

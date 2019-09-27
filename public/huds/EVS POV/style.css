@@ -14,6 +14,7 @@ body {
 	padding: 0;
 	font-family:'Lovelo Black';
 	color: white;
+	/* background-color: red; */
 }
 
 #defuser {
@@ -132,7 +133,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(/files/img/player_bg.png);
+    background-image: url(/files/img/evs_player_bg.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -184,7 +185,7 @@ body {
 	display: inline-block;
 }
 #kills_count, #assist_count, #death_count {
-	font-size: 19px;
+	font-size: 17px;
 	padding-right: 10px;
 }
 #stat_money {
@@ -354,8 +355,9 @@ body {
 	font-size: 30px;
 }
 #first_row {
-	height: 22%;
-	margin-top: 59px;
+	height: 18%;
+	margin-top: 52px;
+	font-weight: bold;
 	width: 100%;
 }
 .ct_color {
@@ -379,9 +381,9 @@ body {
 #container2>#teambg-container {
 	opacity: 0.25;
 	width: 244px;
-	height: 75px;
-	position: absolute;
-	top: 93px;
+	height: 82px;
+    position: absolute;
+    top: 80px;
 	z-index: -2;
 	background-size: 100% auto;
 	background-repeat: no-repeat;
@@ -495,7 +497,7 @@ body {
 	display: inline;
 }
 #stats {
-	width: 27%;
+	width: 21%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -532,41 +534,48 @@ body {
 	margin-right: 10px;
 }
 .team#left>.player>.bottom_bar>.equip_bar>#nades {
-	float: left;
+	float: right;
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades {
-	float: right;
+	float: left;
 }
 .team#left>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
 	float: left;
     display: flex;
-    margin-left: 30px;
+    margin-right: 40px;
     align-items: center;
     justify-content: center;
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon {
 	float: right;
     display: flex;
-    margin-right: 25px;
+    margin-left: 40px;
     align-items: center;
     justify-content: center;
 }
 .team>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon>img {
-	max-height: 15px;
-	max-width: 30px;
+	max-height: 13px;
+    max-width: 23px;
 	margin-right: 2px;
 	margin-left: 2px;
 }
 .team>.player>.bottom_bar>.equip_bar>#nades>.bar_weapon>.img-hor {
 	max-height: 13px;
-	margin-right: 5px;
+    margin-right: 5px;
 }
 .team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
 	position: absolute;
-	left: 12.5px;
+	left: 6.5px;
 	top: 28px;
 	width: 45px;
 	height: 20px;
+}
+.team#left>.player>.bottom_bar>.equip_bar>#nades>.money_stats {
+	position: absolute;
+    left: 62.5px;
+    top: 30px;
+    width: 45px;
+    height: 20px;
 }
 .team#left>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
 	position: absolute;
@@ -577,10 +586,17 @@ body {
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset {
 	position: absolute;
-	right: 12.5px;
+	right: 6.5px;
 	top: 28px;
 	width: 37px;
 	height: 20px;
+}
+.team#right>.player>.bottom_bar>.equip_bar>#nades>.money_stats {
+	position: absolute;
+    right: 62.5px;
+    top: 30px;
+    width: 45px;
+    height: 20px;
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades>.hpbombset>.wrapper {
 	position: absolute;
@@ -617,14 +633,18 @@ body {
 	margin-left: 2px;
 	margin-right: 2px;
 }
+.team#left>.player.dead_bg>.round_kills_container {
+	left: 149px;
+	transform: translateY(-50%) skewX(-22deg);
+	}
 .team#left>.player>.round_kills_container {
 	height: 47px;
 	width: 0px;
 	background-color: rgba(0,0,0,0.9);
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%) skewX(-15deg);
-	left: 282px;
+	transform: translateY(-50%) skewX(-24deg);
+    left: 273px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -638,21 +658,25 @@ body {
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	transform: translateX(-50%) skewX(15deg);
+	transform: translateX(-50%) skewX(24deg);
 	position: relative;
 	left: 50%;
 }
 .round_kills_count {
 	display: none;
 }
+.team#right>.player.dead_bg>.round_kills_container {
+	right: 151px;
+	transform: translateY(-50%) skewX(22deg);
+	}
 .team#right>.player>.round_kills_container {
 	height: 47px;
 	width: 0px;
 	background-color: rgba(0,0,0,0.9);
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%) skewX(15deg);
-	right: 282px;
+	transform: translateY(-50%) skewX(24deg);
+	right: 273px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -666,18 +690,18 @@ body {
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	transform: translateX(-50%) skewX(-15deg);
+	transform: translateX(-50%) skewX(-24deg);
 	position: relative;
 	left: 50%;
 }
 .team#left>.player>.player_money_count {
 	height: 43px;
 	width: 0px;
-	background-color: rgba(0,0,0,0.9);
+	background-image: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,1));
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%) skewX(-15deg);
-	left: 282px;
+	transform: translateY(-50%) skewX(-23deg);
+    left: 274px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -690,23 +714,23 @@ body {
 }
 
 .team#left>.player>.player_money_count.activated {
-	width: 150;
+	width: 95px;
 	opacity: 1;
 	transition: all 0.4s ease-in-out;
 	z-index: 1;
 }
 
 .team#left>.player>.player_money_count>.money_wrapper {
-	transform: translateX(-50%) skewX(15deg);
+	transform: translateX(-50%) skewX(23deg);
 	text-align: center;
 	font-size: 0.8em;
 	min-width: 55px;
 }
 .team#left>.player>.player_money_count>.stats_wrapper {
-	transform: translateX(-50%) skewX(15deg);
+	transform: translateX(-50%) skewX(23deg);
 	text-align: center;
-	margin-left: 72px;
-    width: 70px;
+	width: 70px;
+	margin-left: 50px;
 }
 .stats_wrapper table {
 	margin: 0 auto;
@@ -716,11 +740,11 @@ body {
 .team#right>.player>.player_money_count {
 	height: 43px;
     width: 0px;
-    background-color: rgba(0,0,0,0.9);
+    background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1), rgba(0,0,0,1));
     position: absolute;
     top: 50%;
-    transform: translateY(-50%) skewX(15deg);
-    right: 282px;
+    transform: translateY(-50%) skewX(23deg);
+    right: 274px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -734,22 +758,23 @@ body {
 }
 
 .team#right>.player>.player_money_count.activated {
-	width: 150;
+	width: 95px;
 	opacity: 1;
 	transition: all 0.4s ease-in-out;
 	z-index: 1;
 }
 .team#right>.player>.player_money_count>.money_wrapper {
-	transform: translateX(-50%) skewX(-15deg);
+	transform: translateX(-50%) skewX(-23deg);
     text-align: center;
 	margin-left: 45px;
 	font-size: 0.8em;
     min-width: 55px;
 }
 .team#right>.player>.player_money_count>.stats_wrapper	 {
-	transform: translateX(-50%) skewX(-15deg);
+	transform: translateX(-50%) skewX(-23deg);
 	text-align: center;
-	width: 80px;
+	width: 0px;
+    margin-right: 45px;
 	font-size: 0.9em;
 }
 .block{
@@ -772,7 +797,7 @@ body {
 }
 .team {
 	width: 410px;
-	height: 340px;
+	height: 355px;
 }
 #left {
 	position: fixed;
@@ -789,13 +814,13 @@ body {
 }
 .player {
 	width: 290px;
-	height: 55px;
+	height: 60px;
 	position: relative;
 	margin-bottom: 10px;
 }
 .bar1 {
 	width: 100%;
-	height: 28px;
+	height: 35px;
 	font-size: 15px;
 	font-weight: bold;
 }
@@ -804,27 +829,29 @@ body {
 	height: 30px;
 }
 #player-container>#container2>.hp_bar {
-	width: 588px;
-    margin-left: 0px;
-	height: 6px;
+	width: 620px;
+    margin-left: -8px;
+	height: 10px;
     margin-top: -5px;
-    transform: skew(33deg);
+    transform: skew(-35deg);
 }
 #left>.player>.bar1>.hp_bar {
 	width: 290px;
-	margin-left: -2px;	
-	height: 10%;
+	margin-left: -3px;	
+	height: 18%;
 	float: left;
+	margin-top: -5px;
 	transform: scale(0.99,0.9);
-	transform: skew(-18deg,0deg);
+	transform: skew(-30deg,0deg);
 }
 #right>.player>.bar1>.hp_bar {
 	width: 290px;
-	margin-right: -2px;
-	height: 10%;
+	margin-right: -3px;
+	height: 18%;
 	float: right;
+	margin-top: -5px;
 	transform: scale(0.99,0.9);
-	transform: skew(18deg,0deg);
+	transform: skew(30deg,0deg);
 }
 .money {
 	height: 85px;
@@ -843,26 +870,26 @@ body {
 	width: 115px;
 }
 #left > .player > .bar1 >.stat_t, #left > .player > .bottom_bar >.stat_t{
-	background-image:url('/files/img/left_nick.png');
+	background-image:url('/files/img/evs_ct_left.png');
 	background-size: cover;
 	background-position: right;
 }
 #right > .player > .bar1 >.stat_t, #right > .player > .bottom_bar >.stat_t{
-	background-image:url('/files/img/right_nick.png');
+	background-image:url('/files/img/evs_t_right.png');
 	background-size: cover;
 	background-position: left;
 }
 #left > .player{
-	background-image:url('/files/img/left_nick.png');
+	background-image:url('/files/img/evs_ct_left.png');
 	background-size: cover;
 	background-position: right;
 	background-repeat: no-repeat;
 }
 #left > .player.dead_bg{
-	background-image:url('/files/img/dead_player_left_bg.png');
-	background-size: cover;
-	background-position: right;
-	opacity: 0.2;
+	background-image:url('/files/img/evs_dead_ct_left.png');
+	background-size: contain;
+	background-position: left;
+	transition: all 0.4s ease-in-out;
 }
   
   @keyframes shake {
@@ -892,15 +919,16 @@ body {
 	filter: brightness(0.5) sepia(1) saturate(10000%);
 }
 #right > .player{
-	background-image:url('/files/img/right_nick.png');
+	background-image:url('/files/img/evs_t_right.png');
 	background-size: cover;
 	background-position: left;
 	background-repeat: no-repeat;
 }
 #right > .player.dead_bg{
-	background-image:url('/files/img/dead_player_right_bg.png');
-	background-size: cover;
-	background-position: left;
+	background-image:url('/files/img/evs_dead_t_right.png');
+	background-size: contain;
+	background-position: right;
+	transition: all 0.4s ease-in-out;
 }
 .bar1>.stat_t {
 	color: rgba(255, 255, 255, 0.3)
@@ -935,63 +963,63 @@ body {
 	float: left;
 	width: 40px;
 	padding-left: 20px;
-	margin-top: 6px;
+	margin-top: 11px;
 	text-align: center;
-	transform: skew(18deg,0deg);
+	transform: skew(30deg,0deg);
 }
 #right>.player>.bar1>.hp_bar>.hp_el,
 #right>.player>.bottom_bar>.equip_bar>.hp_el {
 	float: right;
 	width: 40px;
 	padding-right: 20px;
-	margin-top: 6px;
+	margin-top: 11px;
 	text-align: center;
-	transform: skew(-18deg,0deg);
+	transform: skew(-30deg,0deg);
 }
 #left>.player>.bar1>.hp_bar>.bar_username {
 	padding-left: 70px;
-	padding-top: 11px;
+	padding-top: 15px;
 	width: 77%;
 	white-space: nowrap;
 	font-size:13px;
 	text-shadow:none;
-	transform: skew(18deg,0deg);
+	transform: skew(30deg,0deg);
 }
 
 #right>.player>.bar1>.hp_bar>.bar_username {
 	text-align: right;
 	padding-right: 20px;
-	padding-top: 11px;
+	padding-top: 15px;
 	width: 77%;
 	white-space: nowrap;
 	font-size: 13px;
 	text-shadow: none;
-	transform: skew(-18deg,0deg);
+	transform: skew(-30deg,0deg);
 }
 #left>.player>.bar1>.hp_bar>.bar_weapon,
 #left>.player>.bottom_bar>.equip_bar>.bar_weapon {
 	float: right;
 	width: 420px;
 	height: 100%;
-	transform: skew(18deg,0deg);
+	transform: skew(30deg,0deg);
 }
 #right>.player>.bar1>.hp_bar>.bar_weapon,
 #right>.player>.bottom_bar>.equip_bar>.bar_weapon {
 	float: left;
 	width: 420px;
 	height: 100%;
-	transform: skew(-18deg,0deg);
+	transform: skew(-30deg,0deg);
 }
 #left>.player>.bottom_bar>.equip_bar {
 	width: 330px;
 	height: 100%;
-	float: left;
+	float: right;
 	margin-left: 33px;
 }
 #right>.player>.bottom_bar>.equip_bar {
 	width: 330px;
 	height: 100%;
-	float: right;
+	float: left;
 	margin-right: 33px;
 }
 .bottom_bar>.stat_t {
@@ -1074,13 +1102,13 @@ body {
 .equip_bar>.bar_weapon>img,
 .hp_bar>.bar_weapon>img,
 .equip_bar>.hp_el>img {
-	height: auto;
-	max-width: 65px;
-    max-height: 25px;
-	margin: auto;
-	margin-top: -9px;
-	margin-left: 21px;
-	margin-right: 21px;
+    height: auto;
+    max-width: 45px;
+    max-height: 20px;
+    margin: auto;
+    margin-top: -14px;
+    margin-left: 21px;
+    margin-right: 21px;
 }
 #right>.player {
 	float: right;
@@ -1104,7 +1132,7 @@ body {
 	width: 100%;
 	height: 69px;
 	width: 100%;
-	background-image:url("/files/img/header_bg.png");
+	background-image:url("/files/img/evs_header_bg.png");
 	background-size: cover;
 }
 #round_info {
@@ -1122,7 +1150,7 @@ body {
 
 #round_counter {
 	width: 15%;
-	height: 50%;
+	height: 44%;
 	margin: auto;
 	text-transform: uppercase;
 	text-align: center;
@@ -1232,12 +1260,12 @@ body {
 	z-index: 2;
 }
 
-#avatar_container {
+/* #avatar_container {
 	background-image: url("/files/img/Arctic_White.png");
 	background-size: 70% auto;
 	background-position: center center;
 	background-repeat: no-repeat;
-}
+} */
 
 #avatar_container img {
 	width:139px;
@@ -1336,7 +1364,7 @@ body {
 	background-repeat: no-repeat;
 	text-align: center;
 	font-size: 24px;
-	background-image:url("/files/img/whowin.png");
+	background-image:url("/files/img/evs_whowin.png");
 }
 #who_won div {
 	display:inline-block;
