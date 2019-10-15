@@ -14,7 +14,6 @@ body {
 	padding: 0;
 	font-family:'Lovelo Black';
 	color: white;
-	/* background-color: red; */
 }
 
 #defuser {
@@ -124,6 +123,39 @@ body {
 	font-size: 30px;
 	margin-top: -10px;
 }
+
+#left>.player>.player_highlight {
+	position: absolute;
+    top: 0;
+    left: -8px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.35) 31%, rgba(255,255,255,0) 100%);
+	transform: skewX(-15deg);
+	display: none;
+}
+
+#right>.player>.player_highlight {
+	position: absolute;
+    top: 0;
+    right: -8px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.35) 31%, rgba(255,255,255,0) 100%);
+	transform: skewX(15deg);
+	display: none;
+}
+
+.player.highlighted.dead_bg .player_highlight {
+	display: none !important;
+}
+
+.player.highlighted .player_highlight {
+	display: block !important;
+}
+
+
+
 #player-container {
     position: fixed;
     bottom: 110px;
@@ -133,7 +165,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(/files/img/evs_player_bg.png);
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -144,6 +175,14 @@ body {
 
 #player-container.t #container2 #first_row #current_nick{
 	color: #ffa000;
+}
+
+#player-container.t {
+	background-image: url(/files/img/evs_player_t.png);
+}
+
+#player-container.ct {
+	background-image: url(/files/img/evs_player_ct.png);
 }
 
 #container2 {
@@ -593,7 +632,8 @@ body {
 }
 .team#right>.player>.bottom_bar>.equip_bar>#nades>.money_stats {
 	position: absolute;
-    right: 62.5px;
+	right: 57.5px;
+	text-align: right;
     top: 30px;
     width: 45px;
     height: 20px;
@@ -654,7 +694,7 @@ body {
 .team#left>.player>.round_kills_container>.akill {
 	width: 12px;
 	height: 12px;
-	background-image:url('/files/img/snowflake.png');
+	background-image:url('/files/img/skull.png');
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -686,7 +726,7 @@ body {
 .team#right>.player>.round_kills_container>.akill {
 	width: 12px;
 	height: 12px;
-	background-image:url('/files/img/snowflake.png');
+	background-image:url('/files/img/skull.png');
 	background-position: center center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -853,6 +893,48 @@ body {
 	transform: scale(0.99,0.9);
 	transform: skew(30deg,0deg);
 }
+
+
+#player-container>#container2>.hp_bar_red {
+	width: 620px;
+    margin-left: -8px;
+	height: 10px;
+	top: 79px;
+	position: absolute;
+    transform: skew(-35deg);
+	background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgb(255, 0, 0) 0%);
+	transition: all 1s ease-in-out;
+}
+
+#left>.player>.bar1>.hp_bar_red {
+	width: 290px;
+	left: -3px;	
+	height: 10%;
+	float: left;
+	margin-top: -5px;
+	transform: scale(0.99,0.9);
+	position: absolute;
+	transform: skew(-30deg,0deg);
+	background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgb(255, 0, 0) 0%);
+	transition: all 1s ease-in-out;
+}
+
+#right>.player>.bar1>.hp_bar_red {
+	width: 290px;
+	right: -3px;
+	height: 10%;
+	float: right;
+	margin-top: -5px;
+	transform: scale(0.99,0.9);
+	position: absolute;
+	transform: skew(30deg,0deg);
+	background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(255, 0, 0) 0%);
+	transition: all 1s ease-in-out;
+}
+
+
+
+
 .money {
 	height: 85px;
 	background: rgba(0, 0, 0, 0.65);
@@ -870,26 +952,57 @@ body {
 	width: 115px;
 }
 #left > .player > .bar1 >.stat_t, #left > .player > .bottom_bar >.stat_t{
-	background-image:url('/files/img/evs_ct_left.png');
 	background-size: cover;
 	background-position: right;
 }
 #right > .player > .bar1 >.stat_t, #right > .player > .bottom_bar >.stat_t{
-	background-image:url('/files/img/evs_t_right.png');
 	background-size: cover;
 	background-position: left;
 }
 #left > .player{
-	background-image:url('/files/img/evs_ct_left.png');
 	background-size: cover;
 	background-position: right;
 	background-repeat: no-repeat;
 }
-#left > .player.dead_bg{
+
+#left > .player.sidee-t {
+	background-image:url('/files/img/evs_t_left.png');
+}
+
+#left > .player.sidee-ct {
+	background-image:url('/files/img/evs_ct_left.png');
+}
+
+#left > .player.sidee-t.dead_bg {
+	background-image:url('/files/img/evs_dead_t_left.png');
+}
+
+#left > .player.sidee-ct.dead_bg {
 	background-image:url('/files/img/evs_dead_ct_left.png');
+}
+
+
+
+#right > .player.sidee-t {
+	background-image:url('/files/img/evs_t_right.png');
+}
+
+#right > .player.sidee-ct {
+	background-image:url('/files/img/evs_ct_right.png');
+}
+
+#right > .player.sidee-t.dead_bg {
+	background-image:url('/files/img/evs_dead_t_right.png');
+}
+
+#right > .player.sidee-ct.dead_bg {
+	background-image:url('/files/img/evs_dead_ct_right.png');
+}
+
+#left > .player.dead_bg{
 	background-size: contain;
 	background-position: left;
-	transition: all 0.4s ease-in-out;
+	/* transition: all 0.4s ease-out; */
 }
   
   @keyframes shake {
@@ -919,16 +1032,14 @@ body {
 	filter: brightness(0.5) sepia(1) saturate(10000%);
 }
 #right > .player{
-	background-image:url('/files/img/evs_t_right.png');
 	background-size: cover;
 	background-position: left;
 	background-repeat: no-repeat;
 }
 #right > .player.dead_bg{
-	background-image:url('/files/img/evs_dead_t_right.png');
 	background-size: contain;
 	background-position: right;
-	transition: all 0.4s ease-in-out;
+	/* transition: all 0.4s ease-in; */
 }
 .bar1>.stat_t {
 	color: rgba(255, 255, 255, 0.3)
@@ -1107,8 +1218,8 @@ body {
     max-height: 20px;
     margin: auto;
     margin-top: -14px;
-    margin-left: 21px;
-    margin-right: 21px;
+    margin-left: 7px;
+    margin-right: 7px;
 }
 #right>.player {
 	float: right;
@@ -1132,8 +1243,8 @@ body {
 	width: 100%;
 	height: 69px;
 	width: 100%;
-	background-image:url("/files/img/evs_header_bg.png");
 	background-size: cover;
+	opacity: 0.8;
 }
 #round_info {
 	padding: 0em 5em;
@@ -1260,12 +1371,22 @@ body {
 	z-index: 2;
 }
 
-/* #avatar_container {
-	background-image: url("/files/img/Arctic_White.png");
-	background-size: 70% auto;
-	background-position: center center;
-	background-repeat: no-repeat;
-} */
+#avatar_container {
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.imageloader {
+	position: fixed;
+	opacity: 0;
+	top: -500px;
+	bottom: -500px;
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
 
 #avatar_container img {
 	width:139px;
@@ -1364,8 +1485,16 @@ body {
 	background-repeat: no-repeat;
 	text-align: center;
 	font-size: 24px;
-	background-image:url("/files/img/evs_whowin.png");
 }
+
+#who_won.t-ssside {
+	background-image:url("/files/img/evs_whowin_t.png");
+}
+
+#who_won.ct-ssside {
+	background-image:url("/files/img/evs_whowin_ct.png");
+}
+
 #who_won div {
 	display:inline-block;
 	position: relative;
