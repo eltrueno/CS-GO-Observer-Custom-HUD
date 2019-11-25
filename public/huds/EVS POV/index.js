@@ -330,7 +330,7 @@ function updatePage(data) {
         $("#player-container").css("opacity", "0");
     } else if (observed) {
         menu = (data.info.player.activity == "menu");
-        $("#player-container").css("opacity", !menu ? "0.8" : "0");
+        $("#player-container").css("opacity", !menu ? "1" : "0");
     }
 
     let left,
@@ -339,7 +339,7 @@ function updatePage(data) {
     var round = data.round();
     var map = data.map();
     var matchup = data.getMatchType();
-
+    
     var round_now = map.round + (round.phase == "over" || round.phase == "intermission"
         ? 0
         : 1);
@@ -660,7 +660,6 @@ function updatePage(data) {
 
                 defuseTimerStart();
                 defuseTimerRotate(phase.phase_ends_in,longd);
-                // console.log(phase.phase_ends_in);
 
                 var seconds = Math.round(parseFloat(phase.phase_ends_in).toFixed(1));
 
