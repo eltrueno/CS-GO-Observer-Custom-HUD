@@ -23,6 +23,31 @@ body {
     src: url(Montserrat-Medium.ttf);
 }
 
+.player>.hp_container>.hp_bar {
+    width: 295px;
+    background: #5788a8;
+    height: 30px;
+    top: 6em;
+    float: left;
+    position: absolute;
+    text-shadow: 0px 0px 10px black;
+    transform: scale(0.99,0.9);
+}
+
+.player>.hp_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team>.team_logo {
+    position: absolute;
+}
+
+.team>.team_logo>img {
+    height: 200px;;
+}
+
 #wrapper {
     width: 1920px;
     height: 1080px;
@@ -128,7 +153,8 @@ body {
     display: flex;
 }
 
-.player .stats .wrap .hp {
+.player .stats .wrap .hp,
+.player .stats .wrap .money {
     font-family: "MontserratBlack";
     color: white;
     font-size: 25px;
@@ -138,63 +164,33 @@ body {
     margin-right: 10px;
 }
 
-.player .stats .wrap .money {
+.player .numberstats {
+    display: flex;
+    justify-content: center;
+    margin-top: -40px;
+}
+
+.player .numberstats #kills,
+.player .numberstats #assists,
+.player .numberstats #deaths {
     font-family: "MontserratBlack";
     color: white;
     font-size: 25px;
     text-align: center;
-    white-space: nowrap;
-    display: inherit;
-    z-index: 10;
 }
 
-.player .circle {
-    height: 250px;
-    width: 250px;
+.player .numberstats #kills,
+.player .numberstats #assists {
+    margin-right: 20px;
+}
+
+.team_logo {
+    opacity: 0.10;
+    width: 1920px;
+    height: 320px;
     position: absolute;
-    left: 66.99px;
-    bottom: 0px;
-    z-index: 2;
-}
-
-.player .circle .circle-left-wrap {
-    width: 125px;
-    height: 250px;
-    left: 0;
     top: 0;
-    overflow: hidden;
-    position: absolute;
-    transform-origin: 100% 50%;
-}
-
-.player .circle .circle-left-wrap .circle-left {
-    height: 240px;
-    width: 240px;
-    border-radius: 50%;
-    border: 5px solid #3e8ddd;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-}
-
-.player .circle .circle-right-wrap {
-    width: 125px;
-    height: 249.9px;
-    right: 0;
-    top: 0;
-    overflow: hidden;
-    position: absolute;
-    transform-origin: 0% 50%;
-}
-
-.player .circle .circle-right-wrap .circle-right {
-    height: 240px;
-    width: 240px;
-    border-radius: 50%;
-    border: 5px solid #3e8ddd;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
