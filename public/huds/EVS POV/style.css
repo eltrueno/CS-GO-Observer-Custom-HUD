@@ -1484,6 +1484,7 @@ body {
 	background-size: contain;
 	background-repeat: no-repeat;
 	text-align: center;
+<<<<<<< HEAD
 	font-size: 24px;
 }
 
@@ -1491,6 +1492,15 @@ body {
 	background-image:url("/files/img/evs_whowin_t.png");
 }
 
+=======
+	font-size: 20px;
+}
+
+#who_won.t-ssside {
+	background-image:url("/files/img/evs_whowin_t.png");
+}
+
+>>>>>>> d834bb1f9e7645fa2c55aecfdf1db526359cedd3
 #who_won.ct-ssside {
 	background-image:url("/files/img/evs_whowin_ct.png");
 }
