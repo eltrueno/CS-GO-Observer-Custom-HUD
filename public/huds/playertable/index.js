@@ -7,7 +7,7 @@ function updatePage(data) {
     var players = data.getPlayers();
     var teamonedata = data.getTeamOne();
     var teamtwodata = data.getTeamTwo();
-    
+
     var teamonename = teamonedata.team_name;
     var teamoneid = teamonename.replace(" ","").toLowerCase();
     
@@ -82,7 +82,6 @@ function fillPlayer(slot, player) {
     $('#player' + (slot + 1) + ' .name').text(player.name);
 
     var weapons = player.getWeapons();
-    var isprimary = false;
     var weapleng = Object.keys(weapons).length;
     var primarywep;
     var secondwep;
@@ -94,8 +93,9 @@ function fillPlayer(slot, player) {
         let view = "";
         let type = weapon.type;
 
-        if(type == "Rifle" || type == "SniperRifle") {
-            isprimary = true;
+        console.log(type);
+
+        if(type == "Rifle" || type == "SniperRifle" || type == "Submachine Gun") {
             primarywep = name;
         }
 
@@ -104,10 +104,13 @@ function fillPlayer(slot, player) {
         }
 
         if(key == ("weapon_" + (weapleng - 1))) {
-            if(isprimary == true) {
-                $('#player' + (slot + 1) + ' .weapons').append($("<img />").attr("src", "/files/img/weapons/" + primarywep + ".png"));
+
+            if(primarywep != undefined) {
+                $('#player' + (slot + 1) + ' .weapons').html($("<img />").attr("src", "/files/img/weapons/" + primarywep + ".png"));
+            } else if(secondwep != undefined) {
+                $('#player' + (slot + 1) + ' .weapons').html($("<img />").attr("src", "/files/img/weapons/" + secondwep + ".png"));
             } else {
-                $('#player' + (slot + 1) + ' .weapons').append($("<img />").attr("src", "/files/img/weapons/" + secondwep + ".png"));
+                $('#player' + (slot + 1) + ' .weapons').html("");
             }
         }
     }
@@ -120,6 +123,7 @@ function fillPlayer(slot, player) {
     $('#player' + (slot + 1) + ' .stats .wrap .hp').text("+" + player.state.health);
     if(player.state.health <= 0) {
         $('#player' + (slot + 1)).addClass("dead");
+        $('#player' + (slot + 1) + ' .weapons').html("");
     } else {
         $('#player' + (slot + 1)).removeClass("dead");
     }
