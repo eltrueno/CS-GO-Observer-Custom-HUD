@@ -79,6 +79,11 @@ function fillPlayer(slot, player) {
     let gradient = "linear-gradient(to left, rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
     
     $('#player' + (slot + 1) + ' .hp_bar').css("background", gradient);
+
+    $('#player' + (slot + 1) + ' .hp_container').find(".hp_bar_red").css({
+        width: 2.9 * statistics.health
+    });
+    
     $('#player' + (slot + 1) + ' .name').text(player.name);
 
     var weapons = player.getWeapons();
@@ -89,11 +94,7 @@ function fillPlayer(slot, player) {
     for(let key in weapons){
         let weapon = weapons[key];
         let name = weapon.name.replace("weapon_", "");
-        let state = weapon.state;
-        let view = "";
         let type = weapon.type;
-
-        console.log(type);
 
         if(type == "Rifle" || type == "SniperRifle" || type == "Submachine Gun") {
             primarywep = name;

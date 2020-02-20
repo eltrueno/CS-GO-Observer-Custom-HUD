@@ -27,17 +27,42 @@ body {
     width: 295px;
     background: #5788a8;
     height: 30px;
-    top: 6em;
+    top: 4em;
     float: left;
     position: absolute;
     text-shadow: 0px 0px 10px black;
     transform: scale(0.99,0.9);
 }
 
+.player>.hp_container>.hp_bar_red {
+	width: 290px;
+    top: 4.03em;
+    left: 47px;
+	height: 29.9px;
+	float: left;
+	transform: scale(0.99,0.9);
+	position: absolute;
+	background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgb(255, 0, 0) 0%);
+	transition: all 1s ease-in-out;
+}
+
 .player>.hp_container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.player>.weapons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4.5em;
+}
+
+.player>.weapons>img {
+    filter: invert(100%);
+    max-width: 275px;
+    max-height: 70px;
 }
 
 .team>.team_logo {
@@ -90,7 +115,6 @@ body {
     z-index: 4;
     font-size: 28px;
     vertical-align: middle;
-    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7);
 }
 
 .player .fullname {
@@ -116,16 +140,16 @@ body {
     max-height: 140px;
 }
 
-.player.dead .photo, .player.dead .name {
+.player.dead .stats, .player.dead .name {
     opacity: 0.4;
     transition: all 1s ease-in-out;
 }
 
 .player.dead:before {
     content: "";
-    width: 200px;
-    height: 200px;
-    top: 90px;
+    width: 300px;
+    height: 300px;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
@@ -136,12 +160,15 @@ body {
     background-repeat: no-repeat;
 }
 
+.player.dead>.hp_container>.hp_bar {
+    display: none;
+}
+
 .player .stats {
     width: 100%;
     position: absolute;
     bottom: 10px;
-    height: 50px;
-    text-shadow: 0px 1px 10px rgba(0, 0, 0, 1);
+    height: 80px;
     z-index: 5;
 }
 
@@ -151,23 +178,36 @@ body {
     left: 50%;
     transform: translate(-50%,-50%);
     display: flex;
+    width: 200px;
+    position: absolute;
 }
 
-.player .stats .wrap .hp,
-.player .stats .wrap .money {
+.player .stats .wrap .hp {
     font-family: "MontserratBlack";
     color: white;
     font-size: 25px;
     text-align: center;
     white-space: nowrap;
     display: inherit;
-    margin-right: 10px;
+    width: 50%;
+}
+
+.player .stats .wrap .money {
+    font-family: "MontserratBlack";
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    white-space: nowrap;
+    display: inherit;    
+    text-align: right;
+    position: absolute;
+    right: 0;
 }
 
 .player .numberstats {
     display: flex;
     justify-content: center;
-    margin-top: -40px;
+    margin-top: -25px;
 }
 
 .player .numberstats #kills,
