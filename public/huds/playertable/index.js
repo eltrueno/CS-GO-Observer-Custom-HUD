@@ -95,14 +95,17 @@ function fillPlayer(slot, player) {
         let weapon = weapons[key];
         let name = weapon.name.replace("weapon_", "");
         let type = weapon.type;
-
-        if(type == "Rifle" || type == "SniperRifle" || type == "Submachine Gun") {
-            primarywep = name;
+        
+        if(type != "Knife" && type != "C4" && name != "taser") {
+            if(type != "Grenade") {
+                if(type == "Pistol") {
+                    secondwep = name;
+                } else {
+                    primarywep = name;
+                }
+            }
         }
 
-        if(type == "Pistol") {
-            secondwep = name;
-        }
 
         if(key == ("weapon_" + (weapleng - 1))) {
 
