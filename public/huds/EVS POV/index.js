@@ -436,7 +436,7 @@ function updatePage(data) {
             $("#right .player").removeClass("sidee-ct sidee-t").addClass("sidee-t");
 
             $("#match_teams").css({
-                backgroundImage: "url(/files/img/evs_header_ct_t.png)"
+                backgroundImage: "url(/files/img/invitationalbg_ct_t.png)"
             });
         } else {
             $("#team_1").removeClass("ct-color t-color").addClass("t-color");
@@ -445,7 +445,7 @@ function updatePage(data) {
             $("#team_2").removeClass("ct-color t-color").addClass("ct-color");
             $("#right .player").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
             $("#match_teams").css({
-                backgroundImage: "url(/files/img/evs_header_t_ct.png)"
+                backgroundImage: "url(/files/img/invitationalbg_t_ct.png)"
             });
         }
 

@@ -4,6 +4,8 @@ var teams = {
 }
 var start_money = {};
 
+var lastpalyer;
+
 function fillObserved(player) {
     let statistics = player.getStats();
     let weapons = player.weapons;
@@ -30,6 +32,23 @@ function fillObserved(player) {
     let gradient = "linear-gradient(to left, rgba(0,0,0,0) " + (100-statistics.health) + "%, " + health_color + " " + (100-statistics.health) + "%)";
 
     $("#container2").find(".hp_bar").css("background", gradient);
+
+    if(player.observer_slot == lastpalyer) {
+        $("#container2").find(".hp_bar_red").css({
+            transition: "all 1s ease-in-out"
+        });
+        $("#container2").find(".hp_bar_red").css({
+            width: 6.2 * statistics.health
+        });
+    } else {
+        $("#container2").find(".hp_bar_red").css({
+            transition: "none"
+        });
+        $("#container2").find(".hp_bar_red").css({
+            width: 6.2 * statistics.health
+        });
+        lastpalyer = player.observer_slot;
+    }
     
     $("#kills_count").html(" K: " + statistics.kills);
     $("#assist_count").html(" A: " + statistics.assists);
@@ -37,8 +56,12 @@ function fillObserved(player) {
     $("#player-container")
         .removeClass("t ct")
         .addClass(player.team.toLowerCase());
-
+    console.log(player);
     $("#current_nick").html(player.name);
+    $("#avatar_container").css({
+        backgroundImage: "url(/files/img/players/" + player.steamid + ".png)"
+    });
+
     $("#nick_also").html(player.real_name + " ");
     $("#nades").html("");
 
@@ -96,9 +119,6 @@ function fillObserved(player) {
         .addClass(statistics.helmet
             ? "helmet"
             : "armor");
-    loadAvatar(player.steamid, function(){
-        $("#avatar_container").html($("<img />").attr("src", "/av/"+player.steamid));
-    });
 }
 
 function fillPlayers(teams){
@@ -108,7 +128,7 @@ function fillPlayers(teams){
                 $("#left").find("#player"+(i+1)).css("opacity", "0");
             } else{
                 fillPlayer(teams.left.players[i],i, "left", teams.left.players.length);
-                $("#left").find("#player"+(i+1)).css("opacity","1");
+                $("#left").find("#player"+(i+1)).css("opacity","0.8");
             }
         }
     }
@@ -118,7 +138,7 @@ function fillPlayers(teams){
                 $("#right").find("#player"+(i+1)).css("opacity","0");
             } else{
                 fillPlayer(teams.right.players[i],i, "right", teams.right.players.length);
-                $("#right").find("#player"+(i+1)).css("opacity","1");
+                $("#right").find("#player"+(i+1)).css("opacity","0.8");
             }
         }
     }
@@ -139,11 +159,15 @@ function fillPlayer(player,nr, side, max){
     let $bottom = $player.find(".bottom_bar");
     let $top = $player.find(".bar1");
 
+    $player.find(".imageloader").css({
+        backgroundImage: "url(/files/img/players/" + steamid + ".png)"
+    });
+
     $top.find("#bar_username").text(player.name.split(" ").join(""));
     $top.find("#bar_username").removeClass("dead").addClass(statistics.health == 0 ? "dead" : "");
     $top.find("#weapon_icon").removeClass("money_left").addClass(statistics.health == 0 ? "money_left" : "");
 
-    $top.find(".hp_bar").find(".money_left").html("<span class=stats_money>$"+statistics.money + "</span><span class=stats_kda_container><span class=stats_kda>K: " + statistics.kills + "</span><span class=stats_kda>A: " + statistics.assists + "</span><span class=stats_kda>D: " + statistics.deaths + "</span></span>");
+    // $top.find(".hp_bar").find(".money_left").html("<span class=stats_money>$"+statistics.money + "</span><span class=stats_kda_container><span class=stats_kda>K: " + statistics.kills + "</span><span class=stats_kda>A: " + statistics.assists + "</span><span class=stats_kda>D: " + statistics.deaths + "</span></span>");
 
     $player.removeClass("dead_bg").addClass(statistics.health == 0 ? "dead_bg" : "");
     $player.find("#hp_p").removeClass("low_health").addClass(statistics.health <= 20 ? "low_health" : "");
@@ -151,21 +175,22 @@ function fillPlayer(player,nr, side, max){
     $top.find("#hp_p").text(statistics.health);
     $top.find(".hp_bar").css("background", gradient);
 
+    $top.find(".hp_bar_red").css({
+        width: 2.9 * statistics.health
+    });
+
     $bottom.find(".kills").text(statistics.kills);
     $bottom.find(".assists").text(statistics.assists);
     $bottom.find(".deaths").text(statistics.deaths);
 
     $bottom.find(".hp_el").html(statistics.helmet ? $("<img />").attr("src", "/files/img/helmet.png") : statistics.armor > 0 ? $("<img />").attr("src", "/files/img/armor.png") : "");
     $bottom.find(".bomb_defuse").html(statistics.defusekit ? $("<img />").attr("src", "/files/img/elements/defuse.png").addClass("invert_brightness") : "");
-
-    $player.find(".money_wrapper").html("$"+statistics.money);
+    $bottom.find(".money_stats").html("$"+money);
+    
     $player.find(".stats_wrapper").html("<table><tr><td>K</td><td>A</td><td>D</td></tr><tr><td>"+statistics.kills+"</td><td>"+statistics.assists+"</td><td>"+statistics.deaths+"</td></tr></table>");
 
-    $player.find(".money_wrapper").removeClass("low").addClass(statistics.money < 1000? "low":"");
     
-    if(statistics.health != 0) {
         $top.find("#weapon_icon").html("");
-    }
 
     $bottom.find("#weapon_icon").html("");
 
@@ -208,9 +233,9 @@ function fillPlayer(player,nr, side, max){
             if(type == "Grenade"){
                 for(let x = 0; x < weapon.ammo_reserve; x++){
                     if(side == "left") {
-                        $bottom.find("#weapon_icon").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
-                    } else {
                         $bottom.find("#weapon_icon").prepend($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
+                    } else {
+                        $bottom.find("#weapon_icon").append($("<img />").attr("src", "/files/img/grenades/weapon_" + name + ".png").addClass("invert").addClass(view));
                     }
                 }
             } else if(type) {
@@ -305,7 +330,7 @@ function updatePage(data) {
         $("#player-container").css("opacity", "0");
     } else if (observed) {
         menu = (data.info.player.activity == "menu");
-        $("#player-container").css("opacity", !menu ? "1" : "0");
+        $("#player-container").css("opacity", !menu ? "0.8" : "0");
     }
 
     let left,
@@ -314,7 +339,7 @@ function updatePage(data) {
     var round = data.round();
     var map = data.map();
     var matchup = data.getMatchType();
-
+    
     var round_now = map.round + (round.phase == "over" || round.phase == "intermission"
         ? 0
         : 1);
@@ -360,12 +385,14 @@ function updatePage(data) {
         if(teams.left.score !== undefined && teams.right.score !== undefined && round.phase != "freezetime"){
             if(left.score > teams.left.score){
                 $("#winning_team").text(teams.left.name).removeClass("t-color ct-color").addClass(teams.left.side.toLowerCase() + "-color");
+                $("#who_won").addClass(teams.left.side.toLowerCase() + "-ssside");
                 $("#winning_team_logo").css({
                     backgroundImage: "url(/teams/"+teams.left.logo + ")"
                 });
                 $("#who_won").fadeTo(1000, 1).delay(2000).fadeTo(1000, 0);
             } else if(right.score > teams.right.score){
                 $("#winning_team").text(teams.right.name).removeClass("t-color ct-color").addClass(teams.right.side.toLowerCase() + "-color");
+                $("#who_won").addClass(teams.right.side.toLowerCase() + "-ssside");
                 $("#winning_team_logo").css({
                     backgroundImage: "url(/teams/"+teams.right.logo + ")"
                 });
@@ -397,14 +424,32 @@ function updatePage(data) {
                 ? "ct"
                 : "t");
 
-        $("#team_1")
-            .removeClass("ct-color t-color")
-            .addClass(test_player2.team.toLowerCase() + "-color");
-        $("#team_2")
-            .removeClass("ct-color t-color")
-            .addClass(test_player2.team.toLowerCase() != "t"
-                ? "t-color"
-                : "ct-color");
+        // $("#team_1").removeClass("ct-color t-color").addClass(test_player2.team.toLowerCase() + "-color");
+
+        $("#left .player").addClass("sidee-" + test_player2.team.toLowerCase());
+
+        if(test_player2.team.toLowerCase() == "ct") {
+            $("#team_1").removeClass("ct-color t-color").addClass("ct-color");
+            $("#left .player").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
+
+            $("#team_2").removeClass("ct-color t-color").addClass("t-color");
+            $("#right .player").removeClass("sidee-ct sidee-t").addClass("sidee-t");
+
+            $("#match_teams").css({
+                backgroundImage: "url(/files/img/invitationalbg_ct_t.png)"
+            });
+        } else {
+            $("#team_1").removeClass("ct-color t-color").addClass("t-color");
+            $("#left .player").removeClass("sidee-ct sidee-t").addClass("sidee-t");
+
+            $("#team_2").removeClass("ct-color t-color").addClass("ct-color");
+            $("#right .player").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
+            $("#match_teams").css({
+                backgroundImage: "url(/files/img/invitationalbg_t_ct.png)"
+            });
+        }
+
+        // YO
 
         $("#left")
             .find("#team_money_1").removeClass('low').addClass(left.team_money < 1000 ? "low":"")
@@ -615,21 +660,27 @@ function updatePage(data) {
 
                 defuseTimerStart();
                 defuseTimerRotate(phase.phase_ends_in,longd);
-                // console.log(phase.phase_ends_in);
 
                 var seconds = Math.round(parseFloat(phase.phase_ends_in).toFixed(1));
 
                 // $("#bombtimer div").text((seconds < 10 ? seconds : seconds));
 
-                if(seconds <= 5) {
+                if(seconds < 10) {
                     $("#bombtimer div").text("00:0" + seconds);
                 } else {
                     $("#bombtimer div").text("00:" + seconds);
                 }
+            } else {
+                isDefusing = false;
+                longd = 10;
+                console.log("Let go of the bombu");
+                resetBomb();
+                defuseTimerReset();
             }
         } else {
             isDefusing = false;
             longd = 10;
+            console.log("Let go of the bombu");
             resetBomb();
             defuseTimerReset();
         }
