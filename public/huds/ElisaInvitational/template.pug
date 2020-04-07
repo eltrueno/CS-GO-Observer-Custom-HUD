@@ -19,6 +19,7 @@ html
             #team_1.team_info(style='height: 100%;')
               #team_score
               #team_name
+              #team_money_1
               #teambg-container
               //- Team 1
               #team_logo
@@ -27,6 +28,7 @@ html
             #team_2.team_info(style='height: 100%;')
               #team_score
               #team_name
+              #team_money_2
               #teambg-container
               //- Team 2
               #team_logo
@@ -42,6 +44,7 @@ html
               .rightscore
               .content
               .bg
+        #player_count <h2 class="left">4</h2><h2>vs</h2><h2 class="right">5</h2>
       #bomb-defusing-container
         #bombcontent
           #bomb
@@ -59,12 +62,49 @@ html
         #winning_team_logo
         #winning_team
         div wins the round!
+      #stats-container
+        #left_stats
+          #stats_player1.stats_player.st_left
+            #stat_money.st_left
+          #stats_player2.stats_player.st_left
+            #stat_money.st_left
+          #stats_player3.stats_player.st_left
+            #stat_money.st_left
+          #stats_player4.stats_player.st_left
+            #stat_money.st_left
+          #stats_player5.stats_player.st_left
+            #stat_money.st_left
+        #right_stats
+          #stats_player6.stats_player.st_right
+            #stat_money.st_right
+          #stats_player7.stats_player.st_right
+            #stat_money.st_right
+          #stats_player8.stats_player.st_right
+            #stat_money.st_right
+          #stats_player9.stats_player.st_right
+            #stat_money.st_right
+          #stats_player10.stats_player.st_right
+            #stat_money.st_right
       #player-container
         //- #teambg-container
-        #avatar_container(style="width:165px; height:164px; float:left; margin: 3px 3px;")
-        #container2(style="width:632px;")
+        #container2(style="width:785px;")
           #teambg-container
           #first_row
+            #current_nick
+            #ammo
+              #clip-text.clip
+              //-100/
+              #reserve-text.reserve
+              //-100
+            #health_armor
+              #health-text
+              //-100
+              #armor-text
+              //-100
+          .hp_bar_red
+          .hp_bar
+              #hp_p.hp_el
+          #second_row
             #stats
                 #kills_count.inlining
                 //-K: 13
@@ -72,29 +112,38 @@ html
                 //-A: 13
                 #death_count.inlining
                 //-D: 13
-          .hp_bar_red
-          .hp_bar
-              #hp_p.hp_el
-          #second_row
-            #current_nick
-              //-| NICKNAME
-            #health_armor
-              #health-text
-              //-100
-              #armor-text
-              //-100
-            #ammo
-              #clip-text.clip
-              //-100/
-              #reserve-text.reserve
-              //-100
-          #third_row
-            #team_name.inlining
-              //-| NICK
-            #nades.inlining
             #bomb_t
             #bomb_ct
+            #nades.inlining
       #left.team
+        #team_stats.team_stats
+          #team_stats_top
+            .lossbonus 
+              .lossbonus_wrapper
+                .lossbonus_column.lossbonus_column_first
+                .lossbonus_column.lossbonus_column_second
+                .lossbonus_column.lossbonus_column_third
+                .lossbonus_column.lossbonus_column_fourth
+              <p>LOSS<br>BONUS <span>$2900</span></p> 
+            #equipvalue_1.equipvalue
+            #teammoney_1.teammoney
+          #team_stats_bottom
+            #nade_icons
+                #nades_first.nades
+                  img(src='/files/img/grenades/weapon_flashbang.png')
+                  <p>x5</p>
+                #nades_second.nades
+                  img(src='/files/img/grenades/weapon_smokegrenade.png')
+                  <p>x5</p>
+                #nades_third.nades
+                  img(src='/files/img/grenades/weapon_hegrenade.png')
+                  <p>x5</p>
+                #nades_fourth.nades
+                  img(src='/files/img/grenades/weapon_decoy.png')
+                  <p>x5</p>
+                #nades_fifth.nades
+                  img(src='/files/img/grenades/weapon_molotov.png')
+                  <p>x5</p>
         #player1.player
           .imageloader
           .player_highlight
@@ -110,11 +159,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.ct
                 .money_stats
+                .bomb_defuse.ct
                 #weapon_icon.bar_weapon.ct
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player2.player
@@ -132,11 +181,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.ct
                 .money_stats
+                .bomb_defuse.ct
                 #weapon_icon.bar_weapon.ct
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player3.player
@@ -154,11 +203,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.ct
                 .money_stats
+                .bomb_defuse.ct
                 #weapon_icon.bar_weapon.ct
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player4.player
@@ -176,11 +225,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.ct
                 .money_stats
+                .bomb_defuse.ct
                 #weapon_icon.bar_weapon.ct
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player5.player
@@ -198,14 +247,42 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.ct
                 .money_stats
+                .bomb_defuse.ct
                 #weapon_icon.bar_weapon.ct
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
       #right.team
+        #team_stats.team_stats
+          #team_stats_top
+            #teammoney_2.teammoney <p><span>$20400</span> TEAM<br>MONEY</p> 
+            #equipvalue_2.equipvalue <p><span>$31750</span> EQUIP<br>VALUE</p> 
+            .lossbonus 
+              <p><span>$2900</span> LOSS<br>BONUS</p> 
+              .lossbonus_wrapper
+                .lossbonus_column.lossbonus_column_first
+                .lossbonus_column.lossbonus_column_second
+                .lossbonus_column.lossbonus_column_third
+                .lossbonus_column.lossbonus_column_fourth
+          #team_stats_bottom
+            #nade_icons
+              #nades_first.nades
+                img(src='/files/img/grenades/weapon_flashbang.png')
+                <p>x5</p>
+              #nades_second.nades
+                img(src='/files/img/grenades/weapon_smokegrenade.png')
+                <p>x5</p>
+              #nades_third.nades
+                img(src='/files/img/grenades/weapon_hegrenade.png')
+                <p>x5</p>
+              #nades_fourth.nades
+                img(src='/files/img/grenades/weapon_decoy.png')
+                <p>x5</p>
+              #nades_fifth.nades
+                img(src='/files/img/grenades/weapon_molotov.png')
+                <p>x5</p>
         #player1.player
           .imageloader
           .player_highlight
@@ -221,11 +298,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.t
                 .money_stats
+                .bomb_defuse.t
                 #weapon_icon.bar_weapon.t
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player2.player
@@ -243,11 +320,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.t
                 .money_stats
+                .bomb_defuse.t
                 #weapon_icon.bar_weapon.t
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player3.player
@@ -265,11 +342,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.t
                 .money_stats
+                .bomb_defuse.t
                 #weapon_icon.bar_weapon.t
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player4.player
@@ -287,11 +364,11 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.t
                 .money_stats
+                .bomb_defuse.t
                 #weapon_icon.bar_weapon.t
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
         #player5.player
@@ -309,10 +386,10 @@ html
                 .hpbombset
                   .wrapper
                     .hp_el
-                    .bomb_defuse.t
                 .money_stats
+                .bomb_defuse.t
                 #weapon_icon.bar_weapon.t
-          .round_kills_container
-          .round_kills_count
+          //- .round_kills_container
+          //- .round_kills_count
           .player_money_count
             .stats_wrapper
