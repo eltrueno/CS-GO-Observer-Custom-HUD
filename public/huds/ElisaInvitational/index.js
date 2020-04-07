@@ -136,6 +136,15 @@ function fillPlayers(teams){
             }
         }
     }
+
+    var left_dead_players = $("#left").find(".dead").length;
+    var right_dead_players = $("#right").find(".dead").length;
+    var left_alive_players = 5-left_dead_players;
+    var right_alive_players = 5-right_dead_players;
+
+    $("#left_team_alive").html("<h2 class='left'>"+left_alive_players+"</h2>");
+    $("#versus").html("<h2>vs</h2>");
+    $("#right_team_alive").html("<h2 class='right'>"+right_alive_players+"</h2>");
 }
 
 function fillPlayer(player,nr, side, max){
@@ -251,6 +260,13 @@ function fillPlayer(player,nr, side, max){
         start_money[steamid] = statistics.money;
     } 
     $("#stats_player"+slot).find("#stat_money").html("-"+(start_money[steamid]-statistics.money)+"$");
+    
+    if ((start_money[steamid]-statistics.money)!=0) {
+        $("#stats_player"+slot).find("#stat_money").css("display", "block");   
+    } else {
+        $("#stats_player"+slot).find("#stat_money").css("display", "none");
+    }
+
 }
 
 var isDefusing = false;
@@ -293,8 +309,6 @@ function updatePage(data) {
     var phase = data.phase();
     var team_one = data.getTeamOne();
     var team_two = data.getTeamTwo();
-    var t = data.getT();
-    console.log(t);
 
     if(observed.teamData) {
         $("#player-container").find("#team_name").html(observed.teamData.short_name + "<span style='margin: 0px 10px;'>|</span>" + observed.real_name);
@@ -433,10 +447,12 @@ function updatePage(data) {
             $("#team_1").removeClass("ct-color t-color").addClass("ct-color");
             $("#left .player").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
             $("#left .team_stats").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
+            $("#player_count #left_team_alive").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
 
             $("#team_2").removeClass("ct-color t-color").addClass("t-color");
             $("#right .player").removeClass("sidee-ct sidee-t").addClass("sidee-t");
             $("#right .team_stats").removeClass("sidee-ct sidee-t").addClass("sidee-t");
+            $("#player_count #right_team_alive").removeClass("sidee-ct sidee-t").addClass("sidee-t");
 
             $("#match_teams").css({
                 backgroundImage: "url(/files/img/invitationalbg_ct_t.png)"
@@ -445,10 +461,13 @@ function updatePage(data) {
             $("#team_1").removeClass("ct-color t-color").addClass("t-color");
             $("#left .player").removeClass("sidee-ct sidee-t").addClass("sidee-t");
             $("#left .team_stats").removeClass("sidee-ct sidee-t").addClass("sidee-t");
+            $("#player_count #left_team_alive").removeClass("sidee-ct sidee-t").addClass("sidee-t");
+
 
             $("#team_2").removeClass("ct-color t-color").addClass("ct-color");
             $("#right .player").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
             $("#right .team_stats").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
+            $("#player_count #right_team_alive").removeClass("sidee-ct sidee-t").addClass("sidee-ct");
             $("#match_teams").css({
                 backgroundImage: "url(/files/img/invitationalbg_t_ct.png)"
             });
@@ -551,8 +570,16 @@ function updatePage(data) {
         $('#matchup .rightscore .matchupscore:nth-child(' + match.team_2.map_score + ')').addClass("active");
     }
 
-    $(".t-color").find("#teambg-container").css("background-image", "url('/files/img/t.png')");
-    $(".ct-color").find("#teambg-container").css("background-image", "url('/files/img/ct.png')");
+    // $(".t-color").find("#teambg-container").css("background-image", "url('/files/img/t.png')");
+    // $(".ct-color").find("#teambg-container").css("background-image", "url('/files/img/ct.png')");
+
+    $('#team_1').find("#teambg-container").css({
+        backgroundImage: "url(/teams/"+teams.left.logo + ")"
+    });
+
+    $('#team_2').find("#teambg-container").css({
+        backgroundImage: "url(/teams/"+teams.right.logo + ")"
+    });
 
     $("#team_2 #team_name").html(teams.right.name);
     $("#team_2 #team_money").html(teams.right.name);
@@ -625,7 +652,7 @@ function updatePage(data) {
     if (phase) {
         $("#time_counter").css("color", (phase.phase == "live" || phase.phase == "over" || phase.phase == "warmup" || (phase.phase == "freezetime" && phase.phase_ends_in > 10))
             ? "white"
-            : "red");
+            : "rgb(214, 7, 24)");
         $("#defuser").css("display", phase.phase == "defuse"
             ? "block"
             : "none");
